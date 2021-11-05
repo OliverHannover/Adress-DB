@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.110.43;Initial Catalog=wsladressen;Persist Security Info=True"& _ 
-            ";User ID=wsladressen;Password=Start21!")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\sqlexpress;Initial Catalog=wsladressen;Persist Security Inf"& _ 
+            "o=True;User ID=wsladressen;Password=Start21!")>  _
         Public ReadOnly Property WSL_AdressenDataSet() As String
             Get
                 Return CType(Me("WSL_AdressenDataSet"),String)

@@ -25,7 +25,7 @@ Namespace My.Resources
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-    Friend Class Form1
+    Friend Class Hauptform
         
         Private Shared resourceMan As Global.System.Resources.ResourceManager
         
@@ -43,7 +43,7 @@ Namespace My.Resources
         Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Adress_DB.Form1", GetType(Form1).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Adress_DB.Hauptform", GetType(Hauptform).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -131,6 +131,26 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("AnredeLabel1.GenerateMember", resourceCulture)
                 Return CType(obj,Boolean)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=1257,Y=139}.
+        '''</summary>
+        Friend Shared ReadOnly Property AT_PLZ_GeodatenBindingSource_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AT_PLZ_GeodatenBindingSource.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=17,Y=178}.
+        '''</summary>
+        Friend Shared ReadOnly Property AT_PLZ_GeodatenTableAdapter_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AT_PLZ_GeodatenTableAdapter.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
             End Get
         End Property
         
@@ -225,12 +245,52 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=240,Y=178}.
+        '''</summary>
+        Friend Shared ReadOnly Property CH_PLZ_GeodatenBindingSource_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CH_PLZ_GeodatenBindingSource.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=470,Y=178}.
+        '''</summary>
+        Friend Shared ReadOnly Property CH_PLZ_GeodatenTableAdapter_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CH_PLZ_GeodatenTableAdapter.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Boolean ähnlich wie False.
         '''</summary>
         Friend Shared ReadOnly Property DatumLabel_GenerateMember() As Boolean
             Get
                 Dim obj As Object = ResourceManager.GetObject("DatumLabel.GenerateMember", resourceCulture)
                 Return CType(obj,Boolean)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=695,Y=178}.
+        '''</summary>
+        Friend Shared ReadOnly Property DE_PLZ_GeodatenBindingSource_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("DE_PLZ_GeodatenBindingSource.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=924,Y=178}.
+        '''</summary>
+        Friend Shared ReadOnly Property DE_PLZ_GeodatenTableAdapter_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("DE_PLZ_GeodatenTableAdapter.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
             End Get
         End Property
         
@@ -245,7 +305,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=891,Y=97}.
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=610,Y=97}.
         '''</summary>
         Friend Shared ReadOnly Property DocuwareCSVBindingSource_TrayLocation() As System.Drawing.Point
             Get
@@ -255,7 +315,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=1111,Y=97}.
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=878,Y=96}.
         '''</summary>
         Friend Shared ReadOnly Property DocuwareCSVTableAdapter_TrayLocation() As System.Drawing.Point
             Get
@@ -625,6 +685,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property PB_Suche_Image() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PB_Suche.Image", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Boolean ähnlich wie False.
         '''</summary>
         Friend Shared ReadOnly Property PLZLabel_GenerateMember() As Boolean
@@ -720,6 +790,26 @@ Namespace My.Resources
         Friend Shared ReadOnly Property SachbearbeiterTableAdapter_TrayLocation() As System.Drawing.Point
             Get
                 Dim obj As Object = ResourceManager.GetObject("SachbearbeiterTableAdapter.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=1074,Y=100}.
+        '''</summary>
+        Friend Shared ReadOnly Property StaatenBindingSource_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("StaatenBindingSource.TrayLocation", resourceCulture)
+                Return CType(obj,System.Drawing.Point)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Point ähnlich wie {X=1238,Y=96}.
+        '''</summary>
+        Friend Shared ReadOnly Property StaatenTableAdapter_TrayLocation() As System.Drawing.Point
+            Get
+                Dim obj As Object = ResourceManager.GetObject("StaatenTableAdapter.TrayLocation", resourceCulture)
                 Return CType(obj,System.Drawing.Point)
             End Get
         End Property

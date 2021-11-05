@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Adress-DB", "Adress-DB.vbproj", "{4F64D4EC-7852-437B-A56B-FA6970D24E01}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_WSL-Adress-DB", "..\Setup_WSL-Adress-DB\Setup_WSL-Adress-DB.vdproj", "{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{4F64D4EC-7852-437B-A56B-FA6970D24E01}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F64D4EC-7852-437B-A56B-FA6970D24E01}.Release|x64.ActiveCfg = Release|x64
 		{4F64D4EC-7852-437B-A56B-FA6970D24E01}.Release|x64.Build.0 = Release|x64
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Debug|Any CPU.ActiveCfg = Debug
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Debug|Any CPU.Build.0 = Debug
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Debug|x64.ActiveCfg = Debug
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Debug|x64.Build.0 = Debug
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Release|Any CPU.ActiveCfg = Release
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Release|Any CPU.Build.0 = Release
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Release|x64.ActiveCfg = Release
+		{EA4D1B4E-FBA6-4671-B08E-38163660BE9C}.Release|x64.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

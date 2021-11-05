@@ -87,6 +87,8 @@ Partial Class Hauptform
         Me.KontoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_FirmenName = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BTN_NachnameSuche = New System.Windows.Forms.Button()
         Me.lblTrefferAnzahl = New System.Windows.Forms.Label()
         Me.lblHinweisKeinTreffer = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -115,11 +117,9 @@ Partial Class Hauptform
         Me.IDKontoTextBox = New System.Windows.Forms.TextBox()
         Me.WebseiteTextBox = New System.Windows.Forms.TextBox()
         Me.UStIdNrTextBox = New System.Windows.Forms.TextBox()
-        Me.LandTextBox = New System.Windows.Forms.TextBox()
-        Me.BundeslandTextBox = New System.Windows.Forms.TextBox()
-        Me.OrtTextBox = New System.Windows.Forms.TextBox()
+        Me.TB_Bundesland = New System.Windows.Forms.TextBox()
         Me.PostfachTextBox = New System.Windows.Forms.TextBox()
-        Me.PLZTextBox = New System.Windows.Forms.TextBox()
+        Me.TB_PLZ = New System.Windows.Forms.TextBox()
         Me.StraßeTextBox = New System.Windows.Forms.TextBox()
         Me.AdresstypTextBox = New System.Windows.Forms.TextBox()
         Me.AdressenDataGridView = New System.Windows.Forms.DataGridView()
@@ -203,6 +203,12 @@ Partial Class Hauptform
         Me.BTN_DocErzeugen = New System.Windows.Forms.Button()
         Me.TC_Adresse = New System.Windows.Forms.TabControl()
         Me.TabAdresseInfo = New System.Windows.Forms.TabPage()
+        Me.PNL_Geodaten = New System.Windows.Forms.Panel()
+        Me.LBL_Lat = New System.Windows.Forms.Label()
+        Me.LBL_Long = New System.Windows.Forms.Label()
+        Me.LBLLat = New System.Windows.Forms.Label()
+        Me.LBLLong = New System.Windows.Forms.Label()
+        Me.LBL_AdressHinweis = New System.Windows.Forms.Label()
         Me.LBL_IDKontoZuAdresse = New System.Windows.Forms.Label()
         Me.WebseiteLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.UStIdNrLabel2 = New System.Windows.Forms.Label()
@@ -216,6 +222,11 @@ Partial Class Hauptform
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TabAdresseBearbeiten = New System.Windows.Forms.TabPage()
+        Me.LBL_PLZungueltig = New System.Windows.Forms.Label()
+        Me.CB_Ort = New System.Windows.Forms.ComboBox()
+        Me.LBL_Countrycode = New System.Windows.Forms.Label()
+        Me.StaatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CB_Staat = New System.Windows.Forms.ComboBox()
         Me.lblAdresseNeu = New System.Windows.Forms.Label()
         Me.TC_Kontakt = New System.Windows.Forms.TabControl()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
@@ -262,6 +273,14 @@ Partial Class Hauptform
         Me.BelegeMitAdresseTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.BelegeMitAdresseTableAdapter()
         Me.LogTabelleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LogTabelleTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.LogTabelleTableAdapter()
+        Me.StaatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.StaatenTableAdapter()
+        Me.AT_PLZ_GeodatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AT_PLZ_GeodatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.AT_PLZ_GeodatenTableAdapter()
+        Me.CH_PLZ_GeodatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CH_PLZ_GeodatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.CH_PLZ_GeodatenTableAdapter()
+        Me.DE_PLZ_GeodatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DE_PLZ_GeodatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.DE_PLZ_GeodatenTableAdapter()
+        Me.PB_Suche = New System.Windows.Forms.PictureBox()
         AdresstypLabel = New System.Windows.Forms.Label()
         StraßeLabel = New System.Windows.Forms.Label()
         PLZLabel = New System.Windows.Forms.Label()
@@ -342,8 +361,10 @@ Partial Class Hauptform
         Me.Panel6.SuspendLayout()
         Me.TC_Adresse.SuspendLayout()
         Me.TabAdresseInfo.SuspendLayout()
+        Me.PNL_Geodaten.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.TabAdresseBearbeiten.SuspendLayout()
+        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TC_Kontakt.SuspendLayout()
         Me.TabPage5.SuspendLayout()
         Me.TabPage6.SuspendLayout()
@@ -353,6 +374,10 @@ Partial Class Hauptform
         CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BelegeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LogTabelleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AT_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CH_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DE_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PB_Suche, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AdresstypLabel
@@ -367,7 +392,7 @@ Partial Class Hauptform
         'StraßeLabel
         '
         StraßeLabel.AutoSize = True
-        StraßeLabel.Location = New System.Drawing.Point(25, 61)
+        StraßeLabel.Location = New System.Drawing.Point(25, 88)
         StraßeLabel.Name = "StraßeLabel"
         StraßeLabel.Size = New System.Drawing.Size(41, 13)
         StraßeLabel.TabIndex = 6
@@ -376,7 +401,7 @@ Partial Class Hauptform
         'PLZLabel
         '
         PLZLabel.AutoSize = True
-        PLZLabel.Location = New System.Drawing.Point(36, 113)
+        PLZLabel.Location = New System.Drawing.Point(36, 140)
         PLZLabel.Name = "PLZLabel"
         PLZLabel.Size = New System.Drawing.Size(30, 13)
         PLZLabel.TabIndex = 10
@@ -385,7 +410,7 @@ Partial Class Hauptform
         'PostfachLabel
         '
         PostfachLabel.AutoSize = True
-        PostfachLabel.Location = New System.Drawing.Point(14, 87)
+        PostfachLabel.Location = New System.Drawing.Point(14, 114)
         PostfachLabel.Name = "PostfachLabel"
         PostfachLabel.Size = New System.Drawing.Size(52, 13)
         PostfachLabel.TabIndex = 11
@@ -394,7 +419,7 @@ Partial Class Hauptform
         'OrtLabel
         '
         OrtLabel.AutoSize = True
-        OrtLabel.Location = New System.Drawing.Point(42, 139)
+        OrtLabel.Location = New System.Drawing.Point(42, 169)
         OrtLabel.Name = "OrtLabel"
         OrtLabel.Size = New System.Drawing.Size(31, 13)
         OrtLabel.TabIndex = 12
@@ -403,7 +428,7 @@ Partial Class Hauptform
         'BundeslandLabel
         '
         BundeslandLabel.AutoSize = True
-        BundeslandLabel.Location = New System.Drawing.Point(22, 167)
+        BundeslandLabel.Location = New System.Drawing.Point(22, 196)
         BundeslandLabel.Name = "BundeslandLabel"
         BundeslandLabel.Size = New System.Drawing.Size(44, 13)
         BundeslandLabel.TabIndex = 14
@@ -412,7 +437,7 @@ Partial Class Hauptform
         'LandLabel
         '
         LandLabel.AutoSize = True
-        LandLabel.Location = New System.Drawing.Point(32, 193)
+        LandLabel.Location = New System.Drawing.Point(32, 63)
         LandLabel.Name = "LandLabel"
         LandLabel.Size = New System.Drawing.Size(34, 13)
         LandLabel.TabIndex = 16
@@ -421,7 +446,7 @@ Partial Class Hauptform
         'UStIdNrLabel
         '
         UStIdNrLabel.AutoSize = True
-        UStIdNrLabel.Location = New System.Drawing.Point(12, 215)
+        UStIdNrLabel.Location = New System.Drawing.Point(12, 218)
         UStIdNrLabel.Name = "UStIdNrLabel"
         UStIdNrLabel.Size = New System.Drawing.Size(54, 13)
         UStIdNrLabel.TabIndex = 18
@@ -430,7 +455,7 @@ Partial Class Hauptform
         'WebseiteLabel
         '
         WebseiteLabel.AutoSize = True
-        WebseiteLabel.Location = New System.Drawing.Point(14, 244)
+        WebseiteLabel.Location = New System.Drawing.Point(14, 247)
         WebseiteLabel.Name = "WebseiteLabel"
         WebseiteLabel.Size = New System.Drawing.Size(55, 13)
         WebseiteLabel.TabIndex = 20
@@ -529,7 +554,7 @@ Partial Class Hauptform
         'StraßeLabel1
         '
         StraßeLabel1.AutoSize = True
-        StraßeLabel1.Location = New System.Drawing.Point(36, 55)
+        StraßeLabel1.Location = New System.Drawing.Point(36, 76)
         StraßeLabel1.Name = "StraßeLabel1"
         StraßeLabel1.Size = New System.Drawing.Size(41, 13)
         StraßeLabel1.TabIndex = 3
@@ -538,7 +563,7 @@ Partial Class Hauptform
         'PostfachLabel1
         '
         PostfachLabel1.AutoSize = True
-        PostfachLabel1.Location = New System.Drawing.Point(25, 70)
+        PostfachLabel1.Location = New System.Drawing.Point(25, 91)
         PostfachLabel1.Name = "PostfachLabel1"
         PostfachLabel1.Size = New System.Drawing.Size(52, 13)
         PostfachLabel1.TabIndex = 5
@@ -547,7 +572,7 @@ Partial Class Hauptform
         'PLZLabel1
         '
         PLZLabel1.AutoSize = True
-        PLZLabel1.Location = New System.Drawing.Point(47, 85)
+        PLZLabel1.Location = New System.Drawing.Point(47, 106)
         PLZLabel1.Name = "PLZLabel1"
         PLZLabel1.Size = New System.Drawing.Size(30, 13)
         PLZLabel1.TabIndex = 7
@@ -556,7 +581,7 @@ Partial Class Hauptform
         'OrtLabel1
         '
         OrtLabel1.AutoSize = True
-        OrtLabel1.Location = New System.Drawing.Point(53, 100)
+        OrtLabel1.Location = New System.Drawing.Point(53, 121)
         OrtLabel1.Name = "OrtLabel1"
         OrtLabel1.Size = New System.Drawing.Size(24, 13)
         OrtLabel1.TabIndex = 9
@@ -565,7 +590,7 @@ Partial Class Hauptform
         'BundeslandLabel1
         '
         BundeslandLabel1.AutoSize = True
-        BundeslandLabel1.Location = New System.Drawing.Point(33, 115)
+        BundeslandLabel1.Location = New System.Drawing.Point(33, 136)
         BundeslandLabel1.Name = "BundeslandLabel1"
         BundeslandLabel1.Size = New System.Drawing.Size(44, 13)
         BundeslandLabel1.TabIndex = 11
@@ -574,7 +599,7 @@ Partial Class Hauptform
         'LandLabel1
         '
         LandLabel1.AutoSize = True
-        LandLabel1.Location = New System.Drawing.Point(43, 130)
+        LandLabel1.Location = New System.Drawing.Point(43, 62)
         LandLabel1.Name = "LandLabel1"
         LandLabel1.Size = New System.Drawing.Size(34, 13)
         LandLabel1.TabIndex = 13
@@ -583,7 +608,7 @@ Partial Class Hauptform
         'UStIdNrLabel1
         '
         UStIdNrLabel1.AutoSize = True
-        UStIdNrLabel1.Location = New System.Drawing.Point(23, 150)
+        UStIdNrLabel1.Location = New System.Drawing.Point(23, 171)
         UStIdNrLabel1.Name = "UStIdNrLabel1"
         UStIdNrLabel1.Size = New System.Drawing.Size(54, 13)
         UStIdNrLabel1.TabIndex = 15
@@ -592,7 +617,7 @@ Partial Class Hauptform
         'WebseiteLabel1
         '
         WebseiteLabel1.AutoSize = True
-        WebseiteLabel1.Location = New System.Drawing.Point(27, 170)
+        WebseiteLabel1.Location = New System.Drawing.Point(22, 191)
         WebseiteLabel1.Name = "WebseiteLabel1"
         WebseiteLabel1.Size = New System.Drawing.Size(55, 13)
         WebseiteLabel1.TabIndex = 17
@@ -691,7 +716,7 @@ Partial Class Hauptform
         'IDKontoLabel
         '
         IDKontoLabel.AutoSize = True
-        IDKontoLabel.Location = New System.Drawing.Point(25, 200)
+        IDKontoLabel.Location = New System.Drawing.Point(29, 215)
         IDKontoLabel.Name = "IDKontoLabel"
         IDKontoLabel.Size = New System.Drawing.Size(49, 13)
         IDKontoLabel.TabIndex = 20
@@ -857,9 +882,9 @@ Partial Class Hauptform
         Me.BTN_Suche.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BTN_Suche.Location = New System.Drawing.Point(436, 8)
         Me.BTN_Suche.Name = "BTN_Suche"
-        Me.BTN_Suche.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Suche.Size = New System.Drawing.Size(106, 23)
         Me.BTN_Suche.TabIndex = 2
-        Me.BTN_Suche.Text = "Suchen"
+        Me.BTN_Suche.Text = "Geschäftspartner"
         Me.BTN_Suche.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BTN_Suche.UseVisualStyleBackColor = True
         '
@@ -917,6 +942,8 @@ Partial Class Hauptform
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Gray
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.BTN_NachnameSuche)
         Me.Panel1.Controls.Add(Me.lblTrefferAnzahl)
         Me.Panel1.Controls.Add(Me.lblHinweisKeinTreffer)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -928,6 +955,27 @@ Partial Class Hauptform
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1160, 66)
         Me.Panel1.TabIndex = 12
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(894, 7)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(127, 23)
+        Me.Button1.TabIndex = 21
+        Me.Button1.Text = "Umkreissuche D-A-CH"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'BTN_NachnameSuche
+        '
+        Me.BTN_NachnameSuche.Image = Global.Adress_DB.My.Resources.Resources.Search_16x
+        Me.BTN_NachnameSuche.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BTN_NachnameSuche.Location = New System.Drawing.Point(548, 8)
+        Me.BTN_NachnameSuche.Name = "BTN_NachnameSuche"
+        Me.BTN_NachnameSuche.Size = New System.Drawing.Size(106, 23)
+        Me.BTN_NachnameSuche.TabIndex = 20
+        Me.BTN_NachnameSuche.Text = "Nachname"
+        Me.BTN_NachnameSuche.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BTN_NachnameSuche.UseVisualStyleBackColor = True
         '
         'lblTrefferAnzahl
         '
@@ -946,7 +994,7 @@ Partial Class Hauptform
         Me.lblHinweisKeinTreffer.BackColor = System.Drawing.Color.Red
         Me.lblHinweisKeinTreffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHinweisKeinTreffer.ForeColor = System.Drawing.Color.White
-        Me.lblHinweisKeinTreffer.Location = New System.Drawing.Point(516, 11)
+        Me.lblHinweisKeinTreffer.Location = New System.Drawing.Point(637, 41)
         Me.lblHinweisKeinTreffer.Name = "lblHinweisKeinTreffer"
         Me.lblHinweisKeinTreffer.Size = New System.Drawing.Size(132, 17)
         Me.lblHinweisKeinTreffer.TabIndex = 16
@@ -1033,7 +1081,7 @@ Partial Class Hauptform
         '
         Me.btnNeueAdresse.Image = Global.Adress_DB.My.Resources.Resources.AddressEditor_16x
         Me.btnNeueAdresse.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNeueAdresse.Location = New System.Drawing.Point(171, 315)
+        Me.btnNeueAdresse.Location = New System.Drawing.Point(171, 332)
         Me.btnNeueAdresse.Name = "btnNeueAdresse"
         Me.btnNeueAdresse.Size = New System.Drawing.Size(105, 23)
         Me.btnNeueAdresse.TabIndex = 7
@@ -1175,7 +1223,7 @@ Partial Class Hauptform
         '
         'btnKontoZuAdresse
         '
-        Me.btnKontoZuAdresse.Location = New System.Drawing.Point(74, 267)
+        Me.btnKontoZuAdresse.Location = New System.Drawing.Point(74, 270)
         Me.btnKontoZuAdresse.Name = "btnKontoZuAdresse"
         Me.btnKontoZuAdresse.Size = New System.Drawing.Size(92, 23)
         Me.btnKontoZuAdresse.TabIndex = 17
@@ -1186,7 +1234,7 @@ Partial Class Hauptform
         '
         Me.IDKontoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "IDKonto", True))
         Me.IDKontoTextBox.Enabled = False
-        Me.IDKontoTextBox.Location = New System.Drawing.Point(172, 267)
+        Me.IDKontoTextBox.Location = New System.Drawing.Point(172, 270)
         Me.IDKontoTextBox.Name = "IDKontoTextBox"
         Me.IDKontoTextBox.Size = New System.Drawing.Size(104, 20)
         Me.IDKontoTextBox.TabIndex = 23
@@ -1194,67 +1242,50 @@ Partial Class Hauptform
         'WebseiteTextBox
         '
         Me.WebseiteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Webseite", True))
-        Me.WebseiteTextBox.Location = New System.Drawing.Point(74, 241)
+        Me.WebseiteTextBox.Location = New System.Drawing.Point(74, 244)
         Me.WebseiteTextBox.Name = "WebseiteTextBox"
         Me.WebseiteTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.WebseiteTextBox.TabIndex = 16
+        Me.WebseiteTextBox.TabIndex = 9
         '
         'UStIdNrTextBox
         '
         Me.UStIdNrTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "UStIdNr", True))
-        Me.UStIdNrTextBox.Location = New System.Drawing.Point(74, 215)
+        Me.UStIdNrTextBox.Location = New System.Drawing.Point(74, 218)
         Me.UStIdNrTextBox.Name = "UStIdNrTextBox"
         Me.UStIdNrTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.UStIdNrTextBox.TabIndex = 15
+        Me.UStIdNrTextBox.TabIndex = 8
         '
-        'LandTextBox
+        'TB_Bundesland
         '
-        Me.LandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Land", True))
-        Me.LandTextBox.Location = New System.Drawing.Point(74, 189)
-        Me.LandTextBox.Name = "LandTextBox"
-        Me.LandTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.LandTextBox.TabIndex = 14
-        '
-        'BundeslandTextBox
-        '
-        Me.BundeslandTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Bundesland", True))
-        Me.BundeslandTextBox.Location = New System.Drawing.Point(74, 163)
-        Me.BundeslandTextBox.Name = "BundeslandTextBox"
-        Me.BundeslandTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.BundeslandTextBox.TabIndex = 13
-        '
-        'OrtTextBox
-        '
-        Me.OrtTextBox.BackColor = System.Drawing.SystemColors.Window
-        Me.OrtTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Ort", True))
-        Me.OrtTextBox.Location = New System.Drawing.Point(74, 137)
-        Me.OrtTextBox.Name = "OrtTextBox"
-        Me.OrtTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.OrtTextBox.TabIndex = 12
+        Me.TB_Bundesland.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Bundesland", True))
+        Me.TB_Bundesland.Location = New System.Drawing.Point(74, 192)
+        Me.TB_Bundesland.Name = "TB_Bundesland"
+        Me.TB_Bundesland.Size = New System.Drawing.Size(202, 20)
+        Me.TB_Bundesland.TabIndex = 7
         '
         'PostfachTextBox
         '
         Me.PostfachTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Postfach", True))
-        Me.PostfachTextBox.Location = New System.Drawing.Point(74, 85)
+        Me.PostfachTextBox.Location = New System.Drawing.Point(74, 112)
         Me.PostfachTextBox.Name = "PostfachTextBox"
         Me.PostfachTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.PostfachTextBox.TabIndex = 10
+        Me.PostfachTextBox.TabIndex = 4
         '
-        'PLZTextBox
+        'TB_PLZ
         '
-        Me.PLZTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "PLZ", True))
-        Me.PLZTextBox.Location = New System.Drawing.Point(74, 111)
-        Me.PLZTextBox.Name = "PLZTextBox"
-        Me.PLZTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.PLZTextBox.TabIndex = 11
+        Me.TB_PLZ.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "PLZ", True))
+        Me.TB_PLZ.Location = New System.Drawing.Point(74, 138)
+        Me.TB_PLZ.Name = "TB_PLZ"
+        Me.TB_PLZ.Size = New System.Drawing.Size(92, 20)
+        Me.TB_PLZ.TabIndex = 5
         '
         'StraßeTextBox
         '
         Me.StraßeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Straße", True))
-        Me.StraßeTextBox.Location = New System.Drawing.Point(74, 59)
+        Me.StraßeTextBox.Location = New System.Drawing.Point(74, 86)
         Me.StraßeTextBox.Name = "StraßeTextBox"
         Me.StraßeTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.StraßeTextBox.TabIndex = 9
+        Me.StraßeTextBox.TabIndex = 3
         '
         'AdresstypTextBox
         '
@@ -1262,7 +1293,7 @@ Partial Class Hauptform
         Me.AdresstypTextBox.Location = New System.Drawing.Point(74, 34)
         Me.AdresstypTextBox.Name = "AdresstypTextBox"
         Me.AdresstypTextBox.Size = New System.Drawing.Size(202, 20)
-        Me.AdresstypTextBox.TabIndex = 8
+        Me.AdresstypTextBox.TabIndex = 1
         '
         'AdressenDataGridView
         '
@@ -2034,6 +2065,8 @@ Partial Class Hauptform
         '
         Me.TabAdresseInfo.AutoScroll = True
         Me.TabAdresseInfo.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.TabAdresseInfo.Controls.Add(Me.PNL_Geodaten)
+        Me.TabAdresseInfo.Controls.Add(Me.LBL_AdressHinweis)
         Me.TabAdresseInfo.Controls.Add(IDKontoLabel)
         Me.TabAdresseInfo.Controls.Add(Me.LBL_IDKontoZuAdresse)
         Me.TabAdresseInfo.Controls.Add(WebseiteLabel1)
@@ -2064,10 +2097,73 @@ Partial Class Hauptform
         Me.TabAdresseInfo.TabIndex = 0
         Me.TabAdresseInfo.Text = "Info"
         '
+        'PNL_Geodaten
+        '
+        Me.PNL_Geodaten.Controls.Add(Me.LBL_Lat)
+        Me.PNL_Geodaten.Controls.Add(Me.LBL_Long)
+        Me.PNL_Geodaten.Controls.Add(Me.LBLLat)
+        Me.PNL_Geodaten.Controls.Add(Me.LBLLong)
+        Me.PNL_Geodaten.Location = New System.Drawing.Point(6, 278)
+        Me.PNL_Geodaten.Name = "PNL_Geodaten"
+        Me.PNL_Geodaten.Size = New System.Drawing.Size(147, 38)
+        Me.PNL_Geodaten.TabIndex = 27
+        '
+        'LBL_Lat
+        '
+        Me.LBL_Lat.AutoSize = True
+        Me.LBL_Lat.ForeColor = System.Drawing.Color.Gray
+        Me.LBL_Lat.Location = New System.Drawing.Point(56, 3)
+        Me.LBL_Lat.Name = "LBL_Lat"
+        Me.LBL_Lat.Size = New System.Drawing.Size(47, 13)
+        Me.LBL_Lat.TabIndex = 25
+        Me.LBL_Lat.Text = "LBL_Lat"
+        '
+        'LBL_Long
+        '
+        Me.LBL_Long.AutoSize = True
+        Me.LBL_Long.ForeColor = System.Drawing.Color.Gray
+        Me.LBL_Long.Location = New System.Drawing.Point(56, 16)
+        Me.LBL_Long.Name = "LBL_Long"
+        Me.LBL_Long.Size = New System.Drawing.Size(56, 13)
+        Me.LBL_Long.TabIndex = 26
+        Me.LBL_Long.Text = "LBL_Long"
+        '
+        'LBLLat
+        '
+        Me.LBLLat.AutoSize = True
+        Me.LBLLat.ForeColor = System.Drawing.Color.Gray
+        Me.LBLLat.Location = New System.Drawing.Point(6, 3)
+        Me.LBLLat.Name = "LBLLat"
+        Me.LBLLat.Size = New System.Drawing.Size(48, 13)
+        Me.LBLLat.TabIndex = 23
+        Me.LBLLat.Text = "Latitude:"
+        '
+        'LBLLong
+        '
+        Me.LBLLong.AutoSize = True
+        Me.LBLLong.ForeColor = System.Drawing.Color.Gray
+        Me.LBLLong.Location = New System.Drawing.Point(3, 16)
+        Me.LBLLong.Name = "LBLLong"
+        Me.LBLLong.Size = New System.Drawing.Size(51, 13)
+        Me.LBLLong.TabIndex = 24
+        Me.LBLLong.Text = "Logitude:"
+        '
+        'LBL_AdressHinweis
+        '
+        Me.LBL_AdressHinweis.AutoSize = True
+        Me.LBL_AdressHinweis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBL_AdressHinweis.ForeColor = System.Drawing.Color.Red
+        Me.LBL_AdressHinweis.Location = New System.Drawing.Point(73, 237)
+        Me.LBL_AdressHinweis.Name = "LBL_AdressHinweis"
+        Me.LBL_AdressHinweis.Size = New System.Drawing.Size(123, 26)
+        Me.LBL_AdressHinweis.TabIndex = 22
+        Me.LBL_AdressHinweis.Text = "Adresse prüfen!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "PLZ oder Ort unklar."
+        Me.LBL_AdressHinweis.Visible = False
+        '
         'LBL_IDKontoZuAdresse
         '
         Me.LBL_IDKontoZuAdresse.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "IDKonto", True))
-        Me.LBL_IDKontoZuAdresse.Location = New System.Drawing.Point(83, 200)
+        Me.LBL_IDKontoZuAdresse.Location = New System.Drawing.Point(83, 215)
         Me.LBL_IDKontoZuAdresse.Name = "LBL_IDKontoZuAdresse"
         Me.LBL_IDKontoZuAdresse.Size = New System.Drawing.Size(190, 15)
         Me.LBL_IDKontoZuAdresse.TabIndex = 21
@@ -2076,7 +2172,7 @@ Partial Class Hauptform
         'WebseiteLinkLabel
         '
         Me.WebseiteLinkLabel.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Webseite", True))
-        Me.WebseiteLinkLabel.Location = New System.Drawing.Point(83, 170)
+        Me.WebseiteLinkLabel.Location = New System.Drawing.Point(83, 191)
         Me.WebseiteLinkLabel.Name = "WebseiteLinkLabel"
         Me.WebseiteLinkLabel.Size = New System.Drawing.Size(190, 15)
         Me.WebseiteLinkLabel.TabIndex = 18
@@ -2086,7 +2182,7 @@ Partial Class Hauptform
         'UStIdNrLabel2
         '
         Me.UStIdNrLabel2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "UStIdNr", True))
-        Me.UStIdNrLabel2.Location = New System.Drawing.Point(83, 150)
+        Me.UStIdNrLabel2.Location = New System.Drawing.Point(83, 171)
         Me.UStIdNrLabel2.Name = "UStIdNrLabel2"
         Me.UStIdNrLabel2.Size = New System.Drawing.Size(190, 15)
         Me.UStIdNrLabel2.TabIndex = 16
@@ -2095,7 +2191,7 @@ Partial Class Hauptform
         'LBL_Land
         '
         Me.LBL_Land.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Land", True))
-        Me.LBL_Land.Location = New System.Drawing.Point(83, 130)
+        Me.LBL_Land.Location = New System.Drawing.Point(83, 62)
         Me.LBL_Land.Name = "LBL_Land"
         Me.LBL_Land.Size = New System.Drawing.Size(190, 15)
         Me.LBL_Land.TabIndex = 14
@@ -2104,7 +2200,7 @@ Partial Class Hauptform
         'BundeslandLabel2
         '
         Me.BundeslandLabel2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Bundesland", True))
-        Me.BundeslandLabel2.Location = New System.Drawing.Point(83, 115)
+        Me.BundeslandLabel2.Location = New System.Drawing.Point(83, 136)
         Me.BundeslandLabel2.Name = "BundeslandLabel2"
         Me.BundeslandLabel2.Size = New System.Drawing.Size(190, 15)
         Me.BundeslandLabel2.TabIndex = 12
@@ -2113,7 +2209,7 @@ Partial Class Hauptform
         'LBL_Ort
         '
         Me.LBL_Ort.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Ort", True))
-        Me.LBL_Ort.Location = New System.Drawing.Point(83, 100)
+        Me.LBL_Ort.Location = New System.Drawing.Point(83, 121)
         Me.LBL_Ort.Name = "LBL_Ort"
         Me.LBL_Ort.Size = New System.Drawing.Size(190, 15)
         Me.LBL_Ort.TabIndex = 10
@@ -2122,7 +2218,7 @@ Partial Class Hauptform
         'LBL_PLZ
         '
         Me.LBL_PLZ.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "PLZ", True))
-        Me.LBL_PLZ.Location = New System.Drawing.Point(83, 85)
+        Me.LBL_PLZ.Location = New System.Drawing.Point(83, 106)
         Me.LBL_PLZ.Name = "LBL_PLZ"
         Me.LBL_PLZ.Size = New System.Drawing.Size(190, 15)
         Me.LBL_PLZ.TabIndex = 8
@@ -2131,7 +2227,7 @@ Partial Class Hauptform
         'PostfachLabel2
         '
         Me.PostfachLabel2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Postfach", True))
-        Me.PostfachLabel2.Location = New System.Drawing.Point(83, 70)
+        Me.PostfachLabel2.Location = New System.Drawing.Point(83, 91)
         Me.PostfachLabel2.Name = "PostfachLabel2"
         Me.PostfachLabel2.Size = New System.Drawing.Size(190, 15)
         Me.PostfachLabel2.TabIndex = 6
@@ -2140,7 +2236,7 @@ Partial Class Hauptform
         'LBL_Strasse
         '
         Me.LBL_Strasse.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Straße", True))
-        Me.LBL_Strasse.Location = New System.Drawing.Point(83, 55)
+        Me.LBL_Strasse.Location = New System.Drawing.Point(83, 76)
         Me.LBL_Strasse.Name = "LBL_Strasse"
         Me.LBL_Strasse.Size = New System.Drawing.Size(190, 15)
         Me.LBL_Strasse.TabIndex = 4
@@ -2178,7 +2274,12 @@ Partial Class Hauptform
         '
         'TabAdresseBearbeiten
         '
+        Me.TabAdresseBearbeiten.AutoScroll = True
         Me.TabAdresseBearbeiten.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.TabAdresseBearbeiten.Controls.Add(Me.LBL_PLZungueltig)
+        Me.TabAdresseBearbeiten.Controls.Add(Me.CB_Ort)
+        Me.TabAdresseBearbeiten.Controls.Add(Me.LBL_Countrycode)
+        Me.TabAdresseBearbeiten.Controls.Add(Me.CB_Staat)
         Me.TabAdresseBearbeiten.Controls.Add(Me.lblAdresseNeu)
         Me.TabAdresseBearbeiten.Controls.Add(Me.btnNeueAdresse)
         Me.TabAdresseBearbeiten.Controls.Add(Me.btnKontoZuAdresse)
@@ -2191,15 +2292,13 @@ Partial Class Hauptform
         Me.TabAdresseBearbeiten.Controls.Add(UStIdNrLabel)
         Me.TabAdresseBearbeiten.Controls.Add(StraßeLabel)
         Me.TabAdresseBearbeiten.Controls.Add(Me.UStIdNrTextBox)
-        Me.TabAdresseBearbeiten.Controls.Add(Me.PLZTextBox)
+        Me.TabAdresseBearbeiten.Controls.Add(Me.TB_PLZ)
         Me.TabAdresseBearbeiten.Controls.Add(LandLabel)
         Me.TabAdresseBearbeiten.Controls.Add(PLZLabel)
-        Me.TabAdresseBearbeiten.Controls.Add(Me.LandTextBox)
         Me.TabAdresseBearbeiten.Controls.Add(Me.PostfachTextBox)
         Me.TabAdresseBearbeiten.Controls.Add(BundeslandLabel)
         Me.TabAdresseBearbeiten.Controls.Add(PostfachLabel)
-        Me.TabAdresseBearbeiten.Controls.Add(Me.BundeslandTextBox)
-        Me.TabAdresseBearbeiten.Controls.Add(Me.OrtTextBox)
+        Me.TabAdresseBearbeiten.Controls.Add(Me.TB_Bundesland)
         Me.TabAdresseBearbeiten.Controls.Add(OrtLabel)
         Me.TabAdresseBearbeiten.Location = New System.Drawing.Point(4, 22)
         Me.TabAdresseBearbeiten.Name = "TabAdresseBearbeiten"
@@ -2207,6 +2306,58 @@ Partial Class Hauptform
         Me.TabAdresseBearbeiten.Size = New System.Drawing.Size(282, 458)
         Me.TabAdresseBearbeiten.TabIndex = 1
         Me.TabAdresseBearbeiten.Text = "Bearbeiten / NEU"
+        '
+        'LBL_PLZungueltig
+        '
+        Me.LBL_PLZungueltig.AutoSize = True
+        Me.LBL_PLZungueltig.ForeColor = System.Drawing.Color.Red
+        Me.LBL_PLZungueltig.Location = New System.Drawing.Point(198, 141)
+        Me.LBL_PLZungueltig.Name = "LBL_PLZungueltig"
+        Me.LBL_PLZungueltig.Size = New System.Drawing.Size(70, 13)
+        Me.LBL_PLZungueltig.TabIndex = 27
+        Me.LBL_PLZungueltig.Text = "PLZ ungültig!"
+        Me.LBL_PLZungueltig.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LBL_PLZungueltig.Visible = False
+        '
+        'CB_Ort
+        '
+        Me.CB_Ort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.CB_Ort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CB_Ort.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Ort", True))
+        Me.CB_Ort.DataSource = Me.AdressenBindingSource
+        Me.CB_Ort.DisplayMember = "Ort"
+        Me.CB_Ort.FormattingEnabled = True
+        Me.CB_Ort.Location = New System.Drawing.Point(74, 164)
+        Me.CB_Ort.Name = "CB_Ort"
+        Me.CB_Ort.Size = New System.Drawing.Size(202, 21)
+        Me.CB_Ort.TabIndex = 6
+        '
+        'LBL_Countrycode
+        '
+        Me.LBL_Countrycode.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaatenBindingSource, "ISO2", True))
+        Me.LBL_Countrycode.Location = New System.Drawing.Point(254, 57)
+        Me.LBL_Countrycode.Name = "LBL_Countrycode"
+        Me.LBL_Countrycode.Size = New System.Drawing.Size(22, 23)
+        Me.LBL_Countrycode.TabIndex = 25
+        Me.LBL_Countrycode.Text = "DE"
+        Me.LBL_Countrycode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'StaatenBindingSource
+        '
+        Me.StaatenBindingSource.DataMember = "Staaten"
+        Me.StaatenBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'CB_Staat
+        '
+        Me.CB_Staat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.CB_Staat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CB_Staat.DataSource = Me.StaatenBindingSource
+        Me.CB_Staat.DisplayMember = "Staat"
+        Me.CB_Staat.FormattingEnabled = True
+        Me.CB_Staat.Location = New System.Drawing.Point(74, 59)
+        Me.CB_Staat.Name = "CB_Staat"
+        Me.CB_Staat.Size = New System.Drawing.Size(174, 21)
+        Me.CB_Staat.TabIndex = 2
         '
         'lblAdresseNeu
         '
@@ -2429,11 +2580,12 @@ Partial Class Hauptform
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DateiToolStripMenuItem, Me.ToolStripMenuItem1, Me.InfoToolStripMenuItem})
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1159, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1160, 24)
         Me.MenuStrip1.TabIndex = 23
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -2546,14 +2698,19 @@ Partial Class Hauptform
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Me.FirmenNameTableAdapter
         Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.UpdateInsertDelete
         '
         'KontakteTableAdapter
@@ -2603,12 +2760,53 @@ Partial Class Hauptform
         '
         Me.LogTabelleTableAdapter.ClearBeforeFill = True
         '
+        'StaatenTableAdapter
+        '
+        Me.StaatenTableAdapter.ClearBeforeFill = True
+        '
+        'AT_PLZ_GeodatenBindingSource
+        '
+        Me.AT_PLZ_GeodatenBindingSource.DataMember = "AT_PLZ_Geodaten"
+        Me.AT_PLZ_GeodatenBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'AT_PLZ_GeodatenTableAdapter
+        '
+        Me.AT_PLZ_GeodatenTableAdapter.ClearBeforeFill = True
+        '
+        'CH_PLZ_GeodatenBindingSource
+        '
+        Me.CH_PLZ_GeodatenBindingSource.DataMember = "CH_PLZ_Geodaten"
+        Me.CH_PLZ_GeodatenBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'CH_PLZ_GeodatenTableAdapter
+        '
+        Me.CH_PLZ_GeodatenTableAdapter.ClearBeforeFill = True
+        '
+        'DE_PLZ_GeodatenBindingSource
+        '
+        Me.DE_PLZ_GeodatenBindingSource.DataMember = "DE_PLZ_Geodaten"
+        Me.DE_PLZ_GeodatenBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'DE_PLZ_GeodatenTableAdapter
+        '
+        Me.DE_PLZ_GeodatenTableAdapter.ClearBeforeFill = True
+        '
+        'PB_Suche
+        '
+        Me.PB_Suche.Image = CType(resources.GetObject("PB_Suche.Image"), System.Drawing.Image)
+        Me.PB_Suche.Location = New System.Drawing.Point(11, 535)
+        Me.PB_Suche.Name = "PB_Suche"
+        Me.PB_Suche.Size = New System.Drawing.Size(67, 42)
+        Me.PB_Suche.TabIndex = 25
+        Me.PB_Suche.TabStop = False
+        '
         'Hauptform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1159, 641)
+        Me.ClientSize = New System.Drawing.Size(1160, 641)
+        Me.Controls.Add(Me.PB_Suche)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.DocuwareCSVDataGridView)
@@ -2665,10 +2863,13 @@ Partial Class Hauptform
         Me.TC_Adresse.ResumeLayout(False)
         Me.TabAdresseInfo.ResumeLayout(False)
         Me.TabAdresseInfo.PerformLayout()
+        Me.PNL_Geodaten.ResumeLayout(False)
+        Me.PNL_Geodaten.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.TabAdresseBearbeiten.ResumeLayout(False)
         Me.TabAdresseBearbeiten.PerformLayout()
+        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TC_Kontakt.ResumeLayout(False)
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
@@ -2681,6 +2882,10 @@ Partial Class Hauptform
         CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BelegeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LogTabelleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AT_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CH_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DE_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PB_Suche, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2706,7 +2911,7 @@ Partial Class Hauptform
     Friend WithEvents AdressenTableAdapter As _WSL_AdressenDataSetTableAdapters.AdressenTableAdapter
     Friend WithEvents AdressenDataGridView As DataGridView
     Friend WithEvents TableAdapterManager As _WSL_AdressenDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents PLZTextBox As TextBox
+    Friend WithEvents TB_PLZ As TextBox
     Friend WithEvents StraßeTextBox As TextBox
     Friend WithEvents AdresstypTextBox As TextBox
     Friend WithEvents LBL_IDAdresse As Label
@@ -2715,9 +2920,7 @@ Partial Class Hauptform
     Friend WithEvents IDKontoTextBox As TextBox
     Friend WithEvents WebseiteTextBox As TextBox
     Friend WithEvents UStIdNrTextBox As TextBox
-    Friend WithEvents LandTextBox As TextBox
-    Friend WithEvents BundeslandTextBox As TextBox
-    Friend WithEvents OrtTextBox As TextBox
+    Friend WithEvents TB_Bundesland As TextBox
     Friend WithEvents btnNeueAdresse As Button
     Friend WithEvents BTN_MapsSuche As Button
     Friend WithEvents lblTrefferAnzahl As Label
@@ -2879,4 +3082,25 @@ Partial Class Hauptform
     Friend WithEvents LogTabelleBindingSource As BindingSource
     Friend WithEvents LogTabelleTableAdapter As _WSL_AdressenDataSetTableAdapters.LogTabelleTableAdapter
     Friend WithEvents HilfeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BTN_NachnameSuche As Button
+    Friend WithEvents LBL_Countrycode As Label
+    Friend WithEvents CB_Ort As ComboBox
+    Friend WithEvents CB_Staat As ComboBox
+    Friend WithEvents StaatenBindingSource As BindingSource
+    Friend WithEvents StaatenTableAdapter As _WSL_AdressenDataSetTableAdapters.StaatenTableAdapter
+    Friend WithEvents LBL_PLZungueltig As Label
+    Friend WithEvents AT_PLZ_GeodatenBindingSource As BindingSource
+    Friend WithEvents AT_PLZ_GeodatenTableAdapter As _WSL_AdressenDataSetTableAdapters.AT_PLZ_GeodatenTableAdapter
+    Friend WithEvents CH_PLZ_GeodatenBindingSource As BindingSource
+    Friend WithEvents CH_PLZ_GeodatenTableAdapter As _WSL_AdressenDataSetTableAdapters.CH_PLZ_GeodatenTableAdapter
+    Friend WithEvents DE_PLZ_GeodatenBindingSource As BindingSource
+    Friend WithEvents DE_PLZ_GeodatenTableAdapter As _WSL_AdressenDataSetTableAdapters.DE_PLZ_GeodatenTableAdapter
+    Friend WithEvents LBL_AdressHinweis As Label
+    Friend WithEvents LBL_Long As Label
+    Friend WithEvents LBL_Lat As Label
+    Friend WithEvents LBLLong As Label
+    Friend WithEvents LBLLat As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents PNL_Geodaten As Panel
+    Friend WithEvents PB_Suche As PictureBox
 End Class

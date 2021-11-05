@@ -118,14 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ContactCard_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\ContactCard_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PrintDocument_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\PrintDocument_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="outlook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\outlook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AccountAttribute_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\AccountAttribute_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DatabaseSettings_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Symbole\DatabaseSettings_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="outlook_groß" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\outlook_groß.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cancel_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\Cancel_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,8 +139,8 @@
   <data name="Document_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\Document_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="outlook_groß" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Symbole\outlook_groß.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DatabaseSettings_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\DatabaseSettings_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Search_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\Search_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,11 +148,14 @@
   <data name="DeleteUser_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\DeleteUser_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Symbole\Save_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DocumentsFolder_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\DocumentsFolder_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="F1Help_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\F1Help_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DocuWare_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\DocuWare_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +169,8 @@
   <data name="AddUser_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\AddUser_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StatusInformation_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Symbole\StatusInformation_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Save_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\Save_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AssignToUser_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\AssignToUser_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,10 +181,10 @@
   <data name="CloseSolution_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Symbole\CloseSolution_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StatusInformation_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\StatusInformation_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="F1Help_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Symbole\F1Help_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BackToResultList_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Symbole\BackToResultList_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

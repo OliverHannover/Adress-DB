@@ -35,9 +35,22 @@ Module Module1
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
 
-        'Werte in der Konfigurations-Tabelle aktualisieren (IDFirmenName + Leadnummer)
-        Hauptform.KonfigurationTableAdapter.UpdateIDFirmenName(IDFirmenName + 1, IDFirmenName)
-        Hauptform.KonfigurationTableAdapter.UpdateLeadnummer(Leadnummer + 1, Leadnummer)
+        Try
+            'Werte in der Konfigurations-Tabelle aktualisieren (IDFirmenName + Leadnummer)
+            Hauptform.KonfigurationTableAdapter.UpdateIDFirmenName(IDFirmenName + 1, IDFirmenName)
+        Catch ex As Exception
+            MsgBox("Fehler beim Aktualisieren der neuen IDFirmenName in der Konfig-Tabelle")
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
+
+
+        Try
+            Hauptform.KonfigurationTableAdapter.UpdateLeadnummer(Leadnummer + 1, Leadnummer)
+        Catch ex As Exception
+            MsgBox("Fehler beim Aktualisieren der neuen Lead-Nummer in der Konfig-Tabelle")
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
+
 
         AlleTableAdapterAktualisieren(IDFirmenName)
 
@@ -61,12 +74,12 @@ Module Module1
     Public Sub IDFirmenNameInAdresseSatzMarkieren(IDFirmenName As Double, IDAdresse As Double)
 
         'AdressenTableAdapter aktualisieren, geänderten Satz auswählen
-        Try
-            Hauptform.AdressenTableAdapter.SucheIDFirmenNameInAdressen(Hauptform._WSL_AdressenDataSet.Adressen, IDFirmenName)
-        Catch ex As System.Exception
-            MsgBox("lblIDFirmenName in Adressen suchen - Fehler")
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
+        'Try
+        '    Hauptform.AdressenTableAdapter.SucheIDFirmenNameInAdressen(Hauptform._WSL_AdressenDataSet.Adressen, IDFirmenName)
+        'Catch ex As System.Exception
+        '    MsgBox("lblIDFirmenName in Adressen suchen - Fehler")
+        '    System.Windows.Forms.MessageBox.Show(ex.Message)
+        'End Try
 
         'geänderten Datensatz selektieren
         Dim foundIndex As Integer = Hauptform.AdressenBindingSource.Find("IDAdresse", IDAdresse)
@@ -77,12 +90,12 @@ Module Module1
     Public Sub IDFirmenNameInKontakteSatzMarkieren(IDFirmenName As Integer, IDKontakt As Integer)
 
         'KontakteTableAdapter aktualisieren, geänderten Satz auswählen
-        Try
-            Hauptform.KontakteTableAdapter.SucheIDFirmenNameInKontakte(Hauptform._WSL_AdressenDataSet.Kontakte, IDFirmenName)
-        Catch ex As System.Exception
-            MsgBox("lblIDFirmenName in Kontakte suchen - Fehler")
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
+        'Try
+        '    Hauptform.KontakteTableAdapter.SucheIDFirmenNameInKontakte(Hauptform._WSL_AdressenDataSet.Kontakte, IDFirmenName)
+        'Catch ex As System.Exception
+        '    MsgBox("lblIDFirmenName in Kontakte suchen - Fehler")
+        '    System.Windows.Forms.MessageBox.Show(ex.Message)
+        'End Try
 
         'geänderten Datensatz selektieren
         Dim foundIndex As Integer = Hauptform.KontakteBindingSource.Find("IDKontakt", IDKontakt)
@@ -145,10 +158,17 @@ Module Module1
         Hauptform.KontakteDataGridView.DataSource = Hauptform.KontakteBindingSource
         Hauptform.AdressenDataGridView.DataSource = Hauptform.AdressenBindingSource
 
+        'Hauptform.DE_PLZ_GeodatenTableAdapter.SuchePLZundOrt(Hauptform._WSL_AdressenDataSet.DE_PLZ_Geodaten, Hauptform.LBL_PLZ.Text, Hauptform.LBL_Ort.Text)
+        'Hauptform.AT_PLZ_GeodatenTableAdapter.SuchePLZundOrt(Hauptform._WSL_AdressenDataSet.AT_PLZ_Geodaten, Hauptform.LBL_PLZ.Text, Hauptform.LBL_Ort.Text)
+        'Hauptform.CH_PLZ_GeodatenTableAdapter.SuchePLZundOrt(Hauptform._WSL_AdressenDataSet.CH_PLZ_Geodaten, Hauptform.LBL_PLZ.Text, Hauptform.LBL_Ort.Text)
+
     End Sub
 
 
-    Sub WordStarten(Belegtyp As String)
+    Public Function WordStarten(Belegtyp As String) As Boolean
+
+        Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+
         ' öffnet den Word-Besuchsbericht und füllt den Kopf mit markierten Daten,
         Dim Pfad As String
         Pfad = Hauptform.KonfigurationTableAdapter.ScalarVorlagenpfad().ToString
@@ -156,7 +176,7 @@ Module Module1
         Pfad += Belegtyp
 
         On Error Resume Next
-        wdAnw = GetObject("Word.Application") 'Bestehende Word-Instanz suchen
+        wdAnw = GetObject(, "Word.Application") 'Bestehende Word-Instanz suchen
         Select Case Err.Number
             Case 0 'Alles paletti
             Case 429 'Es gibt soweit keine Word-Instanz
@@ -165,12 +185,14 @@ Module Module1
                 If Err.Number > 0 Then
                     BadOrHappyEnd(Err.Number, Err.Description)
                     Cursor.Current = System.Windows.Forms.Cursors.Default
-                    Exit Sub
+                    Return False
+                    Exit Function
                 End If
             Case Else 'Unerwarteter Fehler
                 BadOrHappyEnd(Err.Number, Err.Description)
                 Cursor.Current = System.Windows.Forms.Cursors.Default
-                Exit Sub
+                Return False
+                Exit Function
         End Select
         On Error GoTo 0
         '
@@ -186,7 +208,8 @@ Module Module1
         If Err.Number > 0 Then 'Wenn Arbeitsmappe nicht existiert oder unerwarteter Fehler
             BadOrHappyEnd(Err.Number, Err.Description)
             Cursor.Current = System.Windows.Forms.Cursors.Default
-            Exit Sub
+            Return False
+            Exit Function
         End If
         On Error GoTo 0
 
@@ -327,8 +350,12 @@ Module Module1
         wdAnw = Nothing
         wdDok = Nothing
 
+        Return True
+
         BadOrHappyEnd(Err.Number, Err.Description)
-    End Sub
+
+        Cursor.Current = System.Windows.Forms.Cursors.Default
+    End Function
 
     Private Sub BadOrHappyEnd(rc As Long, fehler As String)
         If rc > 0 Then
@@ -419,7 +446,7 @@ Module Module1
                 Tabelle = "Kontakte"
         End Select
 
-        Hauptform.LogTabelleTableAdapter.Insert(Meldung, Tabelle, IDInTabelle, Hinweis, Environment.UserName, Now, IDFirmenName)
+        Hauptform.LogTabelleTableAdapter.Insert(Meldung, Tabelle, IDInTabelle, Hinweis, Environment.UserName, Now, IDFirmenName, Hauptform.LBL_FirmenName.Text)
     End Sub
 
 

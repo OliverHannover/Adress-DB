@@ -1,4 +1,4 @@
-﻿Public Class Form6
+﻿Public Class Loginformationen
 
 
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -15,6 +15,7 @@
             Me.LogTabelleTableAdapter.SucheIDFirmenNameInLogtabelle(Me._WSL_AdressenDataSet.LogTabelle, IDFirmenName)
         Catch ex As System.Exception
             MsgBox("lblIDFirmenName ohne Inhalt - Fehler")
+            System.Windows.Forms.MessageBox.Show(ex.Message)
 
         End Try
     End Sub

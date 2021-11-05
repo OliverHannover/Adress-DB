@@ -1,4 +1,4 @@
-﻿Public Class Form4
+﻿Public Class Administration
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
@@ -50,7 +50,8 @@
                                                  VorlagenpfadTextBox.Text,
                                                  DWpfadTextBox.Text,
                                                  DWDateinameTextBox.Text,
-                                                 HilfelinkTextBox.Text)
+                                                 HilfelinkTextBox.Text,
+                                                 False)
         Catch ex As Exception
             MsgBox("Update der Konfigurations-Tabelle fehlgeschlagen")
 
@@ -72,6 +73,7 @@
             Me.BelegeTableAdapter.SucheIDFirmenNameInBelege(Me._WSL_AdressenDataSet.Belege, IDFirmenName)
         Catch ex As System.Exception
             MsgBox("lblIDFirmenName ohne Inhalt - Fehler")
+            System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
 
         AlleTableAdapterAktualisieren(IDFirmenName)

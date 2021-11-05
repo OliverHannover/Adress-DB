@@ -113,6 +113,16 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property BackToResultList_16x() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BackToResultList_16x", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Cancel_16x() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Cancel_16x", resourceCulture)
@@ -126,6 +136,16 @@ Namespace My.Resources
         Friend ReadOnly Property CloseSolution_16x() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("CloseSolution_16x", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ContactCard_16x() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ContactCard_16x", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -216,6 +236,16 @@ Namespace My.Resources
         Friend ReadOnly Property outlook_groß() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("outlook_groß", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property PrintDocument_16x() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PrintDocument_16x", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

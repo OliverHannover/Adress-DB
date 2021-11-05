@@ -115,14 +115,19 @@ Partial Class SplashScreen1
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
         Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Me.SachbearbeiterTableAdapter
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'SplashScreen1

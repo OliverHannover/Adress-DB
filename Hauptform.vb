@@ -6,18 +6,19 @@ Public Class Hauptform
     Dim Suchstring As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: Diese Codezeile lädt Daten in die Tabelle "_WSL_AdressenDataSet.LogTabelle". Sie können sie bei Bedarf verschieben oder entfernen.
-        Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
 
-        Me.BelegeMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.BelegeMitAdresse)
-        Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
-        Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
-        Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
-        Me.DocuwareCSVTableAdapter.Fill(Me._WSL_AdressenDataSet.DocuwareCSV)
-        Me.KontakteMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.KontakteMitAdresse)
+        ''Tabellen laden:
+        'Me.StaatenTableAdapter.Fill(Me._WSL_AdressenDataSet.Staaten)
 
-        'Liste wird mit ALLEN Usern gefüllt, auch den inaktiven (für die Usererkennung)!
-        Me.SachbearbeiterTableAdapter.Fill(Me._WSL_AdressenDataSet.Sachbearbeiter)
+        'Me.BelegeMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.BelegeMitAdresse)
+        'Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
+        'Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
+        'Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
+        'Me.DocuwareCSVTableAdapter.Fill(Me._WSL_AdressenDataSet.DocuwareCSV)
+        'Me.KontakteMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.KontakteMitAdresse)
+
+        ''Liste wird mit ALLEN Usern gefüllt, auch den inaktiven (für die Usererkennung)!
+        'Me.SachbearbeiterTableAdapter.Fill(Me._WSL_AdressenDataSet.Sachbearbeiter)
 
         Me.Width = 1175
         Me.Height = 680
@@ -34,6 +35,12 @@ Public Class Hauptform
         lblHinweisKeinTreffer.Visible = False
         TB_FirmenName.Select()
 
+        PB_Suche.Location = New Point(10, 150)
+        PB_Suche.Visible = True
+        PB_Suche.AutoSize = True
+
+
+
         'zuerst (wichtig) Combobox Anrede füllen
         With Me.AnredeComboBox
             .Items.Add("Hr.")
@@ -45,13 +52,34 @@ Public Class Hauptform
             .SelectedIndex = 0
         End With
 
-
-
         DocuwareCSVDataGridView.Sort(DocuwareCSVDataGridView.Columns(0), System.ComponentModel.ListSortDirection.Ascending)
 
     End Sub
 
     Private Sub Hauptform_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        'Erest prüfen, ob das System im Wartungsmodus ist:
+        Dim Wartung As Boolean = CBool(KonfigurationTableAdapter.ScalarWartung())
+        If Wartung = True Then
+            MsgBox("Das System, befindet sich in der Wartung!" & vbNewLine & "Das Progamm wird sich jetzt beenden." & vbNewLine & "Bitte später noch einmal versuchen.", vbExclamation)
+            Application.Exit()
+        End If
+
+        'Dann Tabellen laden
+        'Tabellen laden:
+        Me.StaatenTableAdapter.Fill(Me._WSL_AdressenDataSet.Staaten)
+
+        Me.BelegeMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.BelegeMitAdresse)
+        Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
+        Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
+        Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
+        Me.DocuwareCSVTableAdapter.Fill(Me._WSL_AdressenDataSet.DocuwareCSV)
+        Me.KontakteMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.KontakteMitAdresse)
+
+        'Liste wird mit ALLEN Usern gefüllt, auch den inaktiven (für die Usererkennung)!
+        Me.SachbearbeiterTableAdapter.Fill(Me._WSL_AdressenDataSet.Sachbearbeiter)
+
+
+
 
         'Benutzer erkennen in der Tabelle mit ALLEN Usern - auch inaktive:
         Dim foundIndex As Integer = SachbearbeiterBindingSource.Find("Login", Environment.UserName)
@@ -76,6 +104,7 @@ Public Class Hauptform
 
     Private Sub BTN_Suche_Click(sender As Object, e As EventArgs) Handles BTN_Suche.Click
         'MsgBox("Starte Suche...")
+        PB_Suche.Visible = False
         LBL_Hinweis.Visible = False 'DocuWare-Hinweis
         Suchstring = TB_FirmenName.Text
 
@@ -153,11 +182,11 @@ Public Class Hauptform
         '6) TableUpdate Kontakte bei Änderung
 
 
-
         '1) #####################################################################################################################
         'Neuen Geschäftspartner anlegen:
         'Ein Datensatz in FirmenNamen ergänzen + LeadKonto in Konto ergänzen, wenn:
         'ComboBox leer, TextBox FirmenName hat Wert und Hinweislabel sichtbar
+        'Wird ausgeführt im Modul1 / NeuenFirmenNamenAnlegen
         If CB_FirmenName.Items.Count = 0 And TB_FirmenName.Text <> "" And lblHinweisKeinTreffer.Visible = True Then
             'MsgBox("Neuen Geschäftspartner anlegen")
             'Abfrage ob gespeichert werden soll
@@ -181,13 +210,15 @@ Public Class Hauptform
 
         '2) #####################################################################################################################
 
-        Dim IDFirmenName As Integer
+        Dim IDFirmenName As Integer = CInt(LBL_IDFirmenName.Text)
+        Dim IDAdresse As Integer
+        Dim IDKontakt As Integer
 
         'FirmenName / Name Geschäftspartner ändern/aktualisieren
         If TB_FirmenName.Text <> CB_FirmenName.Text And TB_FirmenName.Text <> String.Empty And Val(LBL_IDFirmenName.Text) <> 0 Then
             'MsgBox("Geschäftspartner umbenennen")
 
-            IDFirmenName = CInt(LBL_IDFirmenName.Text)
+
             Dim FirmenNameNeu As String = TB_FirmenName.Text
             Dim FirmenNameAlt As String = CB_FirmenName.Text
 
@@ -202,11 +233,12 @@ Public Class Hauptform
                     Try
                         'Datensatz FirmenName schreiben
                         FirmenNameTableAdapter.UpdateFirmenName(FirmenNameNeu, Environment.UserName, Now.ToString, IDFirmenName)
-                        Logging(3, IDFirmenName, IDFirmenName, FirmenNameAlt & " --> " & FirmenNameNeu) ' LogTabelle schreiben
                     Catch ex As Exception
                         MsgBox("Umbenennen fehlgeschlagen", vbExclamation)
+                        System.Windows.Forms.MessageBox.Show(ex.Message)
                     End Try
 
+                    Logging(3, IDFirmenName, IDFirmenName, FirmenNameAlt & " --> " & FirmenNameNeu) ' LogTabelle schreiben
 
                     MsgBox("Firmenname umbenannt")
 
@@ -229,15 +261,12 @@ Public Class Hauptform
 
         '3) #####################################################################################################################
 
-        Dim IDAdresse As Integer
 
         'Adresse neu anlegen
-        If AdresseNeu = True And OrtTextBox.Text <> String.Empty Then
+        If AdresseNeu = True And CB_Ort.Text <> String.Empty Then
             'MsgBox("Adresse neu anlegen")
             'Wert aus Konfig-Tabelle holen
             IDAdresse = CInt(KonfigurationTableAdapter.ScalarIDAdresse())
-            IDFirmenName = CInt(LBL_IDFirmenName.Text)
-
 
             'Datensatz Adresse hinzufügen
             Try
@@ -247,46 +276,48 @@ Public Class Hauptform
                                             AdresstypTextBox.Text,
                                             StraßeTextBox.Text,
                                             PostfachTextBox.Text,
-                                            PLZTextBox.Text,
-                                            OrtTextBox.Text,
-                                            BundeslandTextBox.Text,
-                                            LandTextBox.Text,
+                                            TB_PLZ.Text,
+                                            CB_Ort.Text,
+                                            TB_Bundesland.Text,
+                                            CB_Staat.Text,
                                             UStIdNrTextBox.Text,
-                                            WebseiteTextBox.Text)
-
-                'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDAdresse((IDAdresse + 1), IDAdresse)
-
-                Logging(4, IDAdresse, IDFirmenName, OrtTextBox.Text) ' LogTabelle schreiben
-
+                                            WebseiteTextBox.Text,
+                                            LBL_Countrycode.Text)
             Catch ex As System.Exception
                 MsgBox("Fehler beim hinzufügen einer Adresse")
                 System.Windows.Forms.MessageBox.Show(ex.Message)
             End Try
 
+            Try
+                'Nächsten Wert in der Konfig-Tabelle aktualisieren
+                Me.KonfigurationTableAdapter.UpdateIDAdresse((IDAdresse + 1), IDAdresse)
+            Catch ex As Exception
+                MsgBox("Fehler beim änmdern der neuen IDAdresse in der Konfig-Tabelle")
+                System.Windows.Forms.MessageBox.Show(ex.Message)
+            End Try
+
+            Logging(4, IDAdresse, IDFirmenName, CB_Ort.Text) ' LogTabelle schreiben
+
             AdresseNeu = False
             lblAdresseNeu.Visible = False
             LBL_IDKontoZuAdresse.ForeColor = Color.Black
             TC_Adresse.SelectedIndex = 0
-            OrtTextBox.BackColor = Color.White
+            CB_Ort.BackColor = Color.White
 
-        ElseIf AdresseNeu = True And OrtTextBox.Text = String.Empty Then
+        ElseIf AdresseNeu = True And CB_Ort.Text = String.Empty Then
             MsgBox("Bitte einen Ort für Adresse erfassen!", vbExclamation, "Neue Adresse Anlegen")
-            OrtTextBox.Select()
-            OrtTextBox.BackColor = Color.MistyRose
+            CB_Ort.Select()
+            CB_Ort.BackColor = Color.MistyRose
             Exit Sub 'keine weiteren IF/Then-Prüfungen!
         End If
 
         '4) #####################################################################################################################
         'Kontakt neu anlegen
 
-        Dim IDKontakt As Integer
-
         If KontaktNeu = True And NachnameTextBox.Text <> String.Empty Then
             'MsgBox("Kontakt neu anlegen")
             'Wert aus Konfig-Tabelle holen
             IDKontakt = CInt(Me.KonfigurationTableAdapter.ScalarIDKontakt())
-            IDFirmenName = CInt(LBL_IDFirmenName.Text)
 
             'Datensatz Kontakt hinzufügen
             Try
@@ -302,15 +333,20 @@ Public Class Hauptform
                                             FaxnummerTextBox.Text,
                                             CInt(IDAdresseTextBox.Text),
                                             AnredeComboBox.Text)
-
-                'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDKontakt((IDKontakt + 1), IDKontakt)
-                Logging(6, IDKontakt, IDFirmenName, NachnameTextBox.Text) ' LogTabelle schreiben
-
             Catch ex As System.Exception
                 MsgBox("Fehler beim hinzufügen eines Kontaktes")
                 System.Windows.Forms.MessageBox.Show(ex.Message)
             End Try
+
+            Try
+                'Nächsten Wert in der Konfig-Tabelle aktualisieren
+                Me.KonfigurationTableAdapter.UpdateIDKontakt((IDKontakt + 1), IDKontakt)
+            Catch ex As Exception
+                MsgBox("Fehler beim Aktualisieren der neuen IDKontakt-Nummer in der Konfig-Tabelle")
+                System.Windows.Forms.MessageBox.Show(ex.Message)
+            End Try
+
+            Logging(6, IDKontakt, IDFirmenName, NachnameTextBox.Text) ' LogTabelle schreiben
 
             KontaktNeu = False
             lblKontaktNeu.Visible = False
@@ -328,30 +364,38 @@ Public Class Hauptform
         '5) #####################################################################################################################
         'TableUpdate Adressen bei Änderung
         'MsgBox(tcAdresse.SelectedIndex.ToString)
-        If AdresseNeu = False And TC_Adresse.SelectedIndex = 1 And OrtTextBox.Text <> String.Empty Then
+
+
+        If AdresseNeu = False And TC_Adresse.SelectedIndex = 1 And CB_Ort.Text <> String.Empty Then
             'MsgBox("Adresse ändern")
-            IDFirmenName = CInt(LBL_IDFirmenName.Text)
+            Dim IDKonto As Integer
+            If IDKontoTextBox.Text = String.Empty Then
+                IDKonto = CInt(lblIDKonto.Text)
+            Else
+                IDKonto = CInt(IDKontoTextBox.Text)
+            End If
 
 
             Try
                 AdressenTableAdapter.UpdateAdressen(IDFirmenName,
-                                                    CInt(IDKontoTextBox.Text),
+                                                    IDKonto,
                                                     AdresstypTextBox.Text,
                                                     StraßeTextBox.Text,
                                                     PostfachTextBox.Text,
-                                                    PLZTextBox.Text,
-                                                    OrtTextBox.Text,
-                                                    BundeslandTextBox.Text,
-                                                    LandTextBox.Text,
+                                                    TB_PLZ.Text,
+                                                    CB_Ort.Text,
+                                                    TB_Bundesland.Text,
+                                                    CB_Staat.Text,
+                                                    LBL_Countrycode.Text,
                                                     UStIdNrTextBox.Text,
                                                     WebseiteTextBox.Text,
                                                     CInt(LBL_IDAdresse.Text))
-
-                Logging(5, CInt(LBL_IDAdresse.Text), IDFirmenName, OrtTextBox.Text) ' LogTabelle schreiben
-
             Catch ex As Exception
-                MsgBox("Fehler bei Adresse ändern", vbExclamation)
+                MsgBox("Fehler bei 'Adresse ändern' in der Adress-Tabelle", vbExclamation)
+                System.Windows.Forms.MessageBox.Show(ex.Message)
             End Try
+
+            Logging(5, CInt(LBL_IDAdresse.Text), IDFirmenName, CB_Ort.Text) ' LogTabelle schreiben
 
             MsgBox("Adresse geändert")
             TC_Adresse.SelectedIndex = 0
@@ -362,7 +406,6 @@ Public Class Hauptform
         'TableUpdate Kontakte bei Änderung
         If KontaktNeu = False And TC_Kontakt.SelectedIndex = 1 And NachnameTextBox.Text <> String.Empty Then
             'MsgBox("Kontakt ändern")
-            IDFirmenName = CInt(LBL_IDFirmenName.Text)
 
             Try
                 KontakteTableAdapter.UpdateKontakte(IDFirmenName,
@@ -378,11 +421,12 @@ Public Class Hauptform
                                                     AnredeComboBox.Text,
                                                     CInt(LBL_IDKontakt.Text))
 
-                Logging(7, CInt(LBL_IDKontakt.Text), IDFirmenName, NachnameTextBox.Text) ' LogTabelle schreiben
-
             Catch ex As Exception
-                MsgBox("Fehler bei Kontakt ändern", vbExclamation)
+                MsgBox("Fehler bei 'Kontakt ändern' in der Kontakte-Tabelle", vbExclamation)
+                System.Windows.Forms.MessageBox.Show(ex.Message)
             End Try
+
+            Logging(7, CInt(LBL_IDKontakt.Text), IDFirmenName, NachnameTextBox.Text) ' LogTabelle schreiben
 
             MsgBox("Kontakt geändert")
             TC_Kontakt.SelectedIndex = 0
@@ -422,14 +466,19 @@ Public Class Hauptform
         AdresseNeu = True
         lblAdresseNeu.Visible = True
 
+        'Staatenbox/Ländercode auf Deutschland stellen
+        Dim foundIndex As Integer = Me.StaatenBindingSource.Find("Staat", "Deutschland")
+        StaatenBindingSource.Position = foundIndex
+
         AdresstypTextBox.Text = String.Empty
+        AdresstypTextBox.Select()
         StraßeTextBox.Text = String.Empty
         PostfachTextBox.Text = String.Empty
-        PLZTextBox.Text = String.Empty
-        OrtTextBox.Text = String.Empty
-        OrtTextBox.BackColor = Color.MistyRose
-        BundeslandTextBox.Text = String.Empty
-        LandTextBox.Text = String.Empty
+        TB_PLZ.Text = String.Empty
+        CB_Ort.Text = String.Empty
+        CB_Ort.BackColor = Color.MistyRose
+        TB_Bundesland.Text = String.Empty
+        'CB_Staat.Text = "Deutschland"
         UStIdNrTextBox.Text = String.Empty
         WebseiteTextBox.Text = String.Empty
         WebseiteLinkLabel.Text = String.Empty
@@ -438,14 +487,93 @@ Public Class Hauptform
         AdresstypTextBox.Enabled = True
         StraßeTextBox.Enabled = True
         PostfachTextBox.Enabled = True
-        PLZTextBox.Enabled = True
-        OrtTextBox.Enabled = True
-        BundeslandTextBox.Enabled = True
-        LandTextBox.Enabled = True
+        TB_PLZ.Enabled = True
+        CB_Ort.Enabled = True
+        TB_Bundesland.Enabled = True
+        CB_Staat.Enabled = True
         UStIdNrTextBox.Enabled = True
         WebseiteTextBox.Enabled = True
 
     End Sub
+
+    Private Sub TB_PLZ_TextChanged(sender As Object, e As EventArgs) Handles TB_PLZ.TextChanged
+
+        Dim foundIndex As Integer
+        Select Case CB_Staat.Text
+            Case "Deutschland"
+                'MsgBox("DE")
+                Me.DE_PLZ_GeodatenTableAdapter.SuchePLZ(Me._WSL_AdressenDataSet.DE_PLZ_Geodaten, TB_PLZ.Text)
+
+                CB_Ort.DataSource = DE_PLZ_GeodatenBindingSource
+                CB_Ort.DisplayMember = "Ort"
+                With TB_Bundesland
+                    .DataBindings.Clear()
+                    .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DE_PLZ_GeodatenBindingSource, "Bundesland", True))
+                End With
+
+                foundIndex = DE_PLZ_GeodatenBindingSource.Find("Ort", LBL_Ort.Text)
+                DE_PLZ_GeodatenBindingSource.Position = foundIndex
+
+                'MsgBox(CB_Ort.Items.Count)
+                If CB_Ort.Items.Count = 0 Then
+                    LBL_PLZungueltig.Visible = True
+                Else
+                    LBL_PLZungueltig.Visible = False
+                End If
+
+            Case "Österreich" '-------------------------------------------------------------------
+                'MsgBox("DE")
+                Me.AT_PLZ_GeodatenTableAdapter.SuchePLZ(Me._WSL_AdressenDataSet.AT_PLZ_Geodaten, TB_PLZ.Text)
+
+                CB_Ort.DataSource = AT_PLZ_GeodatenBindingSource
+                CB_Ort.DisplayMember = "Ort"
+                With TB_Bundesland
+                    .DataBindings.Clear()
+                    .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AT_PLZ_GeodatenBindingSource, "Bundesland", True))
+                End With
+
+                foundIndex = AT_PLZ_GeodatenBindingSource.Find("Ort", LBL_Ort.Text)
+                AT_PLZ_GeodatenBindingSource.Position = foundIndex
+
+                'MsgBox(CB_Ort.Items.Count)
+                If CB_Ort.Items.Count = 0 Then
+                    LBL_PLZungueltig.Visible = True
+                Else
+                    LBL_PLZungueltig.Visible = False
+                End If
+            Case "Schweiz"  '------------------------------------------------------------------------------
+                'MsgBox("DE")
+                Me.CH_PLZ_GeodatenTableAdapter.SuchePLZ(Me._WSL_AdressenDataSet.CH_PLZ_Geodaten, TB_PLZ.Text)
+
+                CB_Ort.DataSource = CH_PLZ_GeodatenBindingSource
+                CB_Ort.DisplayMember = "Ort"
+                With TB_Bundesland
+                    .DataBindings.Clear()
+                    .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CH_PLZ_GeodatenBindingSource, "Bundesland", True))
+                End With
+
+                foundIndex = CH_PLZ_GeodatenBindingSource.Find("Ort", LBL_Ort.Text)
+                CH_PLZ_GeodatenBindingSource.Position = foundIndex
+
+                'MsgBox(CB_Ort.Items.Count)
+                If CB_Ort.Items.Count = 0 Then
+                    LBL_PLZungueltig.Visible = True
+                Else
+                    LBL_PLZungueltig.Visible = False
+                End If
+
+            Case Else  '---------------------------------------------------------------------------------------
+
+                CB_Ort.DataSource = AdressenBindingSource
+                CB_Ort.DisplayMember = "Ort"
+
+                With TB_Bundesland
+                    .DataBindings.Clear()
+                    .Text = String.Empty
+                End With
+        End Select
+    End Sub
+
 
     Private Sub btnMapsSuche_Click(sender As Object, e As EventArgs) Handles BTN_MapsSuche.Click
 
@@ -466,15 +594,15 @@ Public Class Hauptform
             End If
             If LBL_Ort.Text <> String.Empty Then
                 querryAddress.Append(ort + "," & "+")
-                i = i + 1
+                i += 1
             End If
             If LBL_Land.Text <> String.Empty Then
                 querryAddress.Append(land + "," & "+")
-                i = i + 1
+                i += 1
             End If
             If LBL_PLZ.Text <> String.Empty Then
                 querryAddress.Append(plz)
-                i = i + 1
+                i += 1
             End If
             'MsgBox(querryAddress.ToString)
             If i > 0 Then
@@ -553,7 +681,7 @@ Public Class Hauptform
         lblAdresseNeu.Visible = False
         TC_Adresse.SelectedIndex = 0
         AdresseNeu = False
-        OrtTextBox.BackColor = Color.White
+        CB_Ort.BackColor = Color.White
 
         TC_Kontakt.SelectedIndex = 0
         lblKontaktNeu.Visible = False
@@ -561,6 +689,9 @@ Public Class Hauptform
         NachnameTextBox.BackColor = Color.White
 
         LBL_Hinweis.Visible = False 'DocuWare-Hinweis
+
+        CB_Ort.DataSource = AdressenBindingSource
+        CB_Ort.DisplayMember = "Ort"
 
         'Felder auf der Belegseite leeren
         Select Case TC_Beleg.SelectedIndex
@@ -593,8 +724,8 @@ Public Class Hauptform
             LBL_IDAdresseZuKontakt.ForeColor = Color.Black
 
             Dim IDAdresse = Val(LBL_IDAdresseZuKontakt.Text)
-            StraßeLabel3.Text = KontakteMitAdresseTableAdapter.ScalarStrasseInKontakteMitAdresse(IDAdresse)
-            OrtLabel3.Text = KontakteMitAdresseTableAdapter.ScalarOrtInKontakteMitAdresse(IDAdresse)
+            StraßeLabel3.Text = CStr(KontakteMitAdresseTableAdapter.ScalarStrasseInKontakteMitAdresse(CType(IDAdresse, Integer?)))
+            OrtLabel3.Text = CStr(KontakteMitAdresseTableAdapter.ScalarOrtInKontakteMitAdresse(CType(IDAdresse, Integer?)))
 
 
 
@@ -613,36 +744,136 @@ Public Class Hauptform
     End Sub
 
     Private Sub LBL_IDAdresse_TextChanged(sender As Object, e As EventArgs) Handles LBL_IDAdresse.TextChanged
-        If LBL_IDAdresse.Text = "" Then
+        'Ändert sich der Label-Text, wird geprüft, ob er leer ist, dann:
+        Dim foundIndex As Integer
+
+        If LBL_IDAdresse.Text = String.Empty Then
             AdresstypTextBox.Enabled = False
             StraßeTextBox.Enabled = False
             PostfachTextBox.Enabled = False
-            PLZTextBox.Enabled = False
-            OrtTextBox.Enabled = False
-            BundeslandTextBox.Enabled = False
-            LandTextBox.Enabled = False
+            TB_PLZ.Enabled = False
+            CB_Ort.Enabled = False
+            TB_Bundesland.Enabled = False
+            CB_Staat.Enabled = False
             UStIdNrTextBox.Enabled = False
             WebseiteTextBox.Enabled = False
+            LBL_AdressHinweis.Visible = False
+            PNL_Geodaten.Visible = False
             Try
                 BTN_MapsSuche.Enabled = False
             Catch ex As Exception
 
             End Try
+
+
         Else
             AdresstypTextBox.Enabled = True
             StraßeTextBox.Enabled = True
             PostfachTextBox.Enabled = True
-            PLZTextBox.Enabled = True
-            OrtTextBox.Enabled = True
-            BundeslandTextBox.Enabled = True
-            LandTextBox.Enabled = True
+            TB_PLZ.Enabled = True
+            CB_Ort.Enabled = True
+            TB_Bundesland.Enabled = True
+            CB_Staat.Enabled = True
             UStIdNrTextBox.Enabled = True
             WebseiteTextBox.Enabled = True
+            LBL_PLZungueltig.Visible = False
             Try
                 BTN_MapsSuche.Enabled = True
             Catch ex As Exception
 
             End Try
+
+            If LBL_Land.Text <> String.Empty Then
+                'MsgBox(LBL_Land.Text)
+                foundIndex = Me.StaatenBindingSource.Find("Staat", LBL_Land.Text)
+                If (foundIndex > -1) Then
+                    StaatenBindingSource.Position = foundIndex
+                End If
+            End If
+
+
+            'Zu jeder Adresse such das System im Falle der DACH-Staaten die Koordinaten und zeigt diese an. Nur dann kann eine Umkreissuche realisiert werden
+            Dim dt As Data.DataTable
+            Select Case LBL_Land.Text
+                Case "Deutschland"
+                    'MsgBox("Deutschland")
+                    'Hier wird zunächst geprüft, ob die Kombi PLZ/Ort in der Datenbank vorhanden ist. Falls nicht, wird ein Hinweis auf eine Fehlerhafte Adresse angezeigt.
+                    dt = DE_PLZ_GeodatenTableAdapter.GetDataByPLZundOrt(LBL_PLZ.Text, LBL_Ort.Text)
+                    If dt.Rows.Count = 0 Then
+                        LBL_AdressHinweis.Visible = True
+                    Else
+                        LBL_AdressHinweis.Visible = False
+                        PNL_Geodaten.Visible = True
+                    End If
+
+                    'Ist die Kombi vorhanden, führt die folgende Suche zu einem Treffer und zeigt die Koordinaten an.
+                    DE_PLZ_GeodatenTableAdapter.SuchePLZundOrt(_WSL_AdressenDataSet.DE_PLZ_Geodaten, LBL_PLZ.Text, LBL_Ort.Text)
+                    With LBL_Lat
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DE_PLZ_GeodatenBindingSource, "latitude", True))
+                    End With
+                    With LBL_Long
+
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DE_PLZ_GeodatenBindingSource, "longitude", True))
+                    End With
+
+
+                Case "Österreich"
+                    'MsgBox("Österreich")
+                    dt = AT_PLZ_GeodatenTableAdapter.GetDataByPLZundOrt(LBL_PLZ.Text, LBL_Ort.Text)
+                    If dt.Rows.Count = 0 Then
+                        LBL_AdressHinweis.Visible = True
+                    Else
+                        LBL_AdressHinweis.Visible = False
+                        PNL_Geodaten.Visible = True
+                    End If
+
+
+                    AT_PLZ_GeodatenTableAdapter.SuchePLZundOrt(_WSL_AdressenDataSet.AT_PLZ_Geodaten, LBL_PLZ.Text, LBL_Ort.Text)
+                    With LBL_Lat
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AT_PLZ_GeodatenBindingSource, "latitude", True))
+                    End With
+                    With LBL_Long
+
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AT_PLZ_GeodatenBindingSource, "longitude", True))
+                    End With
+
+
+                Case "Schweiz"
+                    'MsgBox("Schweiz")
+                    dt = CH_PLZ_GeodatenTableAdapter.GetDataByPLZundOrt(LBL_PLZ.Text, LBL_Ort.Text)
+                    If dt.Rows.Count = 0 Then
+                        LBL_AdressHinweis.Visible = True
+                    Else
+                        LBL_AdressHinweis.Visible = False
+                        PNL_Geodaten.Visible = True
+                    End If
+
+
+                    Me.CH_PLZ_GeodatenTableAdapter.SuchePLZundOrt(Me._WSL_AdressenDataSet.CH_PLZ_Geodaten, LBL_PLZ.Text, LBL_Ort.Text)
+
+                    With LBL_Lat
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CH_PLZ_GeodatenBindingSource, "latitude", True))
+                    End With
+                    With LBL_Long
+
+                        .DataBindings.Clear()
+                        .DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CH_PLZ_GeodatenBindingSource, "longitude", True))
+                    End With
+
+                Case Else
+                    'MsgBox("Else")
+                    LBL_AdressHinweis.Visible = False
+                    PNL_Geodaten.Visible = False
+                    LBL_Lat.Text = String.Empty
+                    LBL_Long.Text = String.Empty
+            End Select
+
+
         End If
 
         'ID-Zuordnungslabel rot färben: Falls es leer ist, das TextänderungsEvent auslösen für das Label:
@@ -709,7 +940,7 @@ Public Class Hauptform
 
         Dim IDKontakt As Double = Val(LBL_IDKontakt.Text)
         Try
-            Form3.KontakteMitAdresseTableAdapter.SucheAllesVonKontakt(Form3._WSL_AdressenDataSet.KontakteMitAdresse, IDKontakt)
+            Form3.KontakteMitAdresseTableAdapter.SucheAllesVonKontakt(Form3._WSL_AdressenDataSet.KontakteMitAdresse, CInt(IDKontakt))
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -719,7 +950,7 @@ Public Class Hauptform
     End Sub
 
     Private Sub EinstellungenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EinstellungenToolStripMenuItem.Click
-        Form4.Show()
+        Administration.Show()
     End Sub
 
     Private Sub BTN_DocErzeugen_Click(sender As Object, e As EventArgs) Handles BTN_DocErzeugen.Click
@@ -748,37 +979,43 @@ Public Class Hauptform
 
             BelegName = "Besuchsbericht.dotx"
 
-            'Datensatz Adresse hinzufügen
-            Try
-                BelegeTableAdapter.Insert(IDBeleg,
-                                           CInt(LBL_IDFirmenName.Text),
-                                           LBL_FirmenName.Text,
-                                           DTP_BBDatum.Value,
-                                           CInt(LBL_IDAdresse.Text),
-                                           IDKonto,
-                                           CB_BBKuerzel.Text,
-                                           LBL_BBBesuchterKontakt.Text,
-                                           TB_BBWeitereKontakte.Text,
-                                           TB_BBThema.Text,
-                                           TB_BBWeitereBesucher.Text,
-                                            Environment.UserName,
-                                            BelegName)
+            If WordStarten(BelegName) = True Then
+                'Datensatz Adresse hinzufügen
+                Try
+                    BelegeTableAdapter.Insert(IDBeleg,
+                                               CInt(LBL_IDFirmenName.Text),
+                                               LBL_FirmenName.Text,
+                                               DTP_BBDatum.Value,
+                                               CInt(LBL_IDAdresse.Text),
+                                               IDKonto,
+                                               CB_BBKuerzel.Text,
+                                               LBL_BBBesuchterKontakt.Text,
+                                               TB_BBWeitereKontakte.Text,
+                                               TB_BBThema.Text,
+                                               TB_BBWeitereBesucher.Text,
+                                                Environment.UserName,
+                                                BelegName)
 
-                'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
-                'MsgBox("Neuer Wert IDBesuch: " & Me.KonfigurationTableAdapter.ScalarIDBesuch())
+                Catch ex As System.Exception
+                    MsgBox("Fehler beim hinzufügen eines neuen Besuchsberichtes")
+                    System.Windows.Forms.MessageBox.Show(ex.Message)
+                End Try
+
+
+                Try
+                    'Nächsten Wert in der Konfig-Tabelle aktualisieren
+                    Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
+                Catch ex As Exception
+                    MsgBox("Fehler beim Update der neuen IDBeleg-Nummer (BB)")
+                    System.Windows.Forms.MessageBox.Show(ex.Message)
+                End Try
 
                 Logging(8, IDBeleg, CInt(LBL_IDFirmenName.Text), BelegName & " / " & TB_BBThema.Text) ' LogTabelle schreiben mit BB!
 
-            Catch ex As System.Exception
-                MsgBox("Fehler beim hinzufügen eines neuen Besuchsberichtes")
-                System.Windows.Forms.MessageBox.Show(ex.Message)
-            End Try
+                'Aktuellen Satz in Tabelle markieren
+                IDBBInBesucheMitAdresse(CInt(LBL_IDFirmenName.Text), IDBeleg)
 
-            WordStarten(BelegName)
-
-            'Aktuellen Satz in Tabelle markieren
-            IDBBInBesucheMitAdresse(CInt(LBL_IDFirmenName.Text), IDBeleg)
+            End If
 
         End If
 
@@ -815,41 +1052,46 @@ Public Class Hauptform
                 IDKonto = CInt(lblIDKonto.Text)
             End If
 
+            If WordStarten(BelegName) = True Then
+                'Datensatz Adresse hinzufügen
+                Try
+                    BelegeTableAdapter.Insert(IDBeleg,
+                                           CInt(LBL_IDFirmenName.Text),
+                                           LBL_FirmenName.Text,
+                                           DTP_Diverse.Value,
+                                           CInt(LBL_IDAdresse.Text),
+                                           IDKonto,
+                                           CB_DIVSachbearbeiter.Text,
+                                           LBL_Anrede.Text & " " & LBL_Vorname.Text & " " & LBL_Nachname.Text,
+                                           "",
+                                           TB_DIVThema.Text,
+                                           "",
+                                            Environment.UserName,
+                                            BelegName)
+
+                Catch ex As System.Exception
+                    MsgBox("Fehler beim Speichern des Datensatzes vom Besuchsbericht")
+                    System.Windows.Forms.MessageBox.Show(ex.Message)
+                End Try
 
 
-            'Datensatz Adresse hinzufügen
-            Try
-                BelegeTableAdapter.Insert(IDBeleg,
-                                       CInt(LBL_IDFirmenName.Text),
-                                       LBL_FirmenName.Text,
-                                       DTP_Diverse.Value,
-                                       CInt(LBL_IDAdresse.Text),
-                                       IDKonto,
-                                       CB_DIVSachbearbeiter.Text,
-                                       LBL_Anrede.Text & " " & LBL_Vorname.Text & " " & LBL_Nachname.Text,
-                                       "",
-                                       TB_DIVThema.Text,
-                                       "",
-                                        Environment.UserName,
-                                        BelegName)
+                Try
+                    'Nächsten Wert in der Konfig-Tabelle aktualisieren
+                    Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
+                Catch ex As Exception
+                    MsgBox("Fehler beim Update der neuen IDBeleg-Nummer (Div. Belege)")
+                    System.Windows.Forms.MessageBox.Show(ex.Message)
+                End Try
 
-                'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
-                'MsgBox("Neuer Wert IDBesuch: " & Me.KonfigurationTableAdapter.ScalarIDBesuch())
+
                 Logging(9, IDBeleg, CInt(LBL_IDFirmenName.Text), BelegName & " / " & TB_DIVThema.Text) ' LogTabelle schreiben mit BB!
 
-            Catch ex As System.Exception
-                MsgBox("Fehler beim hinzufügen eines neuen Besuchsberichtes")
-                System.Windows.Forms.MessageBox.Show(ex.Message)
-            End Try
+                TB_DIVThema.BackColor = Color.White
+                TB_DIVFaxnummer.BackColor = Color.White
 
-            WordStarten(BelegName)
-
-            TB_DIVThema.BackColor = Color.White
-            TB_DIVFaxnummer.BackColor = Color.White
-
-            'Aktuellen Satz in Tabelle markieren
-            IDBBInBesucheMitAdresse(CInt(LBL_IDFirmenName.Text), IDBeleg)
+                'Aktuellen Satz in Tabelle markieren
+                IDBBInBesucheMitAdresse(CInt(LBL_IDFirmenName.Text), IDBeleg)
+            End If
 
         End If
 
@@ -857,7 +1099,7 @@ Public Class Hauptform
     End Sub
 
     Private Sub BenutzerlisteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BenutzerlisteToolStripMenuItem.Click
-        Form5.Show()
+        Sachbearbeiter.Show()
     End Sub
 
     Private Sub CB_Vorlagen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Vorlagen.SelectedIndexChanged
@@ -928,7 +1170,7 @@ Public Class Hauptform
     End Sub
 
     Private Sub AktivitätslogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AktivitätslogToolStripMenuItem.Click
-        Form6.Show()
+        Loginformationen.Show()
     End Sub
 
     Private Sub SchließenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SchließenToolStripMenuItem.Click
@@ -970,7 +1212,33 @@ Public Class Hauptform
     End Sub
 
     Private Sub HilfeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HilfeToolStripMenuItem.Click
-        Dim Helplink As String = KonfigurationTableAdapter.ScalarHilfelink()
+        Dim Helplink As String = CStr(KonfigurationTableAdapter.ScalarHilfelink())
         System.Diagnostics.Process.Start(Helplink)
     End Sub
+
+    Private Sub BTN_NachnameSuche_Click(sender As Object, e As EventArgs) Handles BTN_NachnameSuche.Click
+
+        If TB_FirmenName.Text <> String.Empty Then
+
+            Try
+                Personensuche.KontakteMitAdresseTableAdapter.SucheKontakt(Personensuche._WSL_AdressenDataSet.KontakteMitAdresse, TB_FirmenName.Text)
+            Catch ex As System.Exception
+                MsgBox("Nachname - Fehler bei der Suche")
+                System.Windows.Forms.MessageBox.Show(ex.Message)
+            End Try
+
+        Else
+            MsgBox("Bitte einen Suchbegriff eingeben", vbExclamation)
+        End If
+
+        Personensuche.Show()
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Umkreissuche.Show()
+    End Sub
+
+
+
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form6
+Partial Class Loginformationen
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -23,7 +23,7 @@ Partial Class Form6
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Loginformationen))
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BTN_Alle = New System.Windows.Forms.Button()
         Me.BTN_Aktuell = New System.Windows.Forms.Button()
@@ -35,7 +35,9 @@ Partial Class Form6
         Me.LogTabelleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LogTabelleTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.LogTabelleTableAdapter()
         Me.LogTabelleDataGridView = New System.Windows.Forms.DataGridView()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FirmenName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,7 +45,6 @@ Partial Class Form6
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel2.SuspendLayout()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
@@ -63,14 +64,14 @@ Partial Class Form6
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(734, 33)
+        Me.Panel2.Size = New System.Drawing.Size(935, 33)
         Me.Panel2.TabIndex = 26
         '
         'BTN_Alle
         '
         Me.BTN_Alle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTN_Alle.Location = New System.Drawing.Point(480, 6)
+        Me.BTN_Alle.Location = New System.Drawing.Point(681, 6)
         Me.BTN_Alle.Name = "BTN_Alle"
         Me.BTN_Alle.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Alle.TabIndex = 2
@@ -81,7 +82,7 @@ Partial Class Form6
         '
         Me.BTN_Aktuell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTN_Aktuell.Location = New System.Drawing.Point(567, 6)
+        Me.BTN_Aktuell.Location = New System.Drawing.Point(768, 6)
         Me.BTN_Aktuell.Name = "BTN_Aktuell"
         Me.BTN_Aktuell.Size = New System.Drawing.Size(156, 23)
         Me.BTN_Aktuell.TabIndex = 1
@@ -107,15 +108,20 @@ Partial Class Form6
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
         Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'Panel3
@@ -125,7 +131,7 @@ Partial Class Form6
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(3, 343)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(734, 40)
+        Me.Panel3.Size = New System.Drawing.Size(935, 40)
         Me.Panel3.TabIndex = 28
         '
         'BTN_Schliessen
@@ -134,7 +140,7 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_Schliessen.Image = Global.Adress_DB.My.Resources.Resources.CloseSolution_16x
         Me.BTN_Schliessen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Schliessen.Location = New System.Drawing.Point(643, 10)
+        Me.BTN_Schliessen.Location = New System.Drawing.Point(844, 10)
         Me.BTN_Schliessen.Name = "BTN_Schliessen"
         Me.BTN_Schliessen.Size = New System.Drawing.Size(80, 22)
         Me.BTN_Schliessen.TabIndex = 16
@@ -156,14 +162,33 @@ Partial Class Form6
         Me.LogTabelleDataGridView.AutoGenerateColumns = False
         Me.LogTabelleDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.LogTabelleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.LogTabelleDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.LogTabelleDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.FirmenName, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
         Me.LogTabelleDataGridView.DataSource = Me.LogTabelleBindingSource
         Me.LogTabelleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LogTabelleDataGridView.Location = New System.Drawing.Point(3, 42)
         Me.LogTabelleDataGridView.Name = "LogTabelleDataGridView"
         Me.LogTabelleDataGridView.RowHeadersVisible = False
-        Me.LogTabelleDataGridView.Size = New System.Drawing.Size(734, 295)
+        Me.LogTabelleDataGridView.Size = New System.Drawing.Size(935, 295)
         Me.LogTabelleDataGridView.TabIndex = 29
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.LogTabelleDataGridView, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 2)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1, 0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 3
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.7489!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(941, 386)
+        Me.TableLayoutPanel1.TabIndex = 30
         '
         'DataGridViewTextBoxColumn1
         '
@@ -172,6 +197,13 @@ Partial Class Form6
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 30
+        '
+        'FirmenName
+        '
+        Me.FirmenName.DataPropertyName = "FirmenName"
+        Me.FirmenName.HeaderText = "FirmenName"
+        Me.FirmenName.Name = "FirmenName"
+        Me.FirmenName.Width = 200
         '
         'DataGridViewTextBoxColumn2
         '
@@ -215,34 +247,15 @@ Partial Class Form6
         Me.DataGridViewTextBoxColumn8.HeaderText = "IDFirmenName"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.LogTabelleDataGridView, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 2)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.7489!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(740, 386)
-        Me.TableLayoutPanel1.TabIndex = 30
-        '
-        'Form6
+        'Loginformationen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(741, 386)
+        Me.ClientSize = New System.Drawing.Size(942, 386)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Form6"
-        Me.Text = "Form6"
+        Me.Name = "Loginformationen"
+        Me.Text = "Log-Informationen"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -265,7 +278,9 @@ Partial Class Form6
     Friend WithEvents LogTabelleBindingSource As BindingSource
     Friend WithEvents LogTabelleTableAdapter As _WSL_AdressenDataSetTableAdapters.LogTabelleTableAdapter
     Friend WithEvents LogTabelleDataGridView As DataGridView
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FirmenName As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
@@ -273,5 +288,4 @@ Partial Class Form6
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
 End Class

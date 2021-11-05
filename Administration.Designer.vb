@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form4
+Partial Class Administration
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -68,8 +68,8 @@ Partial Class Form4
         Dim DWpfadLabel As System.Windows.Forms.Label
         Dim DWDateinameLabel As System.Windows.Forms.Label
         Dim InaktivLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
         Dim HilfelinkLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Administration))
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.VorlagenpfadTextBox = New System.Windows.Forms.TextBox()
         Me.KonfigurationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -82,12 +82,12 @@ Partial Class Form4
         Me.LeadnummerTextBox = New System.Windows.Forms.TextBox()
         Me.IDFirmenNameTextBox = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.AdminCheckBox = New System.Windows.Forms.CheckBox()
+        Me.SachbearbeiterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SachbearbeiterLabel1 = New System.Windows.Forms.Label()
         Me.BTN_Alle = New System.Windows.Forms.Button()
         Me.BTN_Aktuell = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.SachbearbeiterLabel1 = New System.Windows.Forms.Label()
-        Me.SachbearbeiterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AdminCheckBox = New System.Windows.Forms.CheckBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.BTN_Schliessen = New System.Windows.Forms.Button()
         Me.TableAdapterManager = New Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager()
@@ -95,6 +95,7 @@ Partial Class Form4
         Me.SachbearbeiterTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.SachbearbeiterTableAdapter()
         Me.TC_Administration = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.HilfelinkTextBox = New System.Windows.Forms.TextBox()
         Me.BTN_DWPfad = New System.Windows.Forms.Button()
         Me.DWDateinameTextBox = New System.Windows.Forms.TextBox()
         Me.DWpfadTextBox = New System.Windows.Forms.TextBox()
@@ -265,7 +266,6 @@ Partial Class Form4
         Me.KontakteTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KontakteTableAdapter()
         Me.BelegeTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.BelegeTableAdapter()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.HilfelinkTextBox = New System.Windows.Forms.TextBox()
         IDFirmenNameLabel = New System.Windows.Forms.Label()
         LeadnummerLabel = New System.Windows.Forms.Label()
         KundennummerLabel = New System.Windows.Forms.Label()
@@ -753,6 +753,15 @@ Partial Class Form4
         InaktivLabel.TabIndex = 10
         InaktivLabel.Text = "inaktiv:"
         '
+        'HilfelinkLabel
+        '
+        HilfelinkLabel.AutoSize = True
+        HilfelinkLabel.Location = New System.Drawing.Point(60, 93)
+        HilfelinkLabel.Name = "HilfelinkLabel"
+        HilfelinkLabel.Size = New System.Drawing.Size(47, 13)
+        HilfelinkLabel.TabIndex = 23
+        HilfelinkLabel.Text = "Hilfelink:"
+        '
         'VorlagenpfadTextBox
         '
         Me.VorlagenpfadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Vorlagenpfad", True))
@@ -840,15 +849,40 @@ Partial Class Form4
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1062, 61)
+        Me.Panel2.Size = New System.Drawing.Size(1179, 61)
         Me.Panel2.TabIndex = 25
+        '
+        'AdminCheckBox
+        '
+        Me.AdminCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.SachbearbeiterBindingSource, "Admin", True))
+        Me.AdminCheckBox.Enabled = False
+        Me.AdminCheckBox.Location = New System.Drawing.Point(568, 33)
+        Me.AdminCheckBox.Name = "AdminCheckBox"
+        Me.AdminCheckBox.Size = New System.Drawing.Size(16, 24)
+        Me.AdminCheckBox.TabIndex = 28
+        Me.AdminCheckBox.UseVisualStyleBackColor = True
+        '
+        'SachbearbeiterBindingSource
+        '
+        Me.SachbearbeiterBindingSource.DataMember = "Sachbearbeiter"
+        Me.SachbearbeiterBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'SachbearbeiterLabel1
+        '
+        Me.SachbearbeiterLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Sachbearbeiter", True))
+        Me.SachbearbeiterLabel1.Location = New System.Drawing.Point(101, 29)
+        Me.SachbearbeiterLabel1.Name = "SachbearbeiterLabel1"
+        Me.SachbearbeiterLabel1.Size = New System.Drawing.Size(385, 22)
+        Me.SachbearbeiterLabel1.TabIndex = 26
+        Me.SachbearbeiterLabel1.Text = "Vorname Name"
+        Me.SachbearbeiterLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BTN_Alle
         '
         Me.BTN_Alle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_Alle.Enabled = False
-        Me.BTN_Alle.Location = New System.Drawing.Point(821, 6)
+        Me.BTN_Alle.Location = New System.Drawing.Point(938, 6)
         Me.BTN_Alle.Name = "BTN_Alle"
         Me.BTN_Alle.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Alle.TabIndex = 2
@@ -860,7 +894,7 @@ Partial Class Form4
         Me.BTN_Aktuell.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_Aktuell.Enabled = False
-        Me.BTN_Aktuell.Location = New System.Drawing.Point(902, 6)
+        Me.BTN_Aktuell.Location = New System.Drawing.Point(1019, 6)
         Me.BTN_Aktuell.Name = "BTN_Aktuell"
         Me.BTN_Aktuell.Size = New System.Drawing.Size(156, 23)
         Me.BTN_Aktuell.TabIndex = 1
@@ -878,39 +912,14 @@ Partial Class Form4
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Administration"
         '
-        'SachbearbeiterLabel1
-        '
-        Me.SachbearbeiterLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Sachbearbeiter", True))
-        Me.SachbearbeiterLabel1.Location = New System.Drawing.Point(101, 29)
-        Me.SachbearbeiterLabel1.Name = "SachbearbeiterLabel1"
-        Me.SachbearbeiterLabel1.Size = New System.Drawing.Size(385, 22)
-        Me.SachbearbeiterLabel1.TabIndex = 26
-        Me.SachbearbeiterLabel1.Text = "Vorname Name"
-        Me.SachbearbeiterLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'SachbearbeiterBindingSource
-        '
-        Me.SachbearbeiterBindingSource.DataMember = "Sachbearbeiter"
-        Me.SachbearbeiterBindingSource.DataSource = Me._WSL_AdressenDataSet
-        '
-        'AdminCheckBox
-        '
-        Me.AdminCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.SachbearbeiterBindingSource, "Admin", True))
-        Me.AdminCheckBox.Enabled = False
-        Me.AdminCheckBox.Location = New System.Drawing.Point(568, 33)
-        Me.AdminCheckBox.Name = "AdminCheckBox"
-        Me.AdminCheckBox.Size = New System.Drawing.Size(16, 24)
-        Me.AdminCheckBox.TabIndex = 28
-        Me.AdminCheckBox.UseVisualStyleBackColor = True
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Gray
         Me.Panel3.Controls.Add(Me.BTN_Schliessen)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(3, 465)
+        Me.Panel3.Location = New System.Drawing.Point(3, 476)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1062, 43)
+        Me.Panel3.Size = New System.Drawing.Size(1179, 43)
         Me.Panel3.TabIndex = 26
         '
         'BTN_Schliessen
@@ -919,7 +928,7 @@ Partial Class Form4
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_Schliessen.Image = CType(resources.GetObject("BTN_Schliessen.Image"), System.Drawing.Image)
         Me.BTN_Schliessen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Schliessen.Location = New System.Drawing.Point(978, 10)
+        Me.BTN_Schliessen.Location = New System.Drawing.Point(1095, 10)
         Me.BTN_Schliessen.Name = "BTN_Schliessen"
         Me.BTN_Schliessen.Size = New System.Drawing.Size(80, 23)
         Me.BTN_Schliessen.TabIndex = 16
@@ -930,15 +939,20 @@ Partial Class Form4
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
         Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'KonfigurationTableAdapter
@@ -963,7 +977,7 @@ Partial Class Form4
         Me.TC_Administration.Location = New System.Drawing.Point(3, 70)
         Me.TC_Administration.Name = "TC_Administration"
         Me.TC_Administration.SelectedIndex = 0
-        Me.TC_Administration.Size = New System.Drawing.Size(1062, 389)
+        Me.TC_Administration.Size = New System.Drawing.Size(1179, 400)
         Me.TC_Administration.TabIndex = 30
         '
         'TabPage1
@@ -997,10 +1011,18 @@ Partial Class Form4
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1054, 363)
+        Me.TabPage1.Size = New System.Drawing.Size(1171, 374)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Konfiguration"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'HilfelinkTextBox
+        '
+        Me.HilfelinkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Hilfelink", True))
+        Me.HilfelinkTextBox.Location = New System.Drawing.Point(113, 90)
+        Me.HilfelinkTextBox.Name = "HilfelinkTextBox"
+        Me.HilfelinkTextBox.Size = New System.Drawing.Size(457, 20)
+        Me.HilfelinkTextBox.TabIndex = 24
         '
         'BTN_DWPfad
         '
@@ -1035,7 +1057,7 @@ Partial Class Form4
         Me.BTN_Speichern.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_Speichern.Image = CType(resources.GetObject("BTN_Speichern.Image"), System.Drawing.Image)
         Me.BTN_Speichern.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Speichern.Location = New System.Drawing.Point(911, 318)
+        Me.BTN_Speichern.Location = New System.Drawing.Point(113, 298)
         Me.BTN_Speichern.Name = "BTN_Speichern"
         Me.BTN_Speichern.Size = New System.Drawing.Size(80, 23)
         Me.BTN_Speichern.TabIndex = 17
@@ -1073,7 +1095,7 @@ Partial Class Form4
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1058, 291)
+        Me.TabPage2.Size = New System.Drawing.Size(1171, 374)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "FirmenName"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -1101,14 +1123,14 @@ Partial Class Form4
         Me.BindingNavigator1.DeleteItem = Me.ToolStripButton22
         Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton23, Me.ToolStripButton24, Me.ToolStripSeparator10, Me.ToolStripTextBox4, Me.ToolStripLabel4, Me.ToolStripSeparator11, Me.ToolStripButton25, Me.ToolStripButton26, Me.ToolStripSeparator12, Me.ToolStripButton21, Me.ToolStripButton22, Me.BNAV_FirmenNameSave})
-        Me.BindingNavigator1.Location = New System.Drawing.Point(3, 263)
+        Me.BindingNavigator1.Location = New System.Drawing.Point(3, 346)
         Me.BindingNavigator1.MoveFirstItem = Me.ToolStripButton23
         Me.BindingNavigator1.MoveLastItem = Me.ToolStripButton26
         Me.BindingNavigator1.MoveNextItem = Me.ToolStripButton25
         Me.BindingNavigator1.MovePreviousItem = Me.ToolStripButton24
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.ToolStripTextBox4
-        Me.BindingNavigator1.Size = New System.Drawing.Size(1052, 25)
+        Me.BindingNavigator1.Size = New System.Drawing.Size(1165, 25)
         Me.BindingNavigator1.TabIndex = 10
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
@@ -1240,6 +1262,9 @@ Partial Class Form4
         '
         'FirmenNameDataGridView
         '
+        Me.FirmenNameDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FirmenNameDataGridView.AutoGenerateColumns = False
         Me.FirmenNameDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.FirmenNameDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1249,7 +1274,7 @@ Partial Class Form4
         Me.FirmenNameDataGridView.Name = "FirmenNameDataGridView"
         Me.FirmenNameDataGridView.RowHeadersVisible = False
         Me.FirmenNameDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.FirmenNameDataGridView.Size = New System.Drawing.Size(597, 254)
+        Me.FirmenNameDataGridView.Size = New System.Drawing.Size(653, 359)
         Me.FirmenNameDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -1303,7 +1328,7 @@ Partial Class Form4
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(1058, 291)
+        Me.TabPage3.Size = New System.Drawing.Size(1171, 374)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Konto"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -1316,14 +1341,14 @@ Partial Class Form4
         Me.BindingNavigator2.DeleteItem = Me.ToolStripButton15
         Me.BindingNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BindingNavigator2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton16, Me.ToolStripButton17, Me.ToolStripSeparator7, Me.ToolStripTextBox3, Me.ToolStripLabel3, Me.ToolStripSeparator8, Me.ToolStripButton18, Me.ToolStripButton19, Me.ToolStripSeparator9, Me.ToolStripButton14, Me.ToolStripButton15, Me.BNAV_KontoSave})
-        Me.BindingNavigator2.Location = New System.Drawing.Point(3, 263)
+        Me.BindingNavigator2.Location = New System.Drawing.Point(3, 346)
         Me.BindingNavigator2.MoveFirstItem = Me.ToolStripButton16
         Me.BindingNavigator2.MoveLastItem = Me.ToolStripButton19
         Me.BindingNavigator2.MoveNextItem = Me.ToolStripButton18
         Me.BindingNavigator2.MovePreviousItem = Me.ToolStripButton17
         Me.BindingNavigator2.Name = "BindingNavigator2"
         Me.BindingNavigator2.PositionItem = Me.ToolStripTextBox3
-        Me.BindingNavigator2.Size = New System.Drawing.Size(1052, 25)
+        Me.BindingNavigator2.Size = New System.Drawing.Size(1165, 25)
         Me.BindingNavigator2.TabIndex = 9
         Me.BindingNavigator2.Text = "BindingNavigator1"
         '
@@ -1460,6 +1485,8 @@ Partial Class Form4
         '
         'KontoDataGridView
         '
+        Me.KontoDataGridView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.KontoDataGridView.AutoGenerateColumns = False
         Me.KontoDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.KontoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1470,7 +1497,7 @@ Partial Class Form4
         Me.KontoDataGridView.Name = "KontoDataGridView"
         Me.KontoDataGridView.RowHeadersVisible = False
         Me.KontoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.KontoDataGridView.Size = New System.Drawing.Size(472, 246)
+        Me.KontoDataGridView.Size = New System.Drawing.Size(472, 395)
         Me.KontoDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn3
@@ -1530,7 +1557,7 @@ Partial Class Form4
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(1058, 291)
+        Me.TabPage4.Size = New System.Drawing.Size(1171, 374)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Adressen"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -1543,14 +1570,14 @@ Partial Class Form4
         Me.BindingNavigator3.DeleteItem = Me.ToolStripButton8
         Me.BindingNavigator3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BindingNavigator3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton9, Me.ToolStripButton10, Me.ToolStripSeparator4, Me.ToolStripTextBox2, Me.ToolStripLabel2, Me.ToolStripSeparator5, Me.ToolStripButton11, Me.ToolStripButton12, Me.ToolStripSeparator6, Me.ToolStripButton7, Me.ToolStripButton8, Me.BNAV_AdressenSave})
-        Me.BindingNavigator3.Location = New System.Drawing.Point(3, 263)
+        Me.BindingNavigator3.Location = New System.Drawing.Point(3, 346)
         Me.BindingNavigator3.MoveFirstItem = Me.ToolStripButton9
         Me.BindingNavigator3.MoveLastItem = Me.ToolStripButton12
         Me.BindingNavigator3.MoveNextItem = Me.ToolStripButton11
         Me.BindingNavigator3.MovePreviousItem = Me.ToolStripButton10
         Me.BindingNavigator3.Name = "BindingNavigator3"
         Me.BindingNavigator3.PositionItem = Me.ToolStripTextBox2
-        Me.BindingNavigator3.Size = New System.Drawing.Size(1052, 25)
+        Me.BindingNavigator3.Size = New System.Drawing.Size(1165, 25)
         Me.BindingNavigator3.TabIndex = 25
         Me.BindingNavigator3.Text = "BindingNavigator1"
         '
@@ -1751,6 +1778,9 @@ Partial Class Form4
         '
         'DataGridView1
         '
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1761,7 +1791,7 @@ Partial Class Form4
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.DataGridView1.Size = New System.Drawing.Size(1043, 163)
+        Me.DataGridView1.Size = New System.Drawing.Size(1156, 245)
         Me.DataGridView1.TabIndex = 1
         '
         'IDAdresse
@@ -1872,7 +1902,7 @@ Partial Class Form4
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(1058, 291)
+        Me.TabPage5.Size = New System.Drawing.Size(1171, 374)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Kontakte"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -1885,14 +1915,14 @@ Partial Class Form4
         Me.SachbearbeiterBindingNavigator.DeleteItem = Me.ToolStripButton2
         Me.SachbearbeiterBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.SachbearbeiterBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripButton4, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripLabel1, Me.ToolStripSeparator2, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripSeparator3, Me.ToolStripButton1, Me.ToolStripButton2, Me.BNAV_KontakteSave})
-        Me.SachbearbeiterBindingNavigator.Location = New System.Drawing.Point(3, 263)
+        Me.SachbearbeiterBindingNavigator.Location = New System.Drawing.Point(3, 346)
         Me.SachbearbeiterBindingNavigator.MoveFirstItem = Me.ToolStripButton3
         Me.SachbearbeiterBindingNavigator.MoveLastItem = Me.ToolStripButton6
         Me.SachbearbeiterBindingNavigator.MoveNextItem = Me.ToolStripButton5
         Me.SachbearbeiterBindingNavigator.MovePreviousItem = Me.ToolStripButton4
         Me.SachbearbeiterBindingNavigator.Name = "SachbearbeiterBindingNavigator"
         Me.SachbearbeiterBindingNavigator.PositionItem = Me.ToolStripTextBox1
-        Me.SachbearbeiterBindingNavigator.Size = New System.Drawing.Size(1052, 25)
+        Me.SachbearbeiterBindingNavigator.Size = New System.Drawing.Size(1165, 25)
         Me.SachbearbeiterBindingNavigator.TabIndex = 25
         Me.SachbearbeiterBindingNavigator.Text = "BindingNavigator1"
         '
@@ -2093,6 +2123,9 @@ Partial Class Form4
         '
         'DataGridView2
         '
+        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -2103,7 +2136,7 @@ Partial Class Form4
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.DataGridView2.Size = New System.Drawing.Size(1045, 147)
+        Me.DataGridView2.Size = New System.Drawing.Size(1158, 234)
         Me.DataGridView2.TabIndex = 2
         '
         'IDKontakt
@@ -2193,7 +2226,7 @@ Partial Class Form4
         Me.Belege.Location = New System.Drawing.Point(4, 22)
         Me.Belege.Name = "Belege"
         Me.Belege.Padding = New System.Windows.Forms.Padding(3)
-        Me.Belege.Size = New System.Drawing.Size(1058, 291)
+        Me.Belege.Size = New System.Drawing.Size(1171, 374)
         Me.Belege.TabIndex = 5
         Me.Belege.Text = "Belege"
         Me.Belege.UseVisualStyleBackColor = True
@@ -2206,14 +2239,14 @@ Partial Class Form4
         Me.BNAV_Belege.DeleteItem = Me.ToolStripButton29
         Me.BNAV_Belege.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BNAV_Belege.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton30, Me.ToolStripButton31, Me.ToolStripSeparator13, Me.ToolStripTextBox5, Me.ToolStripLabel5, Me.ToolStripSeparator14, Me.ToolStripButton32, Me.ToolStripButton33, Me.ToolStripSeparator15, Me.ToolStripButton28, Me.ToolStripButton29, Me.BNAV_BelegeSaveItem})
-        Me.BNAV_Belege.Location = New System.Drawing.Point(3, 263)
+        Me.BNAV_Belege.Location = New System.Drawing.Point(3, 346)
         Me.BNAV_Belege.MoveFirstItem = Me.ToolStripButton30
         Me.BNAV_Belege.MoveLastItem = Me.ToolStripButton33
         Me.BNAV_Belege.MoveNextItem = Me.ToolStripButton32
         Me.BNAV_Belege.MovePreviousItem = Me.ToolStripButton31
         Me.BNAV_Belege.Name = "BNAV_Belege"
         Me.BNAV_Belege.PositionItem = Me.ToolStripTextBox5
-        Me.BNAV_Belege.Size = New System.Drawing.Size(1052, 25)
+        Me.BNAV_Belege.Size = New System.Drawing.Size(1165, 25)
         Me.BNAV_Belege.TabIndex = 26
         Me.BNAV_Belege.Text = "BindingNavigator1"
         '
@@ -2318,13 +2351,16 @@ Partial Class Form4
         '
         'BelegeDataGridView
         '
+        Me.BelegeDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BelegeDataGridView.AutoGenerateColumns = False
         Me.BelegeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BelegeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19})
         Me.BelegeDataGridView.DataSource = Me.BelegeBindingSource
         Me.BelegeDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.BelegeDataGridView.Name = "BelegeDataGridView"
-        Me.BelegeDataGridView.Size = New System.Drawing.Size(1058, 243)
+        Me.BelegeDataGridView.Size = New System.Drawing.Size(1168, 343)
         Me.BelegeDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn6
@@ -2441,34 +2477,17 @@ Partial Class Form4
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1068, 511)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1185, 522)
         Me.TableLayoutPanel1.TabIndex = 31
         '
-        'HilfelinkLabel
-        '
-        HilfelinkLabel.AutoSize = True
-        HilfelinkLabel.Location = New System.Drawing.Point(60, 93)
-        HilfelinkLabel.Name = "HilfelinkLabel"
-        HilfelinkLabel.Size = New System.Drawing.Size(47, 13)
-        HilfelinkLabel.TabIndex = 23
-        HilfelinkLabel.Text = "Hilfelink:"
-        '
-        'HilfelinkTextBox
-        '
-        Me.HilfelinkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Hilfelink", True))
-        Me.HilfelinkTextBox.Location = New System.Drawing.Point(113, 90)
-        Me.HilfelinkTextBox.Name = "HilfelinkTextBox"
-        Me.HilfelinkTextBox.Size = New System.Drawing.Size(457, 20)
-        Me.HilfelinkTextBox.TabIndex = 24
-        '
-        'Form4
+        'Administration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1067, 512)
+        Me.ClientSize = New System.Drawing.Size(1184, 523)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Form4"
+        Me.Name = "Administration"
         Me.Text = "Administration"
         CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).EndInit()

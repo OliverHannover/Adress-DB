@@ -475,15 +475,20 @@ Partial Class Form3
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
         Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'LBL_FirmenName
@@ -812,7 +817,9 @@ Partial Class Form3
         '
         'BTN_olContDelete
         '
-        Me.BTN_olContDelete.ForeColor = System.Drawing.Color.Red
+        Me.BTN_olContDelete.BackColor = System.Drawing.Color.Red
+        Me.BTN_olContDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_olContDelete.ForeColor = System.Drawing.Color.White
         Me.BTN_olContDelete.Image = Global.Adress_DB.My.Resources.Resources.DeleteUser_16x
         Me.BTN_olContDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BTN_olContDelete.Location = New System.Drawing.Point(11, 268)
@@ -821,7 +828,7 @@ Partial Class Form3
         Me.BTN_olContDelete.TabIndex = 66
         Me.BTN_olContDelete.Text = "löschen"
         Me.BTN_olContDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BTN_olContDelete.UseVisualStyleBackColor = True
+        Me.BTN_olContDelete.UseVisualStyleBackColor = False
         '
         'Panel3
         '

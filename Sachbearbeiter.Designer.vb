@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form5
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Sachbearbeiter
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form5
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim SachbearbeiterLabel As System.Windows.Forms.Label
@@ -32,7 +32,7 @@ Partial Class Form5
         Dim AktivLabel As System.Windows.Forms.Label
         Dim LoginLabel As System.Windows.Forms.Label
         Dim AdminLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sachbearbeiter))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me._WSL_AdressenDataSet = New Adress_DB._WSL_AdressenDataSet()
@@ -44,26 +44,16 @@ Partial Class Form5
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BTN_Schliessen = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.BTN_NeuerSachbearbeiter = New System.Windows.Forms.Button()
+        Me.BTN_Speichern = New System.Windows.Forms.Button()
         Me.PNL_Edit = New System.Windows.Forms.Panel()
+        Me.lblBenutzerNeu = New System.Windows.Forms.Label()
         Me.IDSachbearbeiterLabel1 = New System.Windows.Forms.Label()
         Me.EnglJobtitleTextBox = New System.Windows.Forms.TextBox()
         Me.PNL_Admin = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LockedCheckBox = New System.Windows.Forms.CheckBox()
         Me.AdminCheckBox = New System.Windows.Forms.CheckBox()
-        Me.SachbearbeiterBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SachbearbeiterBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.SachbearbeiterTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -91,8 +81,6 @@ Partial Class Form5
         Me.Panel2.SuspendLayout()
         Me.PNL_Edit.SuspendLayout()
         Me.PNL_Admin.SuspendLayout()
-        CType(Me.SachbearbeiterBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SachbearbeiterBindingNavigator.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -100,7 +88,7 @@ Partial Class Form5
         'SachbearbeiterLabel
         '
         SachbearbeiterLabel.AutoSize = True
-        SachbearbeiterLabel.Location = New System.Drawing.Point(14, 11)
+        SachbearbeiterLabel.Location = New System.Drawing.Point(14, 29)
         SachbearbeiterLabel.Name = "SachbearbeiterLabel"
         SachbearbeiterLabel.Size = New System.Drawing.Size(82, 13)
         SachbearbeiterLabel.TabIndex = 3
@@ -109,7 +97,7 @@ Partial Class Form5
         'KuerzelLabel
         '
         KuerzelLabel.AutoSize = True
-        KuerzelLabel.Location = New System.Drawing.Point(51, 37)
+        KuerzelLabel.Location = New System.Drawing.Point(51, 55)
         KuerzelLabel.Name = "KuerzelLabel"
         KuerzelLabel.Size = New System.Drawing.Size(45, 13)
         KuerzelLabel.TabIndex = 5
@@ -118,7 +106,7 @@ Partial Class Form5
         'DurchwahlLabel
         '
         DurchwahlLabel.AutoSize = True
-        DurchwahlLabel.Location = New System.Drawing.Point(35, 89)
+        DurchwahlLabel.Location = New System.Drawing.Point(35, 107)
         DurchwahlLabel.Name = "DurchwahlLabel"
         DurchwahlLabel.Size = New System.Drawing.Size(61, 13)
         DurchwahlLabel.TabIndex = 7
@@ -127,7 +115,7 @@ Partial Class Form5
         'EmailLabel
         '
         EmailLabel.AutoSize = True
-        EmailLabel.Location = New System.Drawing.Point(61, 115)
+        EmailLabel.Location = New System.Drawing.Point(61, 133)
         EmailLabel.Name = "EmailLabel"
         EmailLabel.Size = New System.Drawing.Size(35, 13)
         EmailLabel.TabIndex = 9
@@ -136,7 +124,7 @@ Partial Class Form5
         'JobtitleLabel
         '
         JobtitleLabel.AutoSize = True
-        JobtitleLabel.Location = New System.Drawing.Point(14, 138)
+        JobtitleLabel.Location = New System.Drawing.Point(14, 156)
         JobtitleLabel.Name = "JobtitleLabel"
         JobtitleLabel.Size = New System.Drawing.Size(85, 13)
         JobtitleLabel.TabIndex = 11
@@ -145,7 +133,7 @@ Partial Class Form5
         'EnglJobtitleLabel
         '
         EnglJobtitleLabel.AutoSize = True
-        EnglJobtitleLabel.Location = New System.Drawing.Point(14, 167)
+        EnglJobtitleLabel.Location = New System.Drawing.Point(14, 185)
         EnglJobtitleLabel.Name = "EnglJobtitleLabel"
         EnglJobtitleLabel.Size = New System.Drawing.Size(85, 13)
         EnglJobtitleLabel.TabIndex = 13
@@ -154,7 +142,7 @@ Partial Class Form5
         'AktivLabel
         '
         AktivLabel.AutoSize = True
-        AktivLabel.Location = New System.Drawing.Point(99, 199)
+        AktivLabel.Location = New System.Drawing.Point(99, 217)
         AktivLabel.Name = "AktivLabel"
         AktivLabel.Size = New System.Drawing.Size(121, 13)
         AktivLabel.TabIndex = 15
@@ -163,7 +151,7 @@ Partial Class Form5
         'LoginLabel
         '
         LoginLabel.AutoSize = True
-        LoginLabel.Location = New System.Drawing.Point(60, 63)
+        LoginLabel.Location = New System.Drawing.Point(60, 81)
         LoginLabel.Name = "LoginLabel"
         LoginLabel.Size = New System.Drawing.Size(36, 13)
         LoginLabel.TabIndex = 17
@@ -242,7 +230,7 @@ Partial Class Form5
         Me.SachbearbeiterDataGridView.RowHeadersVisible = False
         Me.SachbearbeiterDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.SachbearbeiterDataGridView.Size = New System.Drawing.Size(204, 354)
-        Me.SachbearbeiterDataGridView.TabIndex = 2
+        Me.SachbearbeiterDataGridView.TabIndex = 1
         '
         'IDSachbearbeiter
         '
@@ -270,7 +258,7 @@ Partial Class Form5
         Me.BTN_Schliessen.Location = New System.Drawing.Point(549, 10)
         Me.BTN_Schliessen.Name = "BTN_Schliessen"
         Me.BTN_Schliessen.Size = New System.Drawing.Size(75, 23)
-        Me.BTN_Schliessen.TabIndex = 23
+        Me.BTN_Schliessen.TabIndex = 9
         Me.BTN_Schliessen.Text = "schließen"
         Me.BTN_Schliessen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BTN_Schliessen.UseVisualStyleBackColor = True
@@ -282,17 +270,47 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Gray
         Me.Panel2.Controls.Add(Me.BTN_Schliessen)
+        Me.Panel2.Controls.Add(Me.BTN_NeuerSachbearbeiter)
+        Me.Panel2.Controls.Add(Me.BTN_Speichern)
         Me.Panel2.Location = New System.Drawing.Point(3, 413)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(635, 43)
         Me.Panel2.TabIndex = 24
         '
+        'BTN_NeuerSachbearbeiter
+        '
+        Me.BTN_NeuerSachbearbeiter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTN_NeuerSachbearbeiter.Image = Global.Adress_DB.My.Resources.Resources.AddUser_16x
+        Me.BTN_NeuerSachbearbeiter.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BTN_NeuerSachbearbeiter.Location = New System.Drawing.Point(213, 10)
+        Me.BTN_NeuerSachbearbeiter.Name = "BTN_NeuerSachbearbeiter"
+        Me.BTN_NeuerSachbearbeiter.Size = New System.Drawing.Size(106, 23)
+        Me.BTN_NeuerSachbearbeiter.TabIndex = 27
+        Me.BTN_NeuerSachbearbeiter.Text = "Neuer Benutzer"
+        Me.BTN_NeuerSachbearbeiter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BTN_NeuerSachbearbeiter.UseVisualStyleBackColor = True
+        '
+        'BTN_Speichern
+        '
+        Me.BTN_Speichern.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTN_Speichern.Image = Global.Adress_DB.My.Resources.Resources.Save_16x
+        Me.BTN_Speichern.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BTN_Speichern.Location = New System.Drawing.Point(379, 10)
+        Me.BTN_Speichern.Name = "BTN_Speichern"
+        Me.BTN_Speichern.Size = New System.Drawing.Size(106, 23)
+        Me.BTN_Speichern.TabIndex = 28
+        Me.BTN_Speichern.Text = "speichern"
+        Me.BTN_Speichern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BTN_Speichern.UseVisualStyleBackColor = True
+        '
         'PNL_Edit
         '
+        Me.PNL_Edit.Controls.Add(Me.lblBenutzerNeu)
         Me.PNL_Edit.Controls.Add(Me.IDSachbearbeiterLabel1)
         Me.PNL_Edit.Controls.Add(Me.EnglJobtitleTextBox)
         Me.PNL_Edit.Controls.Add(Me.PNL_Admin)
-        Me.PNL_Edit.Controls.Add(Me.SachbearbeiterBindingNavigator)
         Me.PNL_Edit.Controls.Add(Me.SachbearbeiterTextBox)
         Me.PNL_Edit.Controls.Add(Me.Label3)
         Me.PNL_Edit.Controls.Add(SachbearbeiterLabel)
@@ -316,10 +334,22 @@ Partial Class Form5
         Me.PNL_Edit.Size = New System.Drawing.Size(419, 354)
         Me.PNL_Edit.TabIndex = 26
         '
+        'lblBenutzerNeu
+        '
+        Me.lblBenutzerNeu.AutoSize = True
+        Me.lblBenutzerNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBenutzerNeu.ForeColor = System.Drawing.Color.Red
+        Me.lblBenutzerNeu.Location = New System.Drawing.Point(99, 8)
+        Me.lblBenutzerNeu.Name = "lblBenutzerNeu"
+        Me.lblBenutzerNeu.Size = New System.Drawing.Size(33, 13)
+        Me.lblBenutzerNeu.TabIndex = 29
+        Me.lblBenutzerNeu.Text = "NEU"
+        Me.lblBenutzerNeu.Visible = False
+        '
         'IDSachbearbeiterLabel1
         '
         Me.IDSachbearbeiterLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "IDSachbearbeiter", True))
-        Me.IDSachbearbeiterLabel1.Location = New System.Drawing.Point(346, 11)
+        Me.IDSachbearbeiterLabel1.Location = New System.Drawing.Point(346, 29)
         Me.IDSachbearbeiterLabel1.Name = "IDSachbearbeiterLabel1"
         Me.IDSachbearbeiterLabel1.Size = New System.Drawing.Size(52, 17)
         Me.IDSachbearbeiterLabel1.TabIndex = 26
@@ -328,10 +358,10 @@ Partial Class Form5
         'EnglJobtitleTextBox
         '
         Me.EnglJobtitleTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "EnglJobtitle", True))
-        Me.EnglJobtitleTextBox.Location = New System.Drawing.Point(102, 164)
+        Me.EnglJobtitleTextBox.Location = New System.Drawing.Point(102, 182)
         Me.EnglJobtitleTextBox.Name = "EnglJobtitleTextBox"
         Me.EnglJobtitleTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.EnglJobtitleTextBox.TabIndex = 14
+        Me.EnglJobtitleTextBox.TabIndex = 8
         '
         'PNL_Admin
         '
@@ -341,7 +371,7 @@ Partial Class Form5
         Me.PNL_Admin.Controls.Add(AdminLabel)
         Me.PNL_Admin.Controls.Add(Me.AdminCheckBox)
         Me.PNL_Admin.Enabled = False
-        Me.PNL_Admin.Location = New System.Drawing.Point(95, 245)
+        Me.PNL_Admin.Location = New System.Drawing.Point(102, 242)
         Me.PNL_Admin.Name = "PNL_Admin"
         Me.PNL_Admin.Size = New System.Drawing.Size(159, 52)
         Me.PNL_Admin.TabIndex = 25
@@ -373,132 +403,18 @@ Partial Class Form5
         Me.AdminCheckBox.TabIndex = 20
         Me.AdminCheckBox.UseVisualStyleBackColor = True
         '
-        'SachbearbeiterBindingNavigator
-        '
-        Me.SachbearbeiterBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.SachbearbeiterBindingNavigator.BindingSource = Me.SachbearbeiterBindingSource
-        Me.SachbearbeiterBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.SachbearbeiterBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.SachbearbeiterBindingNavigator.Dock = System.Windows.Forms.DockStyle.None
-        Me.SachbearbeiterBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.SachbearbeiterBindingNavigatorSaveItem})
-        Me.SachbearbeiterBindingNavigator.Location = New System.Drawing.Point(54, 322)
-        Me.SachbearbeiterBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.SachbearbeiterBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.SachbearbeiterBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.SachbearbeiterBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.SachbearbeiterBindingNavigator.Name = "SachbearbeiterBindingNavigator"
-        Me.SachbearbeiterBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.SachbearbeiterBindingNavigator.Size = New System.Drawing.Size(287, 25)
-        Me.SachbearbeiterBindingNavigator.TabIndex = 1
-        Me.SachbearbeiterBindingNavigator.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Neu hinzufügen"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(44, 22)
-        Me.BindingNavigatorCountItem.Text = "von {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Die Gesamtanzahl der Elemente."
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Enabled = False
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Löschen"
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Erste verschieben"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Vorherige verschieben"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 25)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Aktuelle Position"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Nächste verschieben"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Letzte verschieben"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'SachbearbeiterBindingNavigatorSaveItem
-        '
-        Me.SachbearbeiterBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SachbearbeiterBindingNavigatorSaveItem.Image = CType(resources.GetObject("SachbearbeiterBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.SachbearbeiterBindingNavigatorSaveItem.Name = "SachbearbeiterBindingNavigatorSaveItem"
-        Me.SachbearbeiterBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.SachbearbeiterBindingNavigatorSaveItem.Text = "Daten speichern"
-        '
         'SachbearbeiterTextBox
         '
         Me.SachbearbeiterTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Sachbearbeiter", True))
-        Me.SachbearbeiterTextBox.Location = New System.Drawing.Point(102, 8)
+        Me.SachbearbeiterTextBox.Location = New System.Drawing.Point(102, 26)
         Me.SachbearbeiterTextBox.Name = "SachbearbeiterTextBox"
         Me.SachbearbeiterTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.SachbearbeiterTextBox.TabIndex = 4
+        Me.SachbearbeiterTextBox.TabIndex = 2
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(346, 167)
+        Me.Label3.Location = New System.Drawing.Point(346, 185)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 22
@@ -507,7 +423,7 @@ Partial Class Form5
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(346, 141)
+        Me.Label2.Location = New System.Drawing.Point(346, 159)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(51, 13)
         Me.Label2.TabIndex = 21
@@ -516,31 +432,31 @@ Partial Class Form5
         'KuerzelTextBox
         '
         Me.KuerzelTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Kuerzel", True))
-        Me.KuerzelTextBox.Location = New System.Drawing.Point(102, 34)
+        Me.KuerzelTextBox.Location = New System.Drawing.Point(102, 52)
         Me.KuerzelTextBox.Name = "KuerzelTextBox"
         Me.KuerzelTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.KuerzelTextBox.TabIndex = 6
+        Me.KuerzelTextBox.TabIndex = 3
         '
         'LoginTextBox
         '
         Me.LoginTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Login", True))
-        Me.LoginTextBox.Location = New System.Drawing.Point(102, 60)
+        Me.LoginTextBox.Location = New System.Drawing.Point(102, 78)
         Me.LoginTextBox.Name = "LoginTextBox"
         Me.LoginTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.LoginTextBox.TabIndex = 18
+        Me.LoginTextBox.TabIndex = 4
         '
         'DurchwahlTextBox
         '
         Me.DurchwahlTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Durchwahl", True))
-        Me.DurchwahlTextBox.Location = New System.Drawing.Point(102, 86)
+        Me.DurchwahlTextBox.Location = New System.Drawing.Point(102, 104)
         Me.DurchwahlTextBox.Name = "DurchwahlTextBox"
         Me.DurchwahlTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.DurchwahlTextBox.TabIndex = 8
+        Me.DurchwahlTextBox.TabIndex = 5
         '
         'AktivCheckBox
         '
         Me.AktivCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.SachbearbeiterBindingSource, "Aktiv", True))
-        Me.AktivCheckBox.Location = New System.Drawing.Point(231, 194)
+        Me.AktivCheckBox.Location = New System.Drawing.Point(231, 212)
         Me.AktivCheckBox.Name = "AktivCheckBox"
         Me.AktivCheckBox.Size = New System.Drawing.Size(104, 24)
         Me.AktivCheckBox.TabIndex = 16
@@ -549,18 +465,18 @@ Partial Class Form5
         'EmailTextBox
         '
         Me.EmailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Email", True))
-        Me.EmailTextBox.Location = New System.Drawing.Point(102, 112)
+        Me.EmailTextBox.Location = New System.Drawing.Point(102, 130)
         Me.EmailTextBox.Name = "EmailTextBox"
         Me.EmailTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.EmailTextBox.TabIndex = 10
+        Me.EmailTextBox.TabIndex = 6
         '
         'JobtitleTextBox
         '
         Me.JobtitleTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Jobtitle", True))
-        Me.JobtitleTextBox.Location = New System.Drawing.Point(102, 138)
+        Me.JobtitleTextBox.Location = New System.Drawing.Point(102, 156)
         Me.JobtitleTextBox.Name = "JobtitleTextBox"
         Me.JobtitleTextBox.Size = New System.Drawing.Size(238, 20)
-        Me.JobtitleTextBox.TabIndex = 12
+        Me.JobtitleTextBox.TabIndex = 7
         '
         'TableLayoutPanel1
         '
@@ -617,9 +533,6 @@ Partial Class Form5
         Me.PNL_Edit.PerformLayout()
         Me.PNL_Admin.ResumeLayout(False)
         Me.PNL_Admin.PerformLayout()
-        CType(Me.SachbearbeiterBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SachbearbeiterBindingNavigator.ResumeLayout(False)
-        Me.SachbearbeiterBindingNavigator.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -639,19 +552,6 @@ Partial Class Form5
     Friend WithEvents EnglJobtitleTextBox As TextBox
     Friend WithEvents PNL_Admin As Panel
     Friend WithEvents AdminCheckBox As CheckBox
-    Friend WithEvents SachbearbeiterBindingNavigator As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
-    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
-    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents SachbearbeiterBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents SachbearbeiterTextBox As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
@@ -668,4 +568,7 @@ Partial Class Form5
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents BTN_NeuerSachbearbeiter As Button
+    Friend WithEvents BTN_Speichern As Button
+    Friend WithEvents lblBenutzerNeu As Label
 End Class
