@@ -18,3 +18,10 @@ Die Adress-DB speichert die Daten auf einem SQL-Server.
 <img src="https://github.com/OliverHannover/Adress-DB/blob/master/Screenshots/outlook.PNG" alt="0" style="max-width:100%;">
 
 <img src="https://github.com/OliverHannover/Adress-DB/blob/master/Screenshots/fax.PNG" alt="0" style="max-width:100%;">
+
+<img src="https://github.com/OliverHannover/Adress-DB/blob/master/Screenshots/Umkreissuche.PNG" alt="0" style="max-width:100%;">
+
+<img src="https://github.com/OliverHannover/Adress-DB/blob/master/Screenshots/Drucken.PNG" alt="0" style="max-width:100%;">
+
+
+
