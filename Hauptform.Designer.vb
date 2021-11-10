@@ -47,7 +47,6 @@ Partial Class Hauptform
         Dim PLZLabel1 As System.Windows.Forms.Label
         Dim OrtLabel1 As System.Windows.Forms.Label
         Dim BundeslandLabel1 As System.Windows.Forms.Label
-        Dim LandLabel1 As System.Windows.Forms.Label
         Dim UStIdNrLabel1 As System.Windows.Forms.Label
         Dim WebseiteLabel1 As System.Windows.Forms.Label
         Dim AnredeLabel1 As System.Windows.Forms.Label
@@ -87,11 +86,11 @@ Partial Class Hauptform
         Me.KontoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_FirmenName = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.BTN_NachnameSuche = New System.Windows.Forms.Button()
         Me.lblTrefferAnzahl = New System.Windows.Forms.Label()
-        Me.lblHinweisKeinTreffer = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblHinweisKeinTreffer = New System.Windows.Forms.Label()
         Me.DocuwareCSVDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -104,7 +103,6 @@ Partial Class Hauptform
         Me.btnNeuerKontakt = New System.Windows.Forms.Button()
         Me.BTN_ZuOutlook = New System.Windows.Forms.Button()
         Me.BTN_MapsSuche = New System.Windows.Forms.Button()
-        Me.gbKonto = New System.Windows.Forms.GroupBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnNeuesKonto = New System.Windows.Forms.Button()
@@ -112,7 +110,7 @@ Partial Class Hauptform
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnSpeichern = New System.Windows.Forms.Button()
+        Me.BTN_Speichern = New System.Windows.Forms.Button()
         Me.btnKontoZuAdresse = New System.Windows.Forms.Button()
         Me.IDKontoTextBox = New System.Windows.Forms.TextBox()
         Me.WebseiteTextBox = New System.Windows.Forms.TextBox()
@@ -197,12 +195,14 @@ Partial Class Hauptform
         Me.BelegnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BelegeMitAdresseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.LBL_Hinweis = New System.Windows.Forms.Label()
         Me.LBL_FirmenName = New System.Windows.Forms.Label()
         Me.btnAbbrechen = New System.Windows.Forms.Button()
         Me.BTN_DocErzeugen = New System.Windows.Forms.Button()
         Me.TC_Adresse = New System.Windows.Forms.TabControl()
         Me.TabAdresseInfo = New System.Windows.Forms.TabPage()
+        Me.LBL_CC = New System.Windows.Forms.Label()
+        Me.StaatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LabelLandAdressen = New System.Windows.Forms.Label()
         Me.PNL_Geodaten = New System.Windows.Forms.Panel()
         Me.LBL_Lat = New System.Windows.Forms.Label()
         Me.LBL_Long = New System.Windows.Forms.Label()
@@ -225,7 +225,6 @@ Partial Class Hauptform
         Me.LBL_PLZungueltig = New System.Windows.Forms.Label()
         Me.CB_Ort = New System.Windows.Forms.ComboBox()
         Me.LBL_Countrycode = New System.Windows.Forms.Label()
-        Me.StaatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_Staat = New System.Windows.Forms.ComboBox()
         Me.lblAdresseNeu = New System.Windows.Forms.Label()
         Me.TC_Kontakt = New System.Windows.Forms.TabControl()
@@ -266,8 +265,6 @@ Partial Class Hauptform
         Me.SachbearbeiterTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.SachbearbeiterTableAdapter()
         Me.KontakteMitAdresseTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KontakteMitAdresseTableAdapter()
         Me.DocuwareCSVTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.DocuwareCSVTableAdapter()
-        Me.KonfigurationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.KonfigurationTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter()
         Me.BelegeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BelegeTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.BelegeTableAdapter()
         Me.BelegeMitAdresseTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.BelegeMitAdresseTableAdapter()
@@ -280,7 +277,15 @@ Partial Class Hauptform
         Me.CH_PLZ_GeodatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.CH_PLZ_GeodatenTableAdapter()
         Me.DE_PLZ_GeodatenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DE_PLZ_GeodatenTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.DE_PLZ_GeodatenTableAdapter()
-        Me.PB_Suche = New System.Windows.Forms.PictureBox()
+        Me.PropertiesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PropertiesTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.propertiesTableAdapter()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.TLP_1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.PNL_Konto = New System.Windows.Forms.Panel()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         AdresstypLabel = New System.Windows.Forms.Label()
         StraßeLabel = New System.Windows.Forms.Label()
         PLZLabel = New System.Windows.Forms.Label()
@@ -305,7 +310,6 @@ Partial Class Hauptform
         PLZLabel1 = New System.Windows.Forms.Label()
         OrtLabel1 = New System.Windows.Forms.Label()
         BundeslandLabel1 = New System.Windows.Forms.Label()
-        LandLabel1 = New System.Windows.Forms.Label()
         UStIdNrLabel1 = New System.Windows.Forms.Label()
         WebseiteLabel1 = New System.Windows.Forms.Label()
         AnredeLabel1 = New System.Windows.Forms.Label()
@@ -340,7 +344,6 @@ Partial Class Hauptform
         CType(Me.DocuwareCSVDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DocuwareCSVBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdressenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbKonto.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.KontoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdressenDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -361,29 +364,33 @@ Partial Class Hauptform
         Me.Panel6.SuspendLayout()
         Me.TC_Adresse.SuspendLayout()
         Me.TabAdresseInfo.SuspendLayout()
+        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PNL_Geodaten.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.TabAdresseBearbeiten.SuspendLayout()
-        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TC_Kontakt.SuspendLayout()
         Me.TabPage5.SuspendLayout()
         Me.TabPage6.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel8.SuspendLayout()
         CType(Me.KontakteMitAdresseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BelegeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LogTabelleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AT_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CH_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DE_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PB_Suche, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel9.SuspendLayout()
+        Me.TLP_1.SuspendLayout()
+        Me.PNL_Konto.SuspendLayout()
+        Me.Panel10.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'AdresstypLabel
         '
         AdresstypLabel.AutoSize = True
-        AdresstypLabel.Location = New System.Drawing.Point(10, 35)
+        AdresstypLabel.Location = New System.Drawing.Point(13, 37)
         AdresstypLabel.Name = "AdresstypLabel"
         AdresstypLabel.Size = New System.Drawing.Size(56, 13)
         AdresstypLabel.TabIndex = 4
@@ -464,7 +471,7 @@ Partial Class Hauptform
         'AnredeLabel
         '
         AnredeLabel.AutoSize = True
-        AnredeLabel.Location = New System.Drawing.Point(52, 37)
+        AnredeLabel.Location = New System.Drawing.Point(49, 40)
         AnredeLabel.Name = "AnredeLabel"
         AnredeLabel.Size = New System.Drawing.Size(44, 13)
         AnredeLabel.TabIndex = 3
@@ -473,7 +480,7 @@ Partial Class Hauptform
         'NachnameLabel
         '
         NachnameLabel.AutoSize = True
-        NachnameLabel.Location = New System.Drawing.Point(35, 58)
+        NachnameLabel.Location = New System.Drawing.Point(34, 63)
         NachnameLabel.Name = "NachnameLabel"
         NachnameLabel.Size = New System.Drawing.Size(69, 13)
         NachnameLabel.TabIndex = 5
@@ -595,15 +602,6 @@ Partial Class Hauptform
         BundeslandLabel1.Size = New System.Drawing.Size(44, 13)
         BundeslandLabel1.TabIndex = 11
         BundeslandLabel1.Text = "Region:"
-        '
-        'LandLabel1
-        '
-        LandLabel1.AutoSize = True
-        LandLabel1.Location = New System.Drawing.Point(43, 62)
-        LandLabel1.Name = "LandLabel1"
-        LandLabel1.Size = New System.Drawing.Size(34, 13)
-        LandLabel1.TabIndex = 13
-        LandLabel1.Text = "Land:"
         '
         'UStIdNrLabel1
         '
@@ -880,7 +878,7 @@ Partial Class Hauptform
         '
         Me.BTN_Suche.Image = Global.Adress_DB.My.Resources.Resources.Search_16x
         Me.BTN_Suche.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Suche.Location = New System.Drawing.Point(436, 8)
+        Me.BTN_Suche.Location = New System.Drawing.Point(457, 8)
         Me.BTN_Suche.Name = "BTN_Suche"
         Me.BTN_Suche.Size = New System.Drawing.Size(106, 23)
         Me.BTN_Suche.TabIndex = 2
@@ -915,7 +913,7 @@ Partial Class Hauptform
         '
         Me.lblIDKonto.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontoBindingSource, "IDKonto", True))
         Me.lblIDKonto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIDKonto.Location = New System.Drawing.Point(18, 83)
+        Me.lblIDKonto.Location = New System.Drawing.Point(21, 84)
         Me.lblIDKonto.Name = "lblIDKonto"
         Me.lblIDKonto.Size = New System.Drawing.Size(117, 23)
         Me.lblIDKonto.TabIndex = 10
@@ -942,34 +940,25 @@ Partial Class Hauptform
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Gray
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.TLP_1.SetColumnSpan(Me.Panel1, 3)
         Me.Panel1.Controls.Add(Me.BTN_NachnameSuche)
         Me.Panel1.Controls.Add(Me.lblTrefferAnzahl)
-        Me.Panel1.Controls.Add(Me.lblHinweisKeinTreffer)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.CB_FirmenName)
         Me.Panel1.Controls.Add(Me.TB_FirmenName)
         Me.Panel1.Controls.Add(Me.BTN_Suche)
         Me.Panel1.Controls.Add(Me.LBL_IDFirmenName)
-        Me.Panel1.Location = New System.Drawing.Point(0, 28)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1160, 66)
+        Me.Panel1.Size = New System.Drawing.Size(764, 69)
         Me.Panel1.TabIndex = 12
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(894, 7)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(127, 23)
-        Me.Button1.TabIndex = 21
-        Me.Button1.Text = "Umkreissuche D-A-CH"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'BTN_NachnameSuche
         '
         Me.BTN_NachnameSuche.Image = Global.Adress_DB.My.Resources.Resources.Search_16x
         Me.BTN_NachnameSuche.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_NachnameSuche.Location = New System.Drawing.Point(548, 8)
+        Me.BTN_NachnameSuche.Location = New System.Drawing.Point(604, 8)
         Me.BTN_NachnameSuche.Name = "BTN_NachnameSuche"
         Me.BTN_NachnameSuche.Size = New System.Drawing.Size(106, 23)
         Me.BTN_NachnameSuche.TabIndex = 20
@@ -988,20 +977,6 @@ Partial Class Hauptform
         Me.lblTrefferAnzahl.TabIndex = 19
         Me.lblTrefferAnzahl.Text = "Trefferanzahl"
         '
-        'lblHinweisKeinTreffer
-        '
-        Me.lblHinweisKeinTreffer.AutoSize = True
-        Me.lblHinweisKeinTreffer.BackColor = System.Drawing.Color.Red
-        Me.lblHinweisKeinTreffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHinweisKeinTreffer.ForeColor = System.Drawing.Color.White
-        Me.lblHinweisKeinTreffer.Location = New System.Drawing.Point(637, 41)
-        Me.lblHinweisKeinTreffer.Name = "lblHinweisKeinTreffer"
-        Me.lblHinweisKeinTreffer.Size = New System.Drawing.Size(132, 17)
-        Me.lblHinweisKeinTreffer.TabIndex = 16
-        Me.lblHinweisKeinTreffer.Text = "0 Treffer Hinweis"
-        Me.lblHinweisKeinTreffer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblHinweisKeinTreffer.Visible = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -1014,6 +989,29 @@ Partial Class Hauptform
         Me.Label1.Text = "Suchtext:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Location = New System.Drawing.Point(334, 20)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(147, 23)
+        Me.Button1.TabIndex = 21
+        Me.Button1.Text = "Umkreissuche D-A-CH"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'lblHinweisKeinTreffer
+        '
+        Me.lblHinweisKeinTreffer.AutoSize = True
+        Me.lblHinweisKeinTreffer.BackColor = System.Drawing.SystemColors.Control
+        Me.lblHinweisKeinTreffer.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHinweisKeinTreffer.ForeColor = System.Drawing.Color.Red
+        Me.lblHinweisKeinTreffer.Location = New System.Drawing.Point(545, 4)
+        Me.lblHinweisKeinTreffer.Name = "lblHinweisKeinTreffer"
+        Me.lblHinweisKeinTreffer.Size = New System.Drawing.Size(192, 26)
+        Me.lblHinweisKeinTreffer.TabIndex = 16
+        Me.lblHinweisKeinTreffer.Text = "0 Treffer Hinweis"
+        Me.lblHinweisKeinTreffer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'DocuwareCSVDataGridView
         '
         Me.DocuwareCSVDataGridView.AllowUserToAddRows = False
@@ -1021,11 +1019,11 @@ Partial Class Hauptform
         Me.DocuwareCSVDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DocuwareCSVDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19})
         Me.DocuwareCSVDataGridView.DataSource = Me.DocuwareCSVBindingSource
-        Me.DocuwareCSVDataGridView.Location = New System.Drawing.Point(17, 437)
+        Me.DocuwareCSVDataGridView.Location = New System.Drawing.Point(9, 4)
         Me.DocuwareCSVDataGridView.Name = "DocuwareCSVDataGridView"
         Me.DocuwareCSVDataGridView.RowHeadersVisible = False
         Me.DocuwareCSVDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.DocuwareCSVDataGridView.Size = New System.Drawing.Size(129, 54)
+        Me.DocuwareCSVDataGridView.Size = New System.Drawing.Size(129, 122)
         Me.DocuwareCSVDataGridView.TabIndex = 23
         Me.DocuwareCSVDataGridView.Visible = False
         '
@@ -1061,11 +1059,12 @@ Partial Class Hauptform
         '
         'LBL_IDAdresse
         '
+        Me.LBL_IDAdresse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LBL_IDAdresse.BackColor = System.Drawing.Color.Transparent
         Me.LBL_IDAdresse.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "IDAdresse", True))
         Me.LBL_IDAdresse.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBL_IDAdresse.ForeColor = System.Drawing.Color.DarkGray
-        Me.LBL_IDAdresse.Location = New System.Drawing.Point(196, 2)
+        Me.LBL_IDAdresse.Location = New System.Drawing.Point(203, 2)
         Me.LBL_IDAdresse.Name = "LBL_IDAdresse"
         Me.LBL_IDAdresse.Size = New System.Drawing.Size(80, 23)
         Me.LBL_IDAdresse.TabIndex = 3
@@ -1079,33 +1078,40 @@ Partial Class Hauptform
         '
         'btnNeueAdresse
         '
+        Me.btnNeueAdresse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNeueAdresse.BackColor = System.Drawing.Color.Green
+        Me.btnNeueAdresse.ForeColor = System.Drawing.Color.White
         Me.btnNeueAdresse.Image = Global.Adress_DB.My.Resources.Resources.AddressEditor_16x
         Me.btnNeueAdresse.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNeueAdresse.Location = New System.Drawing.Point(171, 332)
+        Me.btnNeueAdresse.Location = New System.Drawing.Point(175, 5)
         Me.btnNeueAdresse.Name = "btnNeueAdresse"
         Me.btnNeueAdresse.Size = New System.Drawing.Size(105, 23)
         Me.btnNeueAdresse.TabIndex = 7
         Me.btnNeueAdresse.Text = "neue Adresse"
         Me.btnNeueAdresse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNeueAdresse.UseVisualStyleBackColor = True
+        Me.btnNeueAdresse.UseVisualStyleBackColor = False
         '
         'btnNeuerKontakt
         '
+        Me.btnNeuerKontakt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNeuerKontakt.BackColor = System.Drawing.Color.Green
+        Me.btnNeuerKontakt.ForeColor = System.Drawing.Color.White
         Me.btnNeuerKontakt.Image = Global.Adress_DB.My.Resources.Resources.AddUser_16x
         Me.btnNeuerKontakt.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNeuerKontakt.Location = New System.Drawing.Point(171, 315)
+        Me.btnNeuerKontakt.Location = New System.Drawing.Point(175, 5)
         Me.btnNeuerKontakt.Name = "btnNeuerKontakt"
         Me.btnNeuerKontakt.Size = New System.Drawing.Size(105, 23)
         Me.btnNeuerKontakt.TabIndex = 2
         Me.btnNeuerKontakt.Text = "neuer Kontakt"
         Me.btnNeuerKontakt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNeuerKontakt.UseVisualStyleBackColor = True
+        Me.btnNeuerKontakt.UseVisualStyleBackColor = False
         '
         'BTN_ZuOutlook
         '
+        Me.BTN_ZuOutlook.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_ZuOutlook.Image = CType(resources.GetObject("BTN_ZuOutlook.Image"), System.Drawing.Image)
         Me.BTN_ZuOutlook.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_ZuOutlook.Location = New System.Drawing.Point(171, 282)
+        Me.BTN_ZuOutlook.Location = New System.Drawing.Point(175, 282)
         Me.BTN_ZuOutlook.Name = "BTN_ZuOutlook"
         Me.BTN_ZuOutlook.Size = New System.Drawing.Size(105, 28)
         Me.BTN_ZuOutlook.TabIndex = 1
@@ -1115,9 +1121,10 @@ Partial Class Hauptform
         '
         'BTN_MapsSuche
         '
+        Me.BTN_MapsSuche.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_MapsSuche.Image = CType(resources.GetObject("BTN_MapsSuche.Image"), System.Drawing.Image)
         Me.BTN_MapsSuche.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_MapsSuche.Location = New System.Drawing.Point(168, 282)
+        Me.BTN_MapsSuche.Location = New System.Drawing.Point(176, 281)
         Me.BTN_MapsSuche.Name = "BTN_MapsSuche"
         Me.BTN_MapsSuche.Size = New System.Drawing.Size(105, 28)
         Me.BTN_MapsSuche.TabIndex = 1
@@ -1125,27 +1132,15 @@ Partial Class Hauptform
         Me.BTN_MapsSuche.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BTN_MapsSuche.UseVisualStyleBackColor = True
         '
-        'gbKonto
-        '
-        Me.gbKonto.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.gbKonto.Controls.Add(Me.Panel4)
-        Me.gbKonto.Controls.Add(Me.btnNeuesKonto)
-        Me.gbKonto.Controls.Add(Me.KontoDataGridView)
-        Me.gbKonto.Controls.Add(Me.Label3)
-        Me.gbKonto.Controls.Add(Me.lblIDKonto)
-        Me.gbKonto.Location = New System.Drawing.Point(5, 121)
-        Me.gbKonto.Name = "gbKonto"
-        Me.gbKonto.Size = New System.Drawing.Size(160, 294)
-        Me.gbKonto.TabIndex = 13
-        Me.gbKonto.TabStop = False
-        '
         'Panel4
         '
+        Me.Panel4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BackColor = System.Drawing.Color.Silver
         Me.Panel4.Controls.Add(Me.Label6)
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Location = New System.Drawing.Point(3, 3)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(160, 27)
+        Me.Panel4.Size = New System.Drawing.Size(158, 27)
         Me.Panel4.TabIndex = 18
         '
         'Label6
@@ -1162,7 +1157,7 @@ Partial Class Hauptform
         '
         Me.btnNeuesKonto.Image = Global.Adress_DB.My.Resources.Resources.AccountGroup_16x
         Me.btnNeuesKonto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNeuesKonto.Location = New System.Drawing.Point(28, 33)
+        Me.btnNeuesKonto.Location = New System.Drawing.Point(31, 36)
         Me.btnNeuesKonto.Name = "btnNeuesKonto"
         Me.btnNeuesKonto.Size = New System.Drawing.Size(100, 23)
         Me.btnNeuesKonto.TabIndex = 4
@@ -1174,16 +1169,19 @@ Partial Class Hauptform
         '
         Me.KontoDataGridView.AllowUserToAddRows = False
         Me.KontoDataGridView.AllowUserToDeleteRows = False
+        Me.KontoDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KontoDataGridView.AutoGenerateColumns = False
         Me.KontoDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.KontoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.KontoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn6})
         Me.KontoDataGridView.DataSource = Me.KontoBindingSource
-        Me.KontoDataGridView.Location = New System.Drawing.Point(4, 109)
+        Me.KontoDataGridView.Location = New System.Drawing.Point(0, 112)
         Me.KontoDataGridView.Name = "KontoDataGridView"
         Me.KontoDataGridView.RowHeadersVisible = False
         Me.KontoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.KontoDataGridView.Size = New System.Drawing.Size(150, 179)
+        Me.KontoDataGridView.Size = New System.Drawing.Size(161, 154)
         Me.KontoDataGridView.TabIndex = 5
         '
         'DataGridViewTextBoxColumn4
@@ -1198,28 +1196,27 @@ Partial Class Hauptform
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "KontoName"
         Me.DataGridViewTextBoxColumn6.HeaderText = "Konto-Name"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 90
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(18, 65)
+        Me.Label3.Location = New System.Drawing.Point(15, 64)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(123, 13)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "aktuell markiertes Konto:"
         '
-        'btnSpeichern
+        'BTN_Speichern
         '
-        Me.btnSpeichern.Image = Global.Adress_DB.My.Resources.Resources.Save_16x
-        Me.btnSpeichern.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSpeichern.Location = New System.Drawing.Point(639, 10)
-        Me.btnSpeichern.Name = "btnSpeichern"
-        Me.btnSpeichern.Size = New System.Drawing.Size(80, 23)
-        Me.btnSpeichern.TabIndex = 15
-        Me.btnSpeichern.Text = "speichern"
-        Me.btnSpeichern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSpeichern.UseVisualStyleBackColor = True
+        Me.BTN_Speichern.Image = Global.Adress_DB.My.Resources.Resources.Save_16x
+        Me.BTN_Speichern.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BTN_Speichern.Location = New System.Drawing.Point(639, 10)
+        Me.BTN_Speichern.Name = "BTN_Speichern"
+        Me.BTN_Speichern.Size = New System.Drawing.Size(80, 23)
+        Me.BTN_Speichern.TabIndex = 15
+        Me.BTN_Speichern.Text = "Speichern"
+        Me.BTN_Speichern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BTN_Speichern.UseVisualStyleBackColor = True
         '
         'btnKontoZuAdresse
         '
@@ -1232,43 +1229,53 @@ Partial Class Hauptform
         '
         'IDKontoTextBox
         '
+        Me.IDKontoTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.IDKontoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "IDKonto", True))
         Me.IDKontoTextBox.Enabled = False
         Me.IDKontoTextBox.Location = New System.Drawing.Point(172, 270)
         Me.IDKontoTextBox.Name = "IDKontoTextBox"
-        Me.IDKontoTextBox.Size = New System.Drawing.Size(104, 20)
+        Me.IDKontoTextBox.Size = New System.Drawing.Size(109, 20)
         Me.IDKontoTextBox.TabIndex = 23
         '
         'WebseiteTextBox
         '
+        Me.WebseiteTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.WebseiteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Webseite", True))
         Me.WebseiteTextBox.Location = New System.Drawing.Point(74, 244)
         Me.WebseiteTextBox.Name = "WebseiteTextBox"
-        Me.WebseiteTextBox.Size = New System.Drawing.Size(202, 20)
+        Me.WebseiteTextBox.Size = New System.Drawing.Size(207, 20)
         Me.WebseiteTextBox.TabIndex = 9
         '
         'UStIdNrTextBox
         '
+        Me.UStIdNrTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.UStIdNrTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "UStIdNr", True))
         Me.UStIdNrTextBox.Location = New System.Drawing.Point(74, 218)
         Me.UStIdNrTextBox.Name = "UStIdNrTextBox"
-        Me.UStIdNrTextBox.Size = New System.Drawing.Size(202, 20)
+        Me.UStIdNrTextBox.Size = New System.Drawing.Size(207, 20)
         Me.UStIdNrTextBox.TabIndex = 8
         '
         'TB_Bundesland
         '
+        Me.TB_Bundesland.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Bundesland.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Bundesland", True))
         Me.TB_Bundesland.Location = New System.Drawing.Point(74, 192)
         Me.TB_Bundesland.Name = "TB_Bundesland"
-        Me.TB_Bundesland.Size = New System.Drawing.Size(202, 20)
+        Me.TB_Bundesland.Size = New System.Drawing.Size(207, 20)
         Me.TB_Bundesland.TabIndex = 7
         '
         'PostfachTextBox
         '
+        Me.PostfachTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PostfachTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Postfach", True))
         Me.PostfachTextBox.Location = New System.Drawing.Point(74, 112)
         Me.PostfachTextBox.Name = "PostfachTextBox"
-        Me.PostfachTextBox.Size = New System.Drawing.Size(202, 20)
+        Me.PostfachTextBox.Size = New System.Drawing.Size(207, 20)
         Me.PostfachTextBox.TabIndex = 4
         '
         'TB_PLZ
@@ -1281,24 +1288,31 @@ Partial Class Hauptform
         '
         'StraßeTextBox
         '
+        Me.StraßeTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.StraßeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Straße", True))
         Me.StraßeTextBox.Location = New System.Drawing.Point(74, 86)
         Me.StraßeTextBox.Name = "StraßeTextBox"
-        Me.StraßeTextBox.Size = New System.Drawing.Size(202, 20)
+        Me.StraßeTextBox.Size = New System.Drawing.Size(207, 20)
         Me.StraßeTextBox.TabIndex = 3
         '
         'AdresstypTextBox
         '
+        Me.AdresstypTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AdresstypTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Adresstyp", True))
         Me.AdresstypTextBox.Location = New System.Drawing.Point(74, 34)
         Me.AdresstypTextBox.Name = "AdresstypTextBox"
-        Me.AdresstypTextBox.Size = New System.Drawing.Size(202, 20)
+        Me.AdresstypTextBox.Size = New System.Drawing.Size(207, 20)
         Me.AdresstypTextBox.TabIndex = 1
         '
         'AdressenDataGridView
         '
         Me.AdressenDataGridView.AllowUserToAddRows = False
         Me.AdressenDataGridView.AllowUserToDeleteRows = False
+        Me.AdressenDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AdressenDataGridView.AutoGenerateColumns = False
         Me.AdressenDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.AdressenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1308,7 +1322,7 @@ Partial Class Hauptform
         Me.AdressenDataGridView.Name = "AdressenDataGridView"
         Me.AdressenDataGridView.RowHeadersVisible = False
         Me.AdressenDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.AdressenDataGridView.Size = New System.Drawing.Size(267, 139)
+        Me.AdressenDataGridView.Size = New System.Drawing.Size(274, 169)
         Me.AdressenDataGridView.TabIndex = 6
         '
         'IDAdresse
@@ -1337,7 +1351,7 @@ Partial Class Hauptform
         Me.DataGridViewTextBoxColumn10.DataPropertyName = "Ort"
         Me.DataGridViewTextBoxColumn10.HeaderText = "Ort"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Width = 110
+        Me.DataGridViewTextBoxColumn10.Width = 115
         '
         'EmailAddresseLinkLabel
         '
@@ -1366,93 +1380,114 @@ Partial Class Hauptform
         '
         'IDAdresseTextBox
         '
+        Me.IDAdresseTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.IDAdresseTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "IDAdresse", True))
         Me.IDAdresseTextBox.Enabled = False
         Me.IDAdresseTextBox.Location = New System.Drawing.Point(200, 267)
         Me.IDAdresseTextBox.Name = "IDAdresseTextBox"
-        Me.IDAdresseTextBox.Size = New System.Drawing.Size(76, 20)
+        Me.IDAdresseTextBox.Size = New System.Drawing.Size(80, 20)
         Me.IDAdresseTextBox.TabIndex = 22
         '
         'FaxnummerTextBox
         '
+        Me.FaxnummerTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FaxnummerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Faxnummer", True))
         Me.FaxnummerTextBox.Location = New System.Drawing.Point(104, 241)
         Me.FaxnummerTextBox.Name = "FaxnummerTextBox"
-        Me.FaxnummerTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.FaxnummerTextBox.Size = New System.Drawing.Size(176, 20)
         Me.FaxnummerTextBox.TabIndex = 20
         '
         'MobiltelefonTextBox
         '
+        Me.MobiltelefonTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MobiltelefonTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Mobiltelefon", True))
         Me.MobiltelefonTextBox.Location = New System.Drawing.Point(104, 215)
         Me.MobiltelefonTextBox.Name = "MobiltelefonTextBox"
-        Me.MobiltelefonTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.MobiltelefonTextBox.Size = New System.Drawing.Size(176, 20)
         Me.MobiltelefonTextBox.TabIndex = 18
         '
         'TelefonPrivatTextBox
         '
+        Me.TelefonPrivatTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TelefonPrivatTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "TelefonPrivat", True))
         Me.TelefonPrivatTextBox.Location = New System.Drawing.Point(104, 189)
         Me.TelefonPrivatTextBox.Name = "TelefonPrivatTextBox"
-        Me.TelefonPrivatTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.TelefonPrivatTextBox.Size = New System.Drawing.Size(176, 20)
         Me.TelefonPrivatTextBox.TabIndex = 16
         '
         'TelefonGeschaeftlichTextBox
         '
+        Me.TelefonGeschaeftlichTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TelefonGeschaeftlichTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "TelefonGeschaeftlich", True))
         Me.TelefonGeschaeftlichTextBox.Location = New System.Drawing.Point(104, 163)
         Me.TelefonGeschaeftlichTextBox.Name = "TelefonGeschaeftlichTextBox"
-        Me.TelefonGeschaeftlichTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.TelefonGeschaeftlichTextBox.Size = New System.Drawing.Size(176, 20)
         Me.TelefonGeschaeftlichTextBox.TabIndex = 14
         '
         'PositionTextBox
         '
+        Me.PositionTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PositionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Jobtitle", True))
         Me.PositionTextBox.Location = New System.Drawing.Point(104, 137)
         Me.PositionTextBox.Name = "PositionTextBox"
-        Me.PositionTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.PositionTextBox.Size = New System.Drawing.Size(176, 20)
         Me.PositionTextBox.TabIndex = 12
         '
         'EmailAddresseTextBox
         '
+        Me.EmailAddresseTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EmailAddresseTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "EmailAddresse", True))
         Me.EmailAddresseTextBox.Location = New System.Drawing.Point(104, 111)
         Me.EmailAddresseTextBox.Name = "EmailAddresseTextBox"
-        Me.EmailAddresseTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.EmailAddresseTextBox.Size = New System.Drawing.Size(176, 20)
         Me.EmailAddresseTextBox.TabIndex = 10
         '
         'VornameTextBox
         '
+        Me.VornameTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.VornameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Vorname", True))
         Me.VornameTextBox.Location = New System.Drawing.Point(104, 87)
         Me.VornameTextBox.Name = "VornameTextBox"
-        Me.VornameTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.VornameTextBox.Size = New System.Drawing.Size(176, 20)
         Me.VornameTextBox.TabIndex = 8
         '
         'NachnameTextBox
         '
+        Me.NachnameTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NachnameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Nachname", True))
         Me.NachnameTextBox.Location = New System.Drawing.Point(104, 62)
         Me.NachnameTextBox.Name = "NachnameTextBox"
-        Me.NachnameTextBox.Size = New System.Drawing.Size(172, 20)
+        Me.NachnameTextBox.Size = New System.Drawing.Size(176, 20)
         Me.NachnameTextBox.TabIndex = 6
         '
         'AnredeComboBox
         '
+        Me.AnredeComboBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AnredeComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Anrede", True))
         Me.AnredeComboBox.FormattingEnabled = True
         Me.AnredeComboBox.Location = New System.Drawing.Point(104, 37)
         Me.AnredeComboBox.Name = "AnredeComboBox"
-        Me.AnredeComboBox.Size = New System.Drawing.Size(172, 21)
+        Me.AnredeComboBox.Size = New System.Drawing.Size(176, 21)
         Me.AnredeComboBox.TabIndex = 4
         '
         'LBL_IDKontakt
         '
+        Me.LBL_IDKontakt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LBL_IDKontakt.BackColor = System.Drawing.Color.Transparent
         Me.LBL_IDKontakt.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "IDKontakt", True))
         Me.LBL_IDKontakt.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBL_IDKontakt.ForeColor = System.Drawing.Color.DarkGray
-        Me.LBL_IDKontakt.Location = New System.Drawing.Point(179, 1)
+        Me.LBL_IDKontakt.Location = New System.Drawing.Point(186, 1)
         Me.LBL_IDKontakt.Name = "LBL_IDKontakt"
         Me.LBL_IDKontakt.Size = New System.Drawing.Size(100, 23)
         Me.LBL_IDKontakt.TabIndex = 3
@@ -1463,6 +1498,9 @@ Partial Class Hauptform
         '
         Me.KontakteDataGridView.AllowUserToAddRows = False
         Me.KontakteDataGridView.AllowUserToDeleteRows = False
+        Me.KontakteDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KontakteDataGridView.AutoGenerateColumns = False
         Me.KontakteDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.KontakteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1472,7 +1510,7 @@ Partial Class Hauptform
         Me.KontakteDataGridView.Name = "KontakteDataGridView"
         Me.KontakteDataGridView.RowHeadersVisible = False
         Me.KontakteDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.KontakteDataGridView.Size = New System.Drawing.Size(270, 139)
+        Me.KontakteDataGridView.Size = New System.Drawing.Size(274, 169)
         Me.KontakteDataGridView.TabIndex = 1
         '
         'IDKontakt
@@ -1498,12 +1536,14 @@ Partial Class Hauptform
         '
         'Panel3
         '
+        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.Silver
         Me.Panel3.Controls.Add(Me.lblKontaktHeader)
         Me.Panel3.Controls.Add(Me.LBL_IDKontakt)
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(279, 27)
+        Me.Panel3.Size = New System.Drawing.Size(286, 27)
         Me.Panel3.TabIndex = 1
         '
         'lblKontaktHeader
@@ -1518,13 +1558,17 @@ Partial Class Hauptform
         '
         'TC_Beleg
         '
+        Me.TC_Beleg.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TC_Beleg.Controls.Add(Me.TabPage1)
         Me.TC_Beleg.Controls.Add(Me.TabPage2)
         Me.TC_Beleg.Controls.Add(Me.TabPage3)
-        Me.TC_Beleg.Location = New System.Drawing.Point(760, 100)
+        Me.TC_Beleg.Location = New System.Drawing.Point(773, 78)
         Me.TC_Beleg.Name = "TC_Beleg"
+        Me.TLP_1.SetRowSpan(Me.TC_Beleg, 2)
         Me.TC_Beleg.SelectedIndex = 0
-        Me.TC_Beleg.Size = New System.Drawing.Size(400, 484)
+        Me.TC_Beleg.Size = New System.Drawing.Size(494, 514)
         Me.TC_Beleg.TabIndex = 19
         '
         'TabPage1
@@ -1555,7 +1599,7 @@ Partial Class Hauptform
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(392, 458)
+        Me.TabPage1.Size = New System.Drawing.Size(486, 488)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Besuchsbericht"
         '
@@ -1583,9 +1627,11 @@ Partial Class Hauptform
         '
         'TB_BBWeitereKontakte
         '
+        Me.TB_BBWeitereKontakte.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_BBWeitereKontakte.Location = New System.Drawing.Point(6, 114)
         Me.TB_BBWeitereKontakte.Name = "TB_BBWeitereKontakte"
-        Me.TB_BBWeitereKontakte.Size = New System.Drawing.Size(380, 20)
+        Me.TB_BBWeitereKontakte.Size = New System.Drawing.Size(477, 20)
         Me.TB_BBWeitereKontakte.TabIndex = 31
         '
         'LBL_BBRegion
@@ -1657,9 +1703,11 @@ Partial Class Hauptform
         '
         'TB_BBThema
         '
+        Me.TB_BBThema.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_BBThema.Location = New System.Drawing.Point(6, 272)
         Me.TB_BBThema.Name = "TB_BBThema"
-        Me.TB_BBThema.Size = New System.Drawing.Size(380, 20)
+        Me.TB_BBThema.Size = New System.Drawing.Size(477, 20)
         Me.TB_BBThema.TabIndex = 18
         '
         'DTP_BBDatum
@@ -1673,11 +1721,13 @@ Partial Class Hauptform
         '
         'Panel5
         '
+        Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel5.BackColor = System.Drawing.Color.Silver
         Me.Panel5.Controls.Add(Me.Label7)
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(392, 26)
+        Me.Panel5.Size = New System.Drawing.Size(494, 26)
         Me.Panel5.TabIndex = 1
         '
         'Label7
@@ -1719,7 +1769,7 @@ Partial Class Hauptform
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(392, 458)
+        Me.TabPage2.Size = New System.Drawing.Size(486, 488)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Brief / Fax / TN / diverse"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -1761,13 +1811,15 @@ Partial Class Hauptform
         '
         'CB_DIVSachbearbeiter
         '
+        Me.CB_DIVSachbearbeiter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DIVSachbearbeiter.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SachbearbeiterBindingSource, "Sachbearbeiter", True))
         Me.CB_DIVSachbearbeiter.DataSource = Me.SachbearbeiterBindingSource
         Me.CB_DIVSachbearbeiter.DisplayMember = "Sachbearbeiter"
         Me.CB_DIVSachbearbeiter.FormattingEnabled = True
         Me.CB_DIVSachbearbeiter.Location = New System.Drawing.Point(125, 309)
         Me.CB_DIVSachbearbeiter.Name = "CB_DIVSachbearbeiter"
-        Me.CB_DIVSachbearbeiter.Size = New System.Drawing.Size(252, 21)
+        Me.CB_DIVSachbearbeiter.Size = New System.Drawing.Size(291, 21)
         Me.CB_DIVSachbearbeiter.TabIndex = 14
         '
         'Label10
@@ -1790,9 +1842,11 @@ Partial Class Hauptform
         '
         'TB_DIVThema
         '
+        Me.TB_DIVThema.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_DIVThema.Location = New System.Drawing.Point(125, 283)
         Me.TB_DIVThema.Name = "TB_DIVThema"
-        Me.TB_DIVThema.Size = New System.Drawing.Size(252, 20)
+        Me.TB_DIVThema.Size = New System.Drawing.Size(291, 20)
         Me.TB_DIVThema.TabIndex = 11
         '
         'DTP_Diverse
@@ -1800,7 +1854,7 @@ Partial Class Hauptform
         Me.DTP_Diverse.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DTP_Diverse.Location = New System.Drawing.Point(125, 257)
         Me.DTP_Diverse.Name = "DTP_Diverse"
-        Me.DTP_Diverse.Size = New System.Drawing.Size(252, 20)
+        Me.DTP_Diverse.Size = New System.Drawing.Size(233, 20)
         Me.DTP_Diverse.TabIndex = 10
         '
         'GroupBox2
@@ -1808,7 +1862,7 @@ Partial Class Hauptform
         Me.GroupBox2.Controls.Add(Me.LBL_DIVAdresse)
         Me.GroupBox2.Location = New System.Drawing.Point(125, 136)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(252, 115)
+        Me.GroupBox2.Size = New System.Drawing.Size(233, 115)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Adresse"
@@ -1857,10 +1911,12 @@ Partial Class Hauptform
         '
         'TB_DIVFaxnummer
         '
+        Me.TB_DIVFaxnummer.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_DIVFaxnummer.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KontakteBindingSource, "Faxnummer", True))
         Me.TB_DIVFaxnummer.Location = New System.Drawing.Point(123, 89)
         Me.TB_DIVFaxnummer.Name = "TB_DIVFaxnummer"
-        Me.TB_DIVFaxnummer.Size = New System.Drawing.Size(254, 20)
+        Me.TB_DIVFaxnummer.Size = New System.Drawing.Size(293, 20)
         Me.TB_DIVFaxnummer.TabIndex = 7
         '
         'LBL_Sprache
@@ -1883,11 +1939,13 @@ Partial Class Hauptform
         '
         'Panel2
         '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(392, 27)
+        Me.Panel2.Size = New System.Drawing.Size(483, 27)
         Me.Panel2.TabIndex = 2
         '
         'Label5
@@ -1911,11 +1969,13 @@ Partial Class Hauptform
         '
         'CB_Vorlagen
         '
+        Me.CB_Vorlagen.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_Vorlagen.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CB_Vorlagen.FormattingEnabled = True
         Me.CB_Vorlagen.Location = New System.Drawing.Point(123, 34)
         Me.CB_Vorlagen.Name = "CB_Vorlagen"
-        Me.CB_Vorlagen.Size = New System.Drawing.Size(254, 23)
+        Me.CB_Vorlagen.Size = New System.Drawing.Size(293, 23)
         Me.CB_Vorlagen.TabIndex = 0
         '
         'TabPage3
@@ -1924,7 +1984,7 @@ Partial Class Hauptform
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(392, 458)
+        Me.TabPage3.Size = New System.Drawing.Size(486, 488)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Historie"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -1942,7 +2002,7 @@ Partial Class Hauptform
         Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(386, 452)
+        Me.DataGridView1.Size = New System.Drawing.Size(480, 482)
         Me.DataGridView1.TabIndex = 0
         '
         'IDBelegDataGridViewTextBoxColumn
@@ -1997,30 +2057,21 @@ Partial Class Hauptform
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.Gray
-        Me.Panel6.Controls.Add(Me.LBL_Hinweis)
+        Me.TLP_1.SetColumnSpan(Me.Panel6, 3)
         Me.Panel6.Controls.Add(Me.LBL_FirmenName)
         Me.Panel6.Controls.Add(Me.btnAbbrechen)
-        Me.Panel6.Controls.Add(Me.btnSpeichern)
-        Me.Panel6.Location = New System.Drawing.Point(1, 597)
+        Me.Panel6.Controls.Add(Me.BTN_Speichern)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(3, 598)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(754, 43)
+        Me.Panel6.Size = New System.Drawing.Size(764, 44)
         Me.Panel6.TabIndex = 20
-        '
-        'LBL_Hinweis
-        '
-        Me.LBL_Hinweis.AutoSize = True
-        Me.LBL_Hinweis.ForeColor = System.Drawing.Color.Red
-        Me.LBL_Hinweis.Location = New System.Drawing.Point(9, 26)
-        Me.LBL_Hinweis.Name = "LBL_Hinweis"
-        Me.LBL_Hinweis.Size = New System.Drawing.Size(172, 13)
-        Me.LBL_Hinweis.TabIndex = 24
-        Me.LBL_Hinweis.Text = "DokuWare-Datei erfolgreich erstellt"
         '
         'LBL_FirmenName
         '
         Me.LBL_FirmenName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FirmenNameBindingSource, "FirmenName", True))
         Me.LBL_FirmenName.ForeColor = System.Drawing.Color.White
-        Me.LBL_FirmenName.Location = New System.Drawing.Point(9, 3)
+        Me.LBL_FirmenName.Location = New System.Drawing.Point(9, 6)
         Me.LBL_FirmenName.Name = "LBL_FirmenName"
         Me.LBL_FirmenName.Size = New System.Drawing.Size(447, 16)
         Me.LBL_FirmenName.TabIndex = 17
@@ -2041,11 +2092,13 @@ Partial Class Hauptform
         '
         'BTN_DocErzeugen
         '
+        Me.BTN_DocErzeugen.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BTN_DocErzeugen.Image = Global.Adress_DB.My.Resources.Resources.Document_16x
         Me.BTN_DocErzeugen.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_DocErzeugen.Location = New System.Drawing.Point(254, 10)
+        Me.BTN_DocErzeugen.Location = New System.Drawing.Point(350, 10)
         Me.BTN_DocErzeugen.Name = "BTN_DocErzeugen"
-        Me.BTN_DocErzeugen.Size = New System.Drawing.Size(131, 23)
+        Me.BTN_DocErzeugen.Size = New System.Drawing.Size(131, 30)
         Me.BTN_DocErzeugen.TabIndex = 18
         Me.BTN_DocErzeugen.Text = "Dokument erzeugen"
         Me.BTN_DocErzeugen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2053,18 +2106,24 @@ Partial Class Hauptform
         '
         'TC_Adresse
         '
+        Me.TC_Adresse.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TC_Adresse.Controls.Add(Me.TabAdresseInfo)
         Me.TC_Adresse.Controls.Add(Me.TabAdresseBearbeiten)
-        Me.TC_Adresse.Location = New System.Drawing.Point(170, 100)
+        Me.TC_Adresse.Location = New System.Drawing.Point(173, 78)
         Me.TC_Adresse.Name = "TC_Adresse"
+        Me.TLP_1.SetRowSpan(Me.TC_Adresse, 2)
         Me.TC_Adresse.SelectedIndex = 0
-        Me.TC_Adresse.Size = New System.Drawing.Size(290, 484)
+        Me.TC_Adresse.Size = New System.Drawing.Size(294, 514)
         Me.TC_Adresse.TabIndex = 21
         '
         'TabAdresseInfo
         '
         Me.TabAdresseInfo.AutoScroll = True
         Me.TabAdresseInfo.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.TabAdresseInfo.Controls.Add(Me.LBL_CC)
+        Me.TabAdresseInfo.Controls.Add(Me.LabelLandAdressen)
         Me.TabAdresseInfo.Controls.Add(Me.PNL_Geodaten)
         Me.TabAdresseInfo.Controls.Add(Me.LBL_AdressHinweis)
         Me.TabAdresseInfo.Controls.Add(IDKontoLabel)
@@ -2075,7 +2134,6 @@ Partial Class Hauptform
         Me.TabAdresseInfo.Controls.Add(UStIdNrLabel1)
         Me.TabAdresseInfo.Controls.Add(Me.BTN_MapsSuche)
         Me.TabAdresseInfo.Controls.Add(Me.UStIdNrLabel2)
-        Me.TabAdresseInfo.Controls.Add(LandLabel1)
         Me.TabAdresseInfo.Controls.Add(Me.LBL_Land)
         Me.TabAdresseInfo.Controls.Add(BundeslandLabel1)
         Me.TabAdresseInfo.Controls.Add(Me.BundeslandLabel2)
@@ -2093,9 +2151,34 @@ Partial Class Hauptform
         Me.TabAdresseInfo.Location = New System.Drawing.Point(4, 22)
         Me.TabAdresseInfo.Name = "TabAdresseInfo"
         Me.TabAdresseInfo.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabAdresseInfo.Size = New System.Drawing.Size(282, 458)
+        Me.TabAdresseInfo.Size = New System.Drawing.Size(286, 488)
         Me.TabAdresseInfo.TabIndex = 0
         Me.TabAdresseInfo.Text = "Info"
+        '
+        'LBL_CC
+        '
+        Me.LBL_CC.AutoSize = True
+        Me.LBL_CC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaatenBindingSource, "ISO2", True))
+        Me.LBL_CC.Location = New System.Drawing.Point(251, 62)
+        Me.LBL_CC.Name = "LBL_CC"
+        Me.LBL_CC.Size = New System.Drawing.Size(22, 13)
+        Me.LBL_CC.TabIndex = 29
+        Me.LBL_CC.Text = "DE"
+        Me.LBL_CC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'StaatenBindingSource
+        '
+        Me.StaatenBindingSource.DataMember = "Staaten"
+        Me.StaatenBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'LabelLandAdressen
+        '
+        Me.LabelLandAdressen.AutoSize = True
+        Me.LabelLandAdressen.Location = New System.Drawing.Point(43, 62)
+        Me.LabelLandAdressen.Name = "LabelLandAdressen"
+        Me.LabelLandAdressen.Size = New System.Drawing.Size(34, 13)
+        Me.LabelLandAdressen.TabIndex = 28
+        Me.LabelLandAdressen.Text = "Land:"
         '
         'PNL_Geodaten
         '
@@ -2253,12 +2336,14 @@ Partial Class Hauptform
         '
         'Panel7
         '
+        Me.Panel7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel7.BackColor = System.Drawing.Color.Silver
         Me.Panel7.Controls.Add(Me.Label4)
         Me.Panel7.Controls.Add(Me.LBL_IDAdresse)
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(279, 27)
+        Me.Panel7.Size = New System.Drawing.Size(289, 27)
         Me.Panel7.TabIndex = 1
         '
         'Label4
@@ -2303,15 +2388,16 @@ Partial Class Hauptform
         Me.TabAdresseBearbeiten.Location = New System.Drawing.Point(4, 22)
         Me.TabAdresseBearbeiten.Name = "TabAdresseBearbeiten"
         Me.TabAdresseBearbeiten.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabAdresseBearbeiten.Size = New System.Drawing.Size(282, 458)
+        Me.TabAdresseBearbeiten.Size = New System.Drawing.Size(286, 488)
         Me.TabAdresseBearbeiten.TabIndex = 1
         Me.TabAdresseBearbeiten.Text = "Bearbeiten / NEU"
         '
         'LBL_PLZungueltig
         '
+        Me.LBL_PLZungueltig.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LBL_PLZungueltig.AutoSize = True
         Me.LBL_PLZungueltig.ForeColor = System.Drawing.Color.Red
-        Me.LBL_PLZungueltig.Location = New System.Drawing.Point(198, 141)
+        Me.LBL_PLZungueltig.Location = New System.Drawing.Point(203, 141)
         Me.LBL_PLZungueltig.Name = "LBL_PLZungueltig"
         Me.LBL_PLZungueltig.Size = New System.Drawing.Size(70, 13)
         Me.LBL_PLZungueltig.TabIndex = 27
@@ -2321,6 +2407,8 @@ Partial Class Hauptform
         '
         'CB_Ort
         '
+        Me.CB_Ort.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_Ort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.CB_Ort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CB_Ort.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdressenBindingSource, "Ort", True))
@@ -2329,26 +2417,24 @@ Partial Class Hauptform
         Me.CB_Ort.FormattingEnabled = True
         Me.CB_Ort.Location = New System.Drawing.Point(74, 164)
         Me.CB_Ort.Name = "CB_Ort"
-        Me.CB_Ort.Size = New System.Drawing.Size(202, 21)
+        Me.CB_Ort.Size = New System.Drawing.Size(207, 21)
         Me.CB_Ort.TabIndex = 6
         '
         'LBL_Countrycode
         '
+        Me.LBL_Countrycode.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LBL_Countrycode.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaatenBindingSource, "ISO2", True))
-        Me.LBL_Countrycode.Location = New System.Drawing.Point(254, 57)
+        Me.LBL_Countrycode.Location = New System.Drawing.Point(259, 57)
         Me.LBL_Countrycode.Name = "LBL_Countrycode"
         Me.LBL_Countrycode.Size = New System.Drawing.Size(22, 23)
         Me.LBL_Countrycode.TabIndex = 25
         Me.LBL_Countrycode.Text = "DE"
         Me.LBL_Countrycode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'StaatenBindingSource
-        '
-        Me.StaatenBindingSource.DataMember = "Staaten"
-        Me.StaatenBindingSource.DataSource = Me._WSL_AdressenDataSet
-        '
         'CB_Staat
         '
+        Me.CB_Staat.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_Staat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.CB_Staat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CB_Staat.DataSource = Me.StaatenBindingSource
@@ -2356,7 +2442,7 @@ Partial Class Hauptform
         Me.CB_Staat.FormattingEnabled = True
         Me.CB_Staat.Location = New System.Drawing.Point(74, 59)
         Me.CB_Staat.Name = "CB_Staat"
-        Me.CB_Staat.Size = New System.Drawing.Size(174, 21)
+        Me.CB_Staat.Size = New System.Drawing.Size(179, 21)
         Me.CB_Staat.TabIndex = 2
         '
         'lblAdresseNeu
@@ -2373,12 +2459,16 @@ Partial Class Hauptform
         '
         'TC_Kontakt
         '
+        Me.TC_Kontakt.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TC_Kontakt.Controls.Add(Me.TabPage5)
         Me.TC_Kontakt.Controls.Add(Me.TabPage6)
-        Me.TC_Kontakt.Location = New System.Drawing.Point(465, 100)
+        Me.TC_Kontakt.Location = New System.Drawing.Point(473, 78)
         Me.TC_Kontakt.Name = "TC_Kontakt"
+        Me.TLP_1.SetRowSpan(Me.TC_Kontakt, 2)
         Me.TC_Kontakt.SelectedIndex = 0
-        Me.TC_Kontakt.Size = New System.Drawing.Size(290, 484)
+        Me.TC_Kontakt.Size = New System.Drawing.Size(294, 514)
         Me.TC_Kontakt.TabIndex = 22
         '
         'TabPage5
@@ -2415,7 +2505,7 @@ Partial Class Hauptform
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(282, 458)
+        Me.TabPage5.Size = New System.Drawing.Size(286, 488)
         Me.TabPage5.TabIndex = 0
         Me.TabPage5.Text = "Info"
         '
@@ -2549,12 +2639,15 @@ Partial Class Hauptform
         Me.TabPage6.Location = New System.Drawing.Point(4, 22)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(282, 458)
+        Me.TabPage6.Size = New System.Drawing.Size(286, 488)
         Me.TabPage6.TabIndex = 1
         Me.TabPage6.Text = "Bearbeiten / NEU"
         '
         'BTN_DeleteUser
         '
+        Me.BTN_DeleteUser.BackColor = System.Drawing.Color.Red
+        Me.BTN_DeleteUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_DeleteUser.ForeColor = System.Drawing.Color.White
         Me.BTN_DeleteUser.Image = Global.Adress_DB.My.Resources.Resources.DeleteUser_16x
         Me.BTN_DeleteUser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BTN_DeleteUser.Location = New System.Drawing.Point(6, 315)
@@ -2563,14 +2656,14 @@ Partial Class Hauptform
         Me.BTN_DeleteUser.TabIndex = 27
         Me.BTN_DeleteUser.Text = "löschen"
         Me.BTN_DeleteUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BTN_DeleteUser.UseVisualStyleBackColor = True
+        Me.BTN_DeleteUser.UseVisualStyleBackColor = False
         '
         'lblKontaktNeu
         '
         Me.lblKontaktNeu.AutoSize = True
         Me.lblKontaktNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblKontaktNeu.ForeColor = System.Drawing.Color.Red
-        Me.lblKontaktNeu.Location = New System.Drawing.Point(101, 15)
+        Me.lblKontaktNeu.Location = New System.Drawing.Point(101, 10)
         Me.lblKontaktNeu.Name = "lblKontaktNeu"
         Me.lblKontaktNeu.Size = New System.Drawing.Size(33, 13)
         Me.lblKontaktNeu.TabIndex = 26
@@ -2585,7 +2678,7 @@ Partial Class Hauptform
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1160, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1272, 24)
         Me.MenuStrip1.TabIndex = 23
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -2640,6 +2733,7 @@ Partial Class Hauptform
         '
         'AktivitätslogToolStripMenuItem
         '
+        Me.AktivitätslogToolStripMenuItem.Image = Global.Adress_DB.My.Resources.Resources.EnableLog_16x
         Me.AktivitätslogToolStripMenuItem.Name = "AktivitätslogToolStripMenuItem"
         Me.AktivitätslogToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.AktivitätslogToolStripMenuItem.Text = "Aktivitätslog"
@@ -2660,9 +2754,10 @@ Partial Class Hauptform
         '
         'lblUser
         '
+        Me.lblUser.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUser.Location = New System.Drawing.Point(760, 0)
+        Me.lblUser.Location = New System.Drawing.Point(880, 0)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(392, 25)
         Me.lblUser.TabIndex = 21
@@ -2673,9 +2768,10 @@ Partial Class Hauptform
         '
         Me.Panel8.BackColor = System.Drawing.Color.Silver
         Me.Panel8.Controls.Add(Me.BTN_DocErzeugen)
-        Me.Panel8.Location = New System.Drawing.Point(763, 597)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel8.Location = New System.Drawing.Point(773, 598)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(397, 43)
+        Me.Panel8.Size = New System.Drawing.Size(494, 44)
         Me.Panel8.TabIndex = 24
         '
         'KontakteMitAdresseBindingSource
@@ -2704,11 +2800,11 @@ Partial Class Hauptform
         Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Me.FirmenNameTableAdapter
-        Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.propertiesTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
         Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.UpdateInsertDelete
@@ -2728,15 +2824,6 @@ Partial Class Hauptform
         'DocuwareCSVTableAdapter
         '
         Me.DocuwareCSVTableAdapter.ClearBeforeFill = True
-        '
-        'KonfigurationBindingSource
-        '
-        Me.KonfigurationBindingSource.DataMember = "Konfiguration"
-        Me.KonfigurationBindingSource.DataSource = Me._WSL_AdressenDataSet
-        '
-        'KonfigurationTableAdapter
-        '
-        Me.KonfigurationTableAdapter.ClearBeforeFill = True
         '
         'BelegeBindingSource
         '
@@ -2791,35 +2878,111 @@ Partial Class Hauptform
         '
         Me.DE_PLZ_GeodatenTableAdapter.ClearBeforeFill = True
         '
-        'PB_Suche
+        'PropertiesBindingSource
         '
-        Me.PB_Suche.Image = CType(resources.GetObject("PB_Suche.Image"), System.Drawing.Image)
-        Me.PB_Suche.Location = New System.Drawing.Point(11, 535)
-        Me.PB_Suche.Name = "PB_Suche"
-        Me.PB_Suche.Size = New System.Drawing.Size(67, 42)
-        Me.PB_Suche.TabIndex = 25
-        Me.PB_Suche.TabStop = False
+        Me.PropertiesBindingSource.DataMember = "properties"
+        Me.PropertiesBindingSource.DataSource = Me._WSL_AdressenDataSet
+        '
+        'PropertiesTableAdapter
+        '
+        Me.PropertiesTableAdapter.ClearBeforeFill = True
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.Silver
+        Me.Panel9.Controls.Add(Me.Button1)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel9.Location = New System.Drawing.Point(773, 3)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(494, 69)
+        Me.Panel9.TabIndex = 26
+        '
+        'TLP_1
+        '
+        Me.TLP_1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TLP_1.ColumnCount = 4
+        Me.TLP_1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170.0!))
+        Me.TLP_1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300.0!))
+        Me.TLP_1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300.0!))
+        Me.TLP_1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TLP_1.Controls.Add(Me.Panel9, 3, 0)
+        Me.TLP_1.Controls.Add(Me.TC_Beleg, 3, 1)
+        Me.TLP_1.Controls.Add(Me.Panel1, 0, 0)
+        Me.TLP_1.Controls.Add(Me.TC_Adresse, 1, 1)
+        Me.TLP_1.Controls.Add(Me.Panel6, 0, 3)
+        Me.TLP_1.Controls.Add(Me.Panel8, 3, 3)
+        Me.TLP_1.Controls.Add(Me.PNL_Konto, 0, 1)
+        Me.TLP_1.Controls.Add(Me.Panel10, 0, 2)
+        Me.TLP_1.Controls.Add(Me.TC_Kontakt, 2, 1)
+        Me.TLP_1.Location = New System.Drawing.Point(0, 25)
+        Me.TLP_1.Name = "TLP_1"
+        Me.TLP_1.RowCount = 4
+        Me.TLP_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
+        Me.TLP_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 275.0!))
+        Me.TLP_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TLP_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TLP_1.Size = New System.Drawing.Size(1270, 645)
+        Me.TLP_1.TabIndex = 27
+        '
+        'PNL_Konto
+        '
+        Me.PNL_Konto.BackColor = System.Drawing.Color.White
+        Me.PNL_Konto.Controls.Add(Me.KontoDataGridView)
+        Me.PNL_Konto.Controls.Add(Me.btnNeuesKonto)
+        Me.PNL_Konto.Controls.Add(Me.lblIDKonto)
+        Me.PNL_Konto.Controls.Add(Me.Label3)
+        Me.PNL_Konto.Controls.Add(Me.Panel4)
+        Me.PNL_Konto.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PNL_Konto.Location = New System.Drawing.Point(3, 78)
+        Me.PNL_Konto.Name = "PNL_Konto"
+        Me.PNL_Konto.Size = New System.Drawing.Size(164, 269)
+        Me.PNL_Konto.TabIndex = 28
+        '
+        'Panel10
+        '
+        Me.Panel10.Controls.Add(Me.DocuwareCSVDataGridView)
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel10.Location = New System.Drawing.Point(3, 353)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(164, 239)
+        Me.Panel10.TabIndex = 29
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 673)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1272, 22)
+        Me.StatusStrip1.TabIndex = 28
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(300, 16)
+        Me.ToolStripProgressBar1.Visible = False
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(192, 17)
+        Me.ToolStripStatusLabel1.Text = "DocuWare-Datei erfolgreich erstellt"
+        Me.ToolStripStatusLabel1.Visible = False
         '
         'Hauptform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1160, 641)
-        Me.Controls.Add(Me.PB_Suche)
-        Me.Controls.Add(Me.Panel8)
+        Me.ClientSize = New System.Drawing.Size(1272, 695)
+        Me.Controls.Add(Me.lblHinweisKeinTreffer)
+        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.TLP_1)
         Me.Controls.Add(Me.lblUser)
-        Me.Controls.Add(Me.DocuwareCSVDataGridView)
-        Me.Controls.Add(Me.TC_Kontakt)
-        Me.Controls.Add(Me.TC_Adresse)
-        Me.Controls.Add(Me.Panel6)
-        Me.Controls.Add(Me.TC_Beleg)
-        Me.Controls.Add(Me.gbKonto)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
         Me.Name = "Hauptform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Adress-Datenbank"
@@ -2831,8 +2994,6 @@ Partial Class Hauptform
         CType(Me.DocuwareCSVDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DocuwareCSVBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AdressenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbKonto.ResumeLayout(False)
-        Me.gbKonto.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.KontoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2859,17 +3020,16 @@ Partial Class Hauptform
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BelegeMitAdresseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
         Me.TC_Adresse.ResumeLayout(False)
         Me.TabAdresseInfo.ResumeLayout(False)
         Me.TabAdresseInfo.PerformLayout()
+        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PNL_Geodaten.ResumeLayout(False)
         Me.PNL_Geodaten.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.TabAdresseBearbeiten.ResumeLayout(False)
         Me.TabAdresseBearbeiten.PerformLayout()
-        CType(Me.StaatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TC_Kontakt.ResumeLayout(False)
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
@@ -2879,13 +3039,19 @@ Partial Class Hauptform
         Me.MenuStrip1.PerformLayout()
         Me.Panel8.ResumeLayout(False)
         CType(Me.KontakteMitAdresseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BelegeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LogTabelleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AT_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CH_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DE_PLZ_GeodatenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PB_Suche, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel9.ResumeLayout(False)
+        Me.TLP_1.ResumeLayout(False)
+        Me.PNL_Konto.ResumeLayout(False)
+        Me.PNL_Konto.PerformLayout()
+        Me.Panel10.ResumeLayout(False)
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2902,11 +3068,10 @@ Partial Class Hauptform
     Friend WithEvents lblIDKonto As Label
     Friend WithEvents CB_FirmenName As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents gbKonto As GroupBox
     Friend WithEvents btnNeuesKonto As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents lblHinweisKeinTreffer As Label
-    Friend WithEvents btnSpeichern As Button
+    Friend WithEvents BTN_Speichern As Button
     Friend WithEvents AdressenBindingSource As BindingSource
     Friend WithEvents AdressenTableAdapter As _WSL_AdressenDataSetTableAdapters.AdressenTableAdapter
     Friend WithEvents AdressenDataGridView As DataGridView
@@ -2946,8 +3111,6 @@ Partial Class Hauptform
     Friend WithEvents KontakteTableAdapter As _WSL_AdressenDataSetTableAdapters.KontakteTableAdapter
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label6 As Label
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents TC_Beleg As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents Panel5 As Panel
@@ -2993,10 +3156,6 @@ Partial Class Hauptform
     Friend WithEvents StraßeLabel3 As Label
     Friend WithEvents StraßeLabel2 As Label
     Friend WithEvents OrtLabel2 As Label
-    Friend WithEvents IDAdresse As DataGridViewTextBoxColumn
-    Friend WithEvents IDKonto As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DTP_BBDatum As DateTimePicker
     Friend WithEvents LBL_BBLand As Label
     Friend WithEvents LBL_BBOrt As Label
@@ -3028,7 +3187,6 @@ Partial Class Hauptform
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
-    Friend WithEvents LBL_Hinweis As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents CB_Vorlagen As ComboBox
@@ -3054,8 +3212,6 @@ Partial Class Hauptform
     Friend WithEvents InfoÜberAdressenDBToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents KonfigurationBindingSource As BindingSource
-    Friend WithEvents KonfigurationTableAdapter As _WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter
     Friend WithEvents TB_BBWeitereBesucher As TextBox
     Friend WithEvents TB_BBWeitereKontakte As TextBox
     Friend WithEvents CB_BBKuerzel As ComboBox
@@ -3102,5 +3258,21 @@ Partial Class Hauptform
     Friend WithEvents LBLLat As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents PNL_Geodaten As Panel
-    Friend WithEvents PB_Suche As PictureBox
+    Friend WithEvents LabelLandAdressen As Label
+    Friend WithEvents LBL_CC As Label
+    Friend WithEvents PropertiesBindingSource As BindingSource
+    Friend WithEvents PropertiesTableAdapter As _WSL_AdressenDataSetTableAdapters.propertiesTableAdapter
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents TLP_1 As TableLayoutPanel
+    Friend WithEvents PNL_Konto As Panel
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents IDAdresse As DataGridViewTextBoxColumn
+    Friend WithEvents IDKonto As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
 End Class

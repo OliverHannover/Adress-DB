@@ -1,5 +1,7 @@
 ﻿Public Class Administration
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: Diese Codezeile lädt Daten in die Tabelle "_WSL_AdressenDataSet.properties". Sie können sie bei Bedarf verschieben oder entfernen.
+        Me.PropertiesTableAdapter.Fill(Me._WSL_AdressenDataSet.properties)
 
         Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
         Me.KontakteTableAdapter.Fill(Me._WSL_AdressenDataSet.Kontakte)
@@ -7,7 +9,7 @@
         Me.KontoTableAdapter.Fill(Me._WSL_AdressenDataSet.Konto)
         Me.FirmenNameTableAdapter.Fill(Me._WSL_AdressenDataSet.FirmenName)
         Me.SachbearbeiterTableAdapter.FillByAktive(Me._WSL_AdressenDataSet.Sachbearbeiter)
-        Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
+
 
         Dim foundIndex As Integer = SachbearbeiterBindingSource.Find("Login", Environment.UserName)
         SachbearbeiterBindingSource.Position = foundIndex
@@ -24,39 +26,13 @@
 
     End Sub
 
-    Private Sub BTN_Vorlagenpfad_Click(sender As Object, e As EventArgs) Handles BTN_Vorlagenpfad.Click
-        'MsgBox("Vorlagenpfad ist " & Me.KonfigurationTableAdapter.ScalarVorlagenpfad().ToString)
-
-        FolderBrowserDialog1.SelectedPath = Me.KonfigurationTableAdapter.ScalarVorlagenpfad().ToString
-        FolderBrowserDialog1.ShowDialog()
-        Dim files As String = FolderBrowserDialog1.SelectedPath
-        VorlagenpfadTextBox.Text = files & "\"
-    End Sub
-
     Private Sub BTN_Schliessen_Click(sender As Object, e As EventArgs) Handles BTN_Schliessen.Click
 
         Me.Close()
     End Sub
 
-    Private Sub BTN_Speichern_Click(sender As Object, e As EventArgs) Handles BTN_Speichern.Click
-        Try
-            KonfigurationTableAdapter.UpdateAlles(CInt(IDFirmenNameTextBox.Text),
-                                                 CInt(LeadnummerTextBox.Text),
-                                                 CInt(KundennummerTextBox.Text),
-                                                 CInt(LieferantennummerTextBox.Text),
-                                                 CInt(IDAdresseTextBox.Text),
-                                                 CInt(IDKontaktTextBox.Text),
-                                                 CInt(IDBesuchTextBox.Text),
-                                                 VorlagenpfadTextBox.Text,
-                                                 DWpfadTextBox.Text,
-                                                 DWDateinameTextBox.Text,
-                                                 HilfelinkTextBox.Text,
-                                                 False)
-        Catch ex As Exception
-            MsgBox("Update der Konfigurations-Tabelle fehlgeschlagen")
+    Private Sub BTN_Speichern_Click(sender As Object, e As EventArgs)
 
-        End Try
-        MsgBox("Update der Konfigurations-Tabelle erfolgreich")
 
     End Sub
 
@@ -87,14 +63,7 @@
         Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
     End Sub
 
-    Private Sub BTN_DWPfad_Click(sender As Object, e As EventArgs) Handles BTN_DWPfad.Click
-        'MsgBox("DW-Dateinpfad ist " & Me.KonfigurationTableAdapter.ScalarDWPfad().ToString)
 
-        FolderBrowserDialog1.SelectedPath = Me.KonfigurationTableAdapter.ScalarDWPfad().ToString
-        FolderBrowserDialog1.ShowDialog()
-        Dim files As String = FolderBrowserDialog1.SelectedPath
-        DWpfadTextBox.Text = files & "\"
-    End Sub
 
     Private Sub BNAV_BelegeSaveItem_Click(sender As Object, e As EventArgs) Handles BNAV_BelegeSaveItem.Click
         Me.Validate()
@@ -133,6 +102,14 @@
         Me.Validate()
         Me.KontakteBindingSource.EndEdit()
         Me.KontakteTableAdapter.Update(Me._WSL_AdressenDataSet.Kontakte)
+
+        BTN_Aktuell.PerformClick()
+    End Sub
+
+    Private Sub BNAV_Properties_Save_Click(sender As Object, e As EventArgs) Handles BNAV_Properties_Save.Click
+        Me.Validate()
+        Me.PropertiesBindingSource.EndEdit()
+        Me.PropertiesTableAdapter.Update(Me._WSL_AdressenDataSet.properties)
 
         BTN_Aktuell.PerformClick()
     End Sub

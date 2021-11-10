@@ -13,14 +13,15 @@ Module Module1
         'MsgBox("Neuen Geschäftspartner anlegen")
 
         'hole die nächste freie IDFirmenName
-        Dim IDFirmenName As Double = Hauptform.KonfigurationTableAdapter.ScalarIDFirmenName()
+        Dim IDFirmenName As Double = Hauptform.PropertiesTableAdapter.ScalarWert("IDFirmenName")
         Dim FirmenName As String = Hauptform.TB_FirmenName.Text
 
         'hole die nächste freie Leadnummer
-        Dim Leadnummer As Double = Hauptform.KonfigurationTableAdapter.ScalarLeadnummer()
+        Dim Leadnummer As Double = Hauptform.PropertiesTableAdapter.ScalarWert("Leadnummer")
         Dim KontoName As String = "Lead-" & Year(Now).ToString
 
         'Datensatz FirmenName schreiben
+        'MsgBox(IDFirmenName.ToString)
         Hauptform.FirmenNameTableAdapter.Insert(IDFirmenName, FirmenName, Environment.UserName, Now, False)
         Logging(1, IDFirmenName, IDFirmenName, FirmenName)
 
@@ -37,7 +38,8 @@ Module Module1
 
         Try
             'Werte in der Konfigurations-Tabelle aktualisieren (IDFirmenName + Leadnummer)
-            Hauptform.KonfigurationTableAdapter.UpdateIDFirmenName(IDFirmenName + 1, IDFirmenName)
+            Hauptform.PropertiesTableAdapter.UpdateWert(IDFirmenName.ToString + 1, "IDFirmenName")
+
         Catch ex As Exception
             MsgBox("Fehler beim Aktualisieren der neuen IDFirmenName in der Konfig-Tabelle")
             System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -45,7 +47,7 @@ Module Module1
 
 
         Try
-            Hauptform.KonfigurationTableAdapter.UpdateLeadnummer(Leadnummer + 1, Leadnummer)
+            Hauptform.PropertiesTableAdapter.UpdateWert(Leadnummer.ToString + 1, "Leadnummer")
         Catch ex As Exception
             MsgBox("Fehler beim Aktualisieren der neuen Lead-Nummer in der Konfig-Tabelle")
             System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -59,9 +61,9 @@ Module Module1
 
         'versch Einstellungen:
         With Hauptform
-            .gbKonto.Visible = True
+            .PNL_Konto.Visible = True
             .lblHinweisKeinTreffer.Visible = False
-            .gbKonto.Visible = True 'Groupboxen Konto, Adresse, Kontakt einblenden
+            .PNL_Konto.Visible = True 'Groupboxen Konto, Adresse, Kontakt einblenden
             .TC_Adresse.Visible = True
             .TC_Kontakt.Visible = True
             .TB_FirmenName.Text = Hauptform.CB_FirmenName.Text
@@ -171,7 +173,7 @@ Module Module1
 
         ' öffnet den Word-Besuchsbericht und füllt den Kopf mit markierten Daten,
         Dim Pfad As String
-        Pfad = Hauptform.KonfigurationTableAdapter.ScalarVorlagenpfad().ToString
+        Pfad = Hauptform.PropertiesTableAdapter.ScalarWert("Vorlagenpfad")
         If Right(Pfad, 1) <> "\" Then Pfad += "\"
         Pfad += Belegtyp
 
@@ -368,11 +370,10 @@ Module Module1
 
     Public Sub SaveToCSV()
         Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+
         'Build the CSV file data as a Comma separated string.
         Dim csv As String = String.Empty
         'MsgBox(Form1.DocuwareCSVDataGridView.RowCount)
-
-        'DocuwareCSVDataGridView.Sort(DocuwareCSVDataGridView.Columns(0), System.ComponentModel.ListSortDirection.Ascending)
 
         'Add the Header row for CSV file.
         For Each column As DataGridViewColumn In Hauptform.DocuwareCSVDataGridView.Columns
@@ -396,13 +397,13 @@ Module Module1
         'Exporting to Excel
         Dim folderPath As String
         'Pfad und Dateiname aus der Datenbank auslesen:
-        folderPath = Hauptform.KonfigurationTableAdapter.ScalarDWPfad().ToString & Hauptform.KonfigurationTableAdapter.ScalarDWDateiname().ToString
+        folderPath = Hauptform.PropertiesTableAdapter.ScalarWert("DWPfad") & Hauptform.PropertiesTableAdapter.ScalarWert("DWDateiname")
         'MsgBox(folderPath)
         File.WriteAllText(folderPath, csv)
         'File.WriteAllText(folderPath & "DataGridViewExport.csv", csv)
 
-        Hauptform.LBL_Hinweis.Visible = True
         Cursor.Current = System.Windows.Forms.Cursors.Default
+        Hauptform.ToolStripStatusLabel1.Visible = True
 
     End Sub
 
@@ -452,7 +453,7 @@ Module Module1
 
     Public Sub FillVorlagen()
         Dim fname As String, pfad As String
-        pfad = Hauptform.KonfigurationTableAdapter.ScalarVorlagenpfad().ToString 'anpassen
+        pfad = Hauptform.PropertiesTableAdapter.ScalarWert("Vorlagenpfad") 'anpassen
         If Right(pfad, 1) <> "\" Then pfad += "\"
 
         'MsgBox(pfad)

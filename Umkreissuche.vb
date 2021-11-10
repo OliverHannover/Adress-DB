@@ -85,6 +85,7 @@
                 .Columns(2).Width = 70
                 .Columns(2).HeaderText = "Land"
                 .Columns(2).Width = 50
+                .Columns(6).HeaderText = "ca. km"
                 .Columns(6).Width = 50
             End With
 
@@ -273,6 +274,7 @@
         PrintPreviewDialog1.Document = pd_PrintDoc
         PageSetupDialog1.Document = pd_PrintDoc
         PageSetupDialog1.EnableMetric = True
+        PrintPreviewDialog1.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath)
         PrintPreviewDialog1.PrintPreviewControl.AutoZoom = True
         PrintPreviewDialog1.PrintPreviewControl.Zoom = 1.1
         PrintPreviewDialog1.Document.DefaultPageSettings.Landscape = False

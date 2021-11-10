@@ -31,7 +31,7 @@
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -252,6 +252,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Hauptform1.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
@@ -323,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addressbook.ico" />
+    <None Include="Symbole\EnableLog_16x.png" />
     <None Include="Symbole\BackToResultList_16x.png" />
     <None Include="Symbole\PrintDocument_16x.png" />
     <None Include="Symbole\ContactCard_16x.png" />

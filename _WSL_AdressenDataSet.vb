@@ -9,6 +9,4 @@ Namespace _WSL_AdressenDataSetTableAdapters
     Partial Public Class SachbearbeiterTableAdapter
     End Class
 
-    Partial Public Class KonfigurationTableAdapter
-    End Class
 End Namespace

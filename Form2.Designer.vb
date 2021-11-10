@@ -26,9 +26,8 @@ Partial Class KontoForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(KontoForm))
         Me.rdbKundenNr = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblKundenNr = New System.Windows.Forms.Label()
+        Me.lblKontoNummer = New System.Windows.Forms.Label()
         Me.rdbLieferantenNr = New System.Windows.Forms.RadioButton()
-        Me.lblLieferantenNr = New System.Windows.Forms.Label()
         Me.btnKontoSave = New System.Windows.Forms.Button()
         Me._WSL_AdressenDataSet = New Adress_DB._WSL_AdressenDataSet()
         Me.KontoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -46,22 +45,24 @@ Partial Class KontoForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.KonfigurationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.KonfigurationTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter()
+        Me.PropertiesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PropertiesTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.propertiesTableAdapter()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KontoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KontoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FirmenNameBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'rdbKundenNr
         '
         Me.rdbKundenNr.AutoSize = True
         Me.rdbKundenNr.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbKundenNr.Location = New System.Drawing.Point(27, 108)
+        Me.rdbKundenNr.Location = New System.Drawing.Point(27, 93)
         Me.rdbKundenNr.Name = "rdbKundenNr"
         Me.rdbKundenNr.Size = New System.Drawing.Size(126, 21)
         Me.rdbKundenNr.TabIndex = 0
@@ -79,21 +80,23 @@ Partial Class KontoForm
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Neue Konto-Nummer für:"
         '
-        'lblKundenNr
+        'lblKontoNummer
         '
-        Me.lblKundenNr.AutoSize = True
-        Me.lblKundenNr.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblKundenNr.Location = New System.Drawing.Point(186, 107)
-        Me.lblKundenNr.Name = "lblKundenNr"
-        Me.lblKundenNr.Size = New System.Drawing.Size(56, 17)
-        Me.lblKundenNr.TabIndex = 2
-        Me.lblKundenNr.Text = "123456"
+        Me.lblKontoNummer.AutoSize = True
+        Me.lblKontoNummer.BackColor = System.Drawing.Color.White
+        Me.lblKontoNummer.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblKontoNummer.Location = New System.Drawing.Point(9, 0)
+        Me.lblKontoNummer.Name = "lblKontoNummer"
+        Me.lblKontoNummer.Size = New System.Drawing.Size(91, 29)
+        Me.lblKontoNummer.TabIndex = 2
+        Me.lblKontoNummer.Text = "123456"
+        Me.lblKontoNummer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'rdbLieferantenNr
         '
         Me.rdbLieferantenNr.AutoSize = True
         Me.rdbLieferantenNr.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdbLieferantenNr.Location = New System.Drawing.Point(26, 144)
+        Me.rdbLieferantenNr.Location = New System.Drawing.Point(27, 120)
         Me.rdbLieferantenNr.Name = "rdbLieferantenNr"
         Me.rdbLieferantenNr.Size = New System.Drawing.Size(149, 21)
         Me.rdbLieferantenNr.TabIndex = 3
@@ -101,25 +104,15 @@ Partial Class KontoForm
         Me.rdbLieferantenNr.Text = "Lieferantennummer"
         Me.rdbLieferantenNr.UseVisualStyleBackColor = True
         '
-        'lblLieferantenNr
-        '
-        Me.lblLieferantenNr.AutoSize = True
-        Me.lblLieferantenNr.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLieferantenNr.Location = New System.Drawing.Point(186, 148)
-        Me.lblLieferantenNr.Name = "lblLieferantenNr"
-        Me.lblLieferantenNr.Size = New System.Drawing.Size(56, 17)
-        Me.lblLieferantenNr.TabIndex = 4
-        Me.lblLieferantenNr.Text = "123456"
-        '
         'btnKontoSave
         '
         Me.btnKontoSave.Image = Global.Adress_DB.My.Resources.Resources.Save_16x
         Me.btnKontoSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnKontoSave.Location = New System.Drawing.Point(190, 10)
+        Me.btnKontoSave.Location = New System.Drawing.Point(62, 8)
         Me.btnKontoSave.Name = "btnKontoSave"
-        Me.btnKontoSave.Size = New System.Drawing.Size(80, 23)
+        Me.btnKontoSave.Size = New System.Drawing.Size(151, 23)
         Me.btnKontoSave.TabIndex = 6
-        Me.btnKontoSave.Text = "Speichern"
+        Me.btnKontoSave.Text = "Hinzufügen / Speichern"
         Me.btnKontoSave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnKontoSave.UseVisualStyleBackColor = True
         '
@@ -140,20 +133,28 @@ Partial Class KontoForm
         'TableAdapterManager
         '
         Me.TableAdapterManager.AdressenTableAdapter = Nothing
+        Me.TableAdapterManager.AT_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BelegeTableAdapter = Nothing
+        Me.TableAdapterManager.CH_PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
-        Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Me.KontoTableAdapter
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
+        Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.propertiesTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
+        Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'KontoDataGridView
         '
         Me.KontoDataGridView.AllowUserToAddRows = False
         Me.KontoDataGridView.AllowUserToDeleteRows = False
+        Me.KontoDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.KontoDataGridView.AutoGenerateColumns = False
         Me.KontoDataGridView.BackgroundColor = System.Drawing.Color.White
         Me.KontoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -166,7 +167,7 @@ Partial Class KontoForm
         Me.KontoDataGridView.ReadOnly = True
         Me.KontoDataGridView.RowHeadersVisible = False
         Me.KontoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.KontoDataGridView.Size = New System.Drawing.Size(230, 149)
+        Me.KontoDataGridView.Size = New System.Drawing.Size(233, 160)
         Me.KontoDataGridView.TabIndex = 9
         '
         'DataGridViewTextBoxColumn3
@@ -228,68 +229,80 @@ Partial Class KontoForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(154, 71)
+        Me.Label2.Location = New System.Drawing.Point(24, 77)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(115, 13)
+        Me.Label2.Size = New System.Drawing.Size(213, 13)
         Me.Label2.TabIndex = 12
-        Me.Label2.Text = "Nächste freie Nummer:"
+        Me.Label2.Text = "Bitte wählen, welche Nummer benötigt wird:"
         '
         'Button1
         '
-        Me.Button1.Image = Global.Adress_DB.My.Resources.Resources.Cancel_16x
+        Me.Button1.Image = Global.Adress_DB.My.Resources.Resources.CloseSolution_16x
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(28, 10)
+        Me.Button1.Location = New System.Drawing.Point(426, 10)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 23)
         Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Abbrechen"
+        Me.Button1.Text = "Schließen"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Silver
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.lblFirmenName)
         Me.Panel1.Controls.Add(Me.lblIDFirmenName)
         Me.Panel1.Location = New System.Drawing.Point(-1, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(515, 65)
+        Me.Panel1.Size = New System.Drawing.Size(518, 65)
         Me.Panel1.TabIndex = 14
         '
         'Panel2
         '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Gray
         Me.Panel2.Controls.Add(Me.btnKontoSave)
         Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Location = New System.Drawing.Point(-1, 227)
+        Me.Panel2.Location = New System.Drawing.Point(-1, 238)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(515, 43)
+        Me.Panel2.Size = New System.Drawing.Size(518, 42)
         Me.Panel2.TabIndex = 15
         '
-        'KonfigurationBindingSource
+        'PropertiesBindingSource
         '
-        Me.KonfigurationBindingSource.DataMember = "Konfiguration"
-        Me.KonfigurationBindingSource.DataSource = Me._WSL_AdressenDataSet
+        Me.PropertiesBindingSource.DataMember = "properties"
+        Me.PropertiesBindingSource.DataSource = Me._WSL_AdressenDataSet
         '
-        'KonfigurationTableAdapter
+        'PropertiesTableAdapter
         '
-        Me.KonfigurationTableAdapter.ClearBeforeFill = True
+        Me.PropertiesTableAdapter.ClearBeforeFill = True
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.White
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.lblKontoNummer)
+        Me.Panel3.Location = New System.Drawing.Point(85, 178)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(113, 31)
+        Me.Panel3.TabIndex = 16
         '
         'KontoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(513, 270)
+        Me.ClientSize = New System.Drawing.Size(517, 281)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.KontoDataGridView)
-        Me.Controls.Add(Me.lblLieferantenNr)
         Me.Controls.Add(Me.rdbLieferantenNr)
-        Me.Controls.Add(Me.lblKundenNr)
         Me.Controls.Add(Me.rdbKundenNr)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "KontoForm"
@@ -301,7 +314,9 @@ Partial Class KontoForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -309,9 +324,8 @@ Partial Class KontoForm
 
     Friend WithEvents rdbKundenNr As RadioButton
     Friend WithEvents Label1 As Label
-    Friend WithEvents lblKundenNr As Label
+    Friend WithEvents lblKontoNummer As Label
     Friend WithEvents rdbLieferantenNr As RadioButton
-    Friend WithEvents lblLieferantenNr As Label
     Friend WithEvents btnKontoSave As Button
     Friend WithEvents _WSL_AdressenDataSet As _WSL_AdressenDataSet
     Friend WithEvents KontoBindingSource As BindingSource
@@ -329,6 +343,7 @@ Partial Class KontoForm
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents KonfigurationBindingSource As BindingSource
-    Friend WithEvents KonfigurationTableAdapter As _WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter
+    Friend WithEvents PropertiesBindingSource As BindingSource
+    Friend WithEvents PropertiesTableAdapter As _WSL_AdressenDataSetTableAdapters.propertiesTableAdapter
+    Friend WithEvents Panel3 As Panel
 End Class

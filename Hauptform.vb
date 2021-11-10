@@ -7,38 +7,26 @@ Public Class Hauptform
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ''Tabellen laden:
-        'Me.StaatenTableAdapter.Fill(Me._WSL_AdressenDataSet.Staaten)
 
-        'Me.BelegeMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.BelegeMitAdresse)
-        'Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
-        'Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
-        'Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
-        'Me.DocuwareCSVTableAdapter.Fill(Me._WSL_AdressenDataSet.DocuwareCSV)
-        'Me.KontakteMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.KontakteMitAdresse)
 
-        ''Liste wird mit ALLEN Usern gefüllt, auch den inaktiven (für die Usererkennung)!
-        'Me.SachbearbeiterTableAdapter.Fill(Me._WSL_AdressenDataSet.Sachbearbeiter)
 
         Me.Width = 1175
         Me.Height = 680
 
         lblTrefferAnzahl.Text = "Trefferanzahl" 'Starttext
-        gbKonto.Visible = False 'Groupboxen Konto, Adresse, Kontakt ausblenden
+        PNL_Konto.Visible = False 'Groupboxen Konto, Adresse, Kontakt ausblenden
         TC_Adresse.Visible = False
         TC_Kontakt.Visible = False
         TC_Beleg.Visible = False
-        LBL_Hinweis.Visible = False
         LBL_BBBesuchterKontakt.Text = String.Empty
         'LBL_IDFirmenName.Text = String.Empty
         LBL_IDFirmenName.Text = "0"
         lblHinweisKeinTreffer.Visible = False
         TB_FirmenName.Select()
-
-        PB_Suche.Location = New Point(10, 150)
-        PB_Suche.Visible = True
-        PB_Suche.AutoSize = True
-
+        lblHinweisKeinTreffer.Location = New Point(200, 200)
+        TLP_1.Location = New Point(0, 25)
+        'TLP_1.Width = Me.Width
+        'TLP_1.Height = Me.Height - 100
 
 
         'zuerst (wichtig) Combobox Anrede füllen
@@ -58,7 +46,7 @@ Public Class Hauptform
 
     Private Sub Hauptform_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         'Erest prüfen, ob das System im Wartungsmodus ist:
-        Dim Wartung As Boolean = CBool(KonfigurationTableAdapter.ScalarWartung())
+        Dim Wartung As Boolean = CBool(PropertiesTableAdapter.ScalarWert("Wartung"))
         If Wartung = True Then
             MsgBox("Das System, befindet sich in der Wartung!" & vbNewLine & "Das Progamm wird sich jetzt beenden." & vbNewLine & "Bitte später noch einmal versuchen.", vbExclamation)
             Application.Exit()
@@ -70,7 +58,6 @@ Public Class Hauptform
 
         Me.BelegeMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.BelegeMitAdresse)
         Me.BelegeTableAdapter.Fill(Me._WSL_AdressenDataSet.Belege)
-        Me.KonfigurationTableAdapter.Fill(Me._WSL_AdressenDataSet.Konfiguration)
         Me.LogTabelleTableAdapter.Fill(Me._WSL_AdressenDataSet.LogTabelle)
         Me.DocuwareCSVTableAdapter.Fill(Me._WSL_AdressenDataSet.DocuwareCSV)
         Me.KontakteMitAdresseTableAdapter.Fill(Me._WSL_AdressenDataSet.KontakteMitAdresse)
@@ -87,6 +74,8 @@ Public Class Hauptform
             MsgBox("Ihr Login wurde nicht erkannt. Bitte im Menü über Einstellungen/Benutzerliste Ihre Benutzerdaten prüfen/korrigieren oder ergänzen.", vbExclamation)
             lblUser.Text = "Sachbearbeiter nicht erkannt"
             lblUser.ForeColor = Color.Red
+            BTN_Speichern.Visible = False
+            BTN_DocErzeugen.Visible = False
         Else
             'Username in das Label schreiben
             lblUser.Text = SachbearbeiterTableAdapter.ScalarSachbearbeiter(foundIndex + 1)
@@ -104,8 +93,7 @@ Public Class Hauptform
 
     Private Sub BTN_Suche_Click(sender As Object, e As EventArgs) Handles BTN_Suche.Click
         'MsgBox("Starte Suche...")
-        PB_Suche.Visible = False
-        LBL_Hinweis.Visible = False 'DocuWare-Hinweis
+
         Suchstring = TB_FirmenName.Text
 
         If TB_FirmenName.Text <> String.Empty Then
@@ -150,7 +138,7 @@ Public Class Hauptform
         If IDFirmenName <> 0 Then
             'Es wurden Treffer gefunden ----------------------------------------------------
             'MsgBox("Treffer gefunden")
-            gbKonto.Visible = True 'Groupboxen Konto, Adresse, Kontakt einblenden
+            PNL_Konto.Visible = True 'Groupboxen Konto, Adresse, Kontakt einblenden
             TC_Adresse.Visible = True
             TC_Kontakt.Visible = True
             TC_Beleg.Visible = True
@@ -161,19 +149,20 @@ Public Class Hauptform
         Else
             'keine Treffer -----------------------------------------------------------------
             'MsgBox("keine Treffer gefunden")
-            gbKonto.Visible = False 'Groupboxen Konto, Adresse, Kontakt ausblenden
+            PNL_Konto.Visible = False 'Groupboxen Konto, Adresse, Kontakt ausblenden
             TC_Adresse.Visible = False
             TC_Kontakt.Visible = False
             TC_Beleg.Visible = False
             CB_FirmenName.Enabled = False
             lblHinweisKeinTreffer.Visible = True
-            lblHinweisKeinTreffer.Text = "0 Treffer! Speichern, um diesen Geschäftspartner neu anzulegen."
+            lblHinweisKeinTreffer.Text = "Nichts gefunden!" & vbNewLine & "Klicke 'Speichern', um diesen Geschäftspartner neu anzulegen."
+            'btnSpeichern.BackColor = Color.Green
             TB_FirmenName.Text = Suchstring
         End If
 
     End Sub
 
-    Private Sub btnSpeichern_Click(sender As Object, e As EventArgs) Handles btnSpeichern.Click
+    Private Sub btnSpeichern_Click(sender As Object, e As EventArgs) Handles BTN_Speichern.Click
         '1) Neuen Geschäftspartner anlegen
         '2) FirmenName / Name Geschäftspartner ändern/aktualisieren
         '3) Adresse neu anlegen
@@ -266,7 +255,7 @@ Public Class Hauptform
         If AdresseNeu = True And CB_Ort.Text <> String.Empty Then
             'MsgBox("Adresse neu anlegen")
             'Wert aus Konfig-Tabelle holen
-            IDAdresse = CInt(KonfigurationTableAdapter.ScalarIDAdresse())
+            IDAdresse = CInt(PropertiesTableAdapter.ScalarWert("IDAdresse"))
 
             'Datensatz Adresse hinzufügen
             Try
@@ -290,7 +279,7 @@ Public Class Hauptform
 
             Try
                 'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDAdresse((IDAdresse + 1), IDAdresse)
+                Me.PropertiesTableAdapter.UpdateWert(CStr(IDAdresse + 1), "IDAdresse")
             Catch ex As Exception
                 MsgBox("Fehler beim änmdern der neuen IDAdresse in der Konfig-Tabelle")
                 System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -317,7 +306,7 @@ Public Class Hauptform
         If KontaktNeu = True And NachnameTextBox.Text <> String.Empty Then
             'MsgBox("Kontakt neu anlegen")
             'Wert aus Konfig-Tabelle holen
-            IDKontakt = CInt(Me.KonfigurationTableAdapter.ScalarIDKontakt())
+            IDKontakt = CInt(PropertiesTableAdapter.ScalarWert("IDKontakt"))
 
             'Datensatz Kontakt hinzufügen
             Try
@@ -340,7 +329,7 @@ Public Class Hauptform
 
             Try
                 'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                Me.KonfigurationTableAdapter.UpdateIDKontakt((IDKontakt + 1), IDKontakt)
+                Me.PropertiesTableAdapter.UpdateWert(CStr(IDKontakt + 1), "IDKontakt")
             Catch ex As Exception
                 MsgBox("Fehler beim Aktualisieren der neuen IDKontakt-Nummer in der Konfig-Tabelle")
                 System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -688,10 +677,10 @@ Public Class Hauptform
         KontaktNeu = False
         NachnameTextBox.BackColor = Color.White
 
-        LBL_Hinweis.Visible = False 'DocuWare-Hinweis
-
         CB_Ort.DataSource = AdressenBindingSource
         CB_Ort.DisplayMember = "Ort"
+
+        ToolStripStatusLabel1.Visible = False 'Statusleistenhinweis
 
         'Felder auf der Belegseite leeren
         Select Case TC_Beleg.SelectedIndex
@@ -758,6 +747,7 @@ Public Class Hauptform
             UStIdNrTextBox.Enabled = False
             WebseiteTextBox.Enabled = False
             LBL_AdressHinweis.Visible = False
+            LBL_CC.Visible = False
             PNL_Geodaten.Visible = False
             Try
                 BTN_MapsSuche.Enabled = False
@@ -777,6 +767,7 @@ Public Class Hauptform
             UStIdNrTextBox.Enabled = True
             WebseiteTextBox.Enabled = True
             LBL_PLZungueltig.Visible = False
+            LBL_CC.Visible = True
             Try
                 BTN_MapsSuche.Enabled = True
             Catch ex As Exception
@@ -788,7 +779,13 @@ Public Class Hauptform
                 foundIndex = Me.StaatenBindingSource.Find("Staat", LBL_Land.Text)
                 If (foundIndex > -1) Then
                     StaatenBindingSource.Position = foundIndex
+                    LabelLandAdressen.ForeColor = Color.Black
+                Else
+                    LabelLandAdressen.ForeColor = Color.Red
                 End If
+
+            Else
+                LabelLandAdressen.ForeColor = Color.Red
             End If
 
 
@@ -956,7 +953,7 @@ Public Class Hauptform
     Private Sub BTN_DocErzeugen_Click(sender As Object, e As EventArgs) Handles BTN_DocErzeugen.Click
 
         Dim BelegName As String
-        IDBeleg = CInt(Me.KonfigurationTableAdapter.ScalarIDBeleg())
+        IDBeleg = CInt(Me.PropertiesTableAdapter.ScalarWert("IDBeleg"))
         Dim IDKonto As Integer
 
         'Die TabSeite mit 'Besuchsbericht' wird angezeigt, dann..
@@ -1004,7 +1001,7 @@ Public Class Hauptform
 
                 Try
                     'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                    Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
+                    Me.PropertiesTableAdapter.UpdateWert(CStr(IDBeleg + 1), "IDBeleg")
                 Catch ex As Exception
                     MsgBox("Fehler beim Update der neuen IDBeleg-Nummer (BB)")
                     System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -1077,7 +1074,7 @@ Public Class Hauptform
 
                 Try
                     'Nächsten Wert in der Konfig-Tabelle aktualisieren
-                    Me.KonfigurationTableAdapter.UpdateIDBeleg((IDBeleg + 1), IDBeleg)
+                    Me.PropertiesTableAdapter.UpdateWert(CStr(IDBeleg + 1), "IDBeleg")
                 Catch ex As Exception
                     MsgBox("Fehler beim Update der neuen IDBeleg-Nummer (Div. Belege)")
                     System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -1212,7 +1209,7 @@ Public Class Hauptform
     End Sub
 
     Private Sub HilfeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HilfeToolStripMenuItem.Click
-        Dim Helplink As String = CStr(KonfigurationTableAdapter.ScalarHilfelink())
+        Dim Helplink As String = CStr(PropertiesTableAdapter.ScalarWert("Hilfelink"))
         System.Diagnostics.Process.Start(Helplink)
     End Sub
 
@@ -1239,6 +1236,11 @@ Public Class Hauptform
         Umkreissuche.Show()
     End Sub
 
+    Private Sub Hauptform_Click(sender As Object, e As EventArgs) Handles Me.Click
+        ToolStripStatusLabel1.Visible = False
+    End Sub
 
+    Private Sub KontakteDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles KontakteDataGridView.CellContentClick
 
+    End Sub
 End Class

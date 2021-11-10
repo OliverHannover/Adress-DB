@@ -23,14 +23,6 @@ Partial Class Administration
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim IDFirmenNameLabel As System.Windows.Forms.Label
-        Dim LeadnummerLabel As System.Windows.Forms.Label
-        Dim KundennummerLabel As System.Windows.Forms.Label
-        Dim LieferantennummerLabel As System.Windows.Forms.Label
-        Dim IDAdresseLabel As System.Windows.Forms.Label
-        Dim IDKontaktLabel As System.Windows.Forms.Label
-        Dim IDBesuchLabel As System.Windows.Forms.Label
-        Dim VorlagenpfadLabel As System.Windows.Forms.Label
         Dim SachbearbeiterLabel As System.Windows.Forms.Label
         Dim AdminLabel As System.Windows.Forms.Label
         Dim IDFirmenNameLabel1 As System.Windows.Forms.Label
@@ -65,22 +57,10 @@ Partial Class Administration
         Dim MobiltelefonLabel As System.Windows.Forms.Label
         Dim FaxnummerLabel As System.Windows.Forms.Label
         Dim IDAdresseLabel2 As System.Windows.Forms.Label
-        Dim DWpfadLabel As System.Windows.Forms.Label
-        Dim DWDateinameLabel As System.Windows.Forms.Label
         Dim InaktivLabel As System.Windows.Forms.Label
-        Dim HilfelinkLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Administration))
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.VorlagenpfadTextBox = New System.Windows.Forms.TextBox()
-        Me.KonfigurationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me._WSL_AdressenDataSet = New Adress_DB._WSL_AdressenDataSet()
-        Me.IDBesuchTextBox = New System.Windows.Forms.TextBox()
-        Me.IDKontaktTextBox = New System.Windows.Forms.TextBox()
-        Me.IDAdresseTextBox = New System.Windows.Forms.TextBox()
-        Me.LieferantennummerTextBox = New System.Windows.Forms.TextBox()
-        Me.KundennummerTextBox = New System.Windows.Forms.TextBox()
-        Me.LeadnummerTextBox = New System.Windows.Forms.TextBox()
-        Me.IDFirmenNameTextBox = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.AdminCheckBox = New System.Windows.Forms.CheckBox()
         Me.SachbearbeiterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -91,16 +71,29 @@ Partial Class Administration
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.BTN_Schliessen = New System.Windows.Forms.Button()
         Me.TableAdapterManager = New Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager()
-        Me.KonfigurationTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter()
         Me.SachbearbeiterTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.SachbearbeiterTableAdapter()
         Me.TC_Administration = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.HilfelinkTextBox = New System.Windows.Forms.TextBox()
-        Me.BTN_DWPfad = New System.Windows.Forms.Button()
-        Me.DWDateinameTextBox = New System.Windows.Forms.TextBox()
-        Me.DWpfadTextBox = New System.Windows.Forms.TextBox()
-        Me.BTN_Speichern = New System.Windows.Forms.Button()
-        Me.BTN_Vorlagenpfad = New System.Windows.Forms.Button()
+        Me.BNAV_Properties = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.ToolStripButton13 = New System.Windows.Forms.ToolStripButton()
+        Me.KontakteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ToolStripLabel6 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripButton20 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton27 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton34 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator16 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox6 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton35 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton36 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator18 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BNAV_Properties_Save = New System.Windows.Forms.ToolStripButton()
+        Me.PropertiesDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PropertiesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.InaktivCheckBox = New System.Windows.Forms.CheckBox()
         Me.FirmenNameBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -194,7 +187,6 @@ Partial Class Administration
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.SachbearbeiterBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.KontakteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
@@ -266,14 +258,7 @@ Partial Class Administration
         Me.KontakteTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.KontakteTableAdapter()
         Me.BelegeTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.BelegeTableAdapter()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        IDFirmenNameLabel = New System.Windows.Forms.Label()
-        LeadnummerLabel = New System.Windows.Forms.Label()
-        KundennummerLabel = New System.Windows.Forms.Label()
-        LieferantennummerLabel = New System.Windows.Forms.Label()
-        IDAdresseLabel = New System.Windows.Forms.Label()
-        IDKontaktLabel = New System.Windows.Forms.Label()
-        IDBesuchLabel = New System.Windows.Forms.Label()
-        VorlagenpfadLabel = New System.Windows.Forms.Label()
+        Me.PropertiesTableAdapter = New Adress_DB._WSL_AdressenDataSetTableAdapters.propertiesTableAdapter()
         SachbearbeiterLabel = New System.Windows.Forms.Label()
         AdminLabel = New System.Windows.Forms.Label()
         IDFirmenNameLabel1 = New System.Windows.Forms.Label()
@@ -308,17 +293,18 @@ Partial Class Administration
         MobiltelefonLabel = New System.Windows.Forms.Label()
         FaxnummerLabel = New System.Windows.Forms.Label()
         IDAdresseLabel2 = New System.Windows.Forms.Label()
-        DWpfadLabel = New System.Windows.Forms.Label()
-        DWDateinameLabel = New System.Windows.Forms.Label()
         InaktivLabel = New System.Windows.Forms.Label()
-        HilfelinkLabel = New System.Windows.Forms.Label()
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.SachbearbeiterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.TC_Administration.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.BNAV_Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BNAV_Properties.SuspendLayout()
+        CType(Me.KontakteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PropertiesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.FirmenNameBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -337,7 +323,6 @@ Partial Class Administration
         Me.TabPage5.SuspendLayout()
         CType(Me.SachbearbeiterBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SachbearbeiterBindingNavigator.SuspendLayout()
-        CType(Me.KontakteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Belege.SuspendLayout()
         CType(Me.BNAV_Belege, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -346,78 +331,6 @@ Partial Class Administration
         CType(Me.BelegeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'IDFirmenNameLabel
-        '
-        IDFirmenNameLabel.AutoSize = True
-        IDFirmenNameLabel.Location = New System.Drawing.Point(24, 119)
-        IDFirmenNameLabel.Name = "IDFirmenNameLabel"
-        IDFirmenNameLabel.Size = New System.Drawing.Size(83, 13)
-        IDFirmenNameLabel.TabIndex = 2
-        IDFirmenNameLabel.Text = "IDFirmen Name:"
-        '
-        'LeadnummerLabel
-        '
-        LeadnummerLabel.AutoSize = True
-        LeadnummerLabel.Location = New System.Drawing.Point(36, 145)
-        LeadnummerLabel.Name = "LeadnummerLabel"
-        LeadnummerLabel.Size = New System.Drawing.Size(71, 13)
-        LeadnummerLabel.TabIndex = 4
-        LeadnummerLabel.Text = "Leadnummer:"
-        '
-        'KundennummerLabel
-        '
-        KundennummerLabel.AutoSize = True
-        KundennummerLabel.Location = New System.Drawing.Point(23, 171)
-        KundennummerLabel.Name = "KundennummerLabel"
-        KundennummerLabel.Size = New System.Drawing.Size(84, 13)
-        KundennummerLabel.TabIndex = 6
-        KundennummerLabel.Text = "Kundennummer:"
-        '
-        'LieferantennummerLabel
-        '
-        LieferantennummerLabel.AutoSize = True
-        LieferantennummerLabel.Location = New System.Drawing.Point(7, 197)
-        LieferantennummerLabel.Name = "LieferantennummerLabel"
-        LieferantennummerLabel.Size = New System.Drawing.Size(100, 13)
-        LieferantennummerLabel.TabIndex = 8
-        LieferantennummerLabel.Text = "Lieferantennummer:"
-        '
-        'IDAdresseLabel
-        '
-        IDAdresseLabel.AutoSize = True
-        IDAdresseLabel.Location = New System.Drawing.Point(48, 223)
-        IDAdresseLabel.Name = "IDAdresseLabel"
-        IDAdresseLabel.Size = New System.Drawing.Size(59, 13)
-        IDAdresseLabel.TabIndex = 10
-        IDAdresseLabel.Text = "IDAdresse:"
-        '
-        'IDKontaktLabel
-        '
-        IDKontaktLabel.AutoSize = True
-        IDKontaktLabel.Location = New System.Drawing.Point(49, 249)
-        IDKontaktLabel.Name = "IDKontaktLabel"
-        IDKontaktLabel.Size = New System.Drawing.Size(58, 13)
-        IDKontaktLabel.TabIndex = 12
-        IDKontaktLabel.Text = "IDKontakt:"
-        '
-        'IDBesuchLabel
-        '
-        IDBesuchLabel.AutoSize = True
-        IDBesuchLabel.Location = New System.Drawing.Point(50, 275)
-        IDBesuchLabel.Name = "IDBesuchLabel"
-        IDBesuchLabel.Size = New System.Drawing.Size(48, 13)
-        IDBesuchLabel.TabIndex = 14
-        IDBesuchLabel.Text = "IDBeleg:"
-        '
-        'VorlagenpfadLabel
-        '
-        VorlagenpfadLabel.AutoSize = True
-        VorlagenpfadLabel.Location = New System.Drawing.Point(34, 15)
-        VorlagenpfadLabel.Name = "VorlagenpfadLabel"
-        VorlagenpfadLabel.Size = New System.Drawing.Size(73, 13)
-        VorlagenpfadLabel.TabIndex = 15
-        VorlagenpfadLabel.Text = "Vorlagenpfad:"
         '
         'SachbearbeiterLabel
         '
@@ -726,24 +639,6 @@ Partial Class Administration
         IDAdresseLabel2.TabIndex = 23
         IDAdresseLabel2.Text = "IDAdresse:"
         '
-        'DWpfadLabel
-        '
-        DWpfadLabel.AutoSize = True
-        DWpfadLabel.Location = New System.Drawing.Point(17, 41)
-        DWpfadLabel.Name = "DWpfadLabel"
-        DWpfadLabel.Size = New System.Drawing.Size(86, 13)
-        DWpfadLabel.TabIndex = 18
-        DWpfadLabel.Text = "DocuWare pfad:"
-        '
-        'DWDateinameLabel
-        '
-        DWDateinameLabel.AutoSize = True
-        DWDateinameLabel.Location = New System.Drawing.Point(23, 67)
-        DWDateinameLabel.Name = "DWDateinameLabel"
-        DWDateinameLabel.Size = New System.Drawing.Size(83, 13)
-        DWDateinameLabel.TabIndex = 20
-        DWDateinameLabel.Text = "DW-Dateiname:"
-        '
         'InaktivLabel
         '
         InaktivLabel.AutoSize = True
@@ -753,88 +648,10 @@ Partial Class Administration
         InaktivLabel.TabIndex = 10
         InaktivLabel.Text = "inaktiv:"
         '
-        'HilfelinkLabel
-        '
-        HilfelinkLabel.AutoSize = True
-        HilfelinkLabel.Location = New System.Drawing.Point(60, 93)
-        HilfelinkLabel.Name = "HilfelinkLabel"
-        HilfelinkLabel.Size = New System.Drawing.Size(47, 13)
-        HilfelinkLabel.TabIndex = 23
-        HilfelinkLabel.Text = "Hilfelink:"
-        '
-        'VorlagenpfadTextBox
-        '
-        Me.VorlagenpfadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Vorlagenpfad", True))
-        Me.VorlagenpfadTextBox.Location = New System.Drawing.Point(113, 12)
-        Me.VorlagenpfadTextBox.Name = "VorlagenpfadTextBox"
-        Me.VorlagenpfadTextBox.Size = New System.Drawing.Size(457, 20)
-        Me.VorlagenpfadTextBox.TabIndex = 16
-        '
-        'KonfigurationBindingSource
-        '
-        Me.KonfigurationBindingSource.DataMember = "Konfiguration"
-        Me.KonfigurationBindingSource.DataSource = Me._WSL_AdressenDataSet
-        '
         '_WSL_AdressenDataSet
         '
         Me._WSL_AdressenDataSet.DataSetName = "_WSL_AdressenDataSet"
         Me._WSL_AdressenDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'IDBesuchTextBox
-        '
-        Me.IDBesuchTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "IDBeleg", True))
-        Me.IDBesuchTextBox.Location = New System.Drawing.Point(113, 272)
-        Me.IDBesuchTextBox.Name = "IDBesuchTextBox"
-        Me.IDBesuchTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IDBesuchTextBox.TabIndex = 15
-        '
-        'IDKontaktTextBox
-        '
-        Me.IDKontaktTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "IDKontakt", True))
-        Me.IDKontaktTextBox.Location = New System.Drawing.Point(113, 246)
-        Me.IDKontaktTextBox.Name = "IDKontaktTextBox"
-        Me.IDKontaktTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IDKontaktTextBox.TabIndex = 13
-        '
-        'IDAdresseTextBox
-        '
-        Me.IDAdresseTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "IDAdresse", True))
-        Me.IDAdresseTextBox.Location = New System.Drawing.Point(113, 220)
-        Me.IDAdresseTextBox.Name = "IDAdresseTextBox"
-        Me.IDAdresseTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IDAdresseTextBox.TabIndex = 11
-        '
-        'LieferantennummerTextBox
-        '
-        Me.LieferantennummerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Lieferantennummer", True))
-        Me.LieferantennummerTextBox.Location = New System.Drawing.Point(113, 194)
-        Me.LieferantennummerTextBox.Name = "LieferantennummerTextBox"
-        Me.LieferantennummerTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.LieferantennummerTextBox.TabIndex = 9
-        '
-        'KundennummerTextBox
-        '
-        Me.KundennummerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Kundennummer", True))
-        Me.KundennummerTextBox.Location = New System.Drawing.Point(113, 168)
-        Me.KundennummerTextBox.Name = "KundennummerTextBox"
-        Me.KundennummerTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.KundennummerTextBox.TabIndex = 7
-        '
-        'LeadnummerTextBox
-        '
-        Me.LeadnummerTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Leadnummer", True))
-        Me.LeadnummerTextBox.Location = New System.Drawing.Point(113, 142)
-        Me.LeadnummerTextBox.Name = "LeadnummerTextBox"
-        Me.LeadnummerTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.LeadnummerTextBox.TabIndex = 5
-        '
-        'IDFirmenNameTextBox
-        '
-        Me.IDFirmenNameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "IDFirmenName", True))
-        Me.IDFirmenNameTextBox.Location = New System.Drawing.Point(113, 116)
-        Me.IDFirmenNameTextBox.Name = "IDFirmenNameTextBox"
-        Me.IDFirmenNameTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IDFirmenNameTextBox.TabIndex = 3
         '
         'Panel2
         '
@@ -946,18 +763,14 @@ Partial Class Administration
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.DE_PLZ_GeodatenTableAdapter = Nothing
         Me.TableAdapterManager.FirmenNameTableAdapter = Nothing
-        Me.TableAdapterManager.KonfigurationTableAdapter = Nothing
         Me.TableAdapterManager.KontakteTableAdapter = Nothing
         Me.TableAdapterManager.KontoTableAdapter = Nothing
         Me.TableAdapterManager.LogTabelleTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_GeodatenTableAdapter = Nothing
+        Me.TableAdapterManager.propertiesTableAdapter = Nothing
         Me.TableAdapterManager.SachbearbeiterTableAdapter = Nothing
         Me.TableAdapterManager.StaatenTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Adress_DB._WSL_AdressenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'KonfigurationTableAdapter
-        '
-        Me.KonfigurationTableAdapter.ClearBeforeFill = True
         '
         'SachbearbeiterTableAdapter
         '
@@ -983,31 +796,8 @@ Partial Class Administration
         'TabPage1
         '
         Me.TabPage1.AutoScroll = True
-        Me.TabPage1.Controls.Add(HilfelinkLabel)
-        Me.TabPage1.Controls.Add(Me.HilfelinkTextBox)
-        Me.TabPage1.Controls.Add(Me.BTN_DWPfad)
-        Me.TabPage1.Controls.Add(DWDateinameLabel)
-        Me.TabPage1.Controls.Add(Me.DWDateinameTextBox)
-        Me.TabPage1.Controls.Add(DWpfadLabel)
-        Me.TabPage1.Controls.Add(Me.DWpfadTextBox)
-        Me.TabPage1.Controls.Add(Me.BTN_Speichern)
-        Me.TabPage1.Controls.Add(VorlagenpfadLabel)
-        Me.TabPage1.Controls.Add(Me.LeadnummerTextBox)
-        Me.TabPage1.Controls.Add(Me.VorlagenpfadTextBox)
-        Me.TabPage1.Controls.Add(Me.BTN_Vorlagenpfad)
-        Me.TabPage1.Controls.Add(IDBesuchLabel)
-        Me.TabPage1.Controls.Add(Me.IDFirmenNameTextBox)
-        Me.TabPage1.Controls.Add(Me.IDBesuchTextBox)
-        Me.TabPage1.Controls.Add(IDFirmenNameLabel)
-        Me.TabPage1.Controls.Add(IDKontaktLabel)
-        Me.TabPage1.Controls.Add(LeadnummerLabel)
-        Me.TabPage1.Controls.Add(Me.IDKontaktTextBox)
-        Me.TabPage1.Controls.Add(Me.KundennummerTextBox)
-        Me.TabPage1.Controls.Add(IDAdresseLabel)
-        Me.TabPage1.Controls.Add(KundennummerLabel)
-        Me.TabPage1.Controls.Add(Me.IDAdresseTextBox)
-        Me.TabPage1.Controls.Add(Me.LieferantennummerTextBox)
-        Me.TabPage1.Controls.Add(LieferantennummerLabel)
+        Me.TabPage1.Controls.Add(Me.BNAV_Properties)
+        Me.TabPage1.Controls.Add(Me.PropertiesDataGridView)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -1016,66 +806,166 @@ Partial Class Administration
         Me.TabPage1.Text = "Konfiguration"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'HilfelinkTextBox
+        'BNAV_Properties
         '
-        Me.HilfelinkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "Hilfelink", True))
-        Me.HilfelinkTextBox.Location = New System.Drawing.Point(113, 90)
-        Me.HilfelinkTextBox.Name = "HilfelinkTextBox"
-        Me.HilfelinkTextBox.Size = New System.Drawing.Size(457, 20)
-        Me.HilfelinkTextBox.TabIndex = 24
+        Me.BNAV_Properties.AddNewItem = Me.ToolStripButton13
+        Me.BNAV_Properties.BindingSource = Me.KontakteBindingSource
+        Me.BNAV_Properties.CountItem = Me.ToolStripLabel6
+        Me.BNAV_Properties.DeleteItem = Me.ToolStripButton20
+        Me.BNAV_Properties.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BNAV_Properties.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton27, Me.ToolStripButton34, Me.ToolStripSeparator16, Me.ToolStripTextBox6, Me.ToolStripLabel6, Me.ToolStripSeparator17, Me.ToolStripButton35, Me.ToolStripButton36, Me.ToolStripSeparator18, Me.ToolStripButton13, Me.ToolStripButton20, Me.BNAV_Properties_Save})
+        Me.BNAV_Properties.Location = New System.Drawing.Point(3, 346)
+        Me.BNAV_Properties.MoveFirstItem = Me.ToolStripButton27
+        Me.BNAV_Properties.MoveLastItem = Me.ToolStripButton36
+        Me.BNAV_Properties.MoveNextItem = Me.ToolStripButton35
+        Me.BNAV_Properties.MovePreviousItem = Me.ToolStripButton34
+        Me.BNAV_Properties.Name = "BNAV_Properties"
+        Me.BNAV_Properties.PositionItem = Me.ToolStripTextBox6
+        Me.BNAV_Properties.Size = New System.Drawing.Size(1165, 25)
+        Me.BNAV_Properties.TabIndex = 26
+        Me.BNAV_Properties.Text = "BindingNavigator1"
         '
-        'BTN_DWPfad
+        'ToolStripButton13
         '
-        Me.BTN_DWPfad.Image = Global.Adress_DB.My.Resources.Resources.DocumentsFolder_16x
-        Me.BTN_DWPfad.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_DWPfad.Location = New System.Drawing.Point(576, 38)
-        Me.BTN_DWPfad.Name = "BTN_DWPfad"
-        Me.BTN_DWPfad.Size = New System.Drawing.Size(138, 23)
-        Me.BTN_DWPfad.TabIndex = 22
-        Me.BTN_DWPfad.Text = "DW-Pfad ändern"
-        Me.BTN_DWPfad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BTN_DWPfad.UseVisualStyleBackColor = True
+        Me.ToolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton13.Image = CType(resources.GetObject("ToolStripButton13.Image"), System.Drawing.Image)
+        Me.ToolStripButton13.Name = "ToolStripButton13"
+        Me.ToolStripButton13.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton13.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton13.Text = "Neu hinzufügen"
         '
-        'DWDateinameTextBox
+        'KontakteBindingSource
         '
-        Me.DWDateinameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "DWDateiname", True))
-        Me.DWDateinameTextBox.Location = New System.Drawing.Point(113, 64)
-        Me.DWDateinameTextBox.Name = "DWDateinameTextBox"
-        Me.DWDateinameTextBox.Size = New System.Drawing.Size(230, 20)
-        Me.DWDateinameTextBox.TabIndex = 21
+        Me.KontakteBindingSource.DataMember = "Kontakte"
+        Me.KontakteBindingSource.DataSource = Me._WSL_AdressenDataSet
         '
-        'DWpfadTextBox
+        'ToolStripLabel6
         '
-        Me.DWpfadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.KonfigurationBindingSource, "DWpfad", True))
-        Me.DWpfadTextBox.Location = New System.Drawing.Point(113, 38)
-        Me.DWpfadTextBox.Name = "DWpfadTextBox"
-        Me.DWpfadTextBox.Size = New System.Drawing.Size(457, 20)
-        Me.DWpfadTextBox.TabIndex = 19
+        Me.ToolStripLabel6.Name = "ToolStripLabel6"
+        Me.ToolStripLabel6.Size = New System.Drawing.Size(44, 22)
+        Me.ToolStripLabel6.Text = "von {0}"
+        Me.ToolStripLabel6.ToolTipText = "Die Gesamtanzahl der Elemente."
         '
-        'BTN_Speichern
+        'ToolStripButton20
         '
-        Me.BTN_Speichern.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BTN_Speichern.Image = CType(resources.GetObject("BTN_Speichern.Image"), System.Drawing.Image)
-        Me.BTN_Speichern.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Speichern.Location = New System.Drawing.Point(113, 298)
-        Me.BTN_Speichern.Name = "BTN_Speichern"
-        Me.BTN_Speichern.Size = New System.Drawing.Size(80, 23)
-        Me.BTN_Speichern.TabIndex = 17
-        Me.BTN_Speichern.Text = "speichern"
-        Me.BTN_Speichern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BTN_Speichern.UseVisualStyleBackColor = True
+        Me.ToolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton20.Image = CType(resources.GetObject("ToolStripButton20.Image"), System.Drawing.Image)
+        Me.ToolStripButton20.Name = "ToolStripButton20"
+        Me.ToolStripButton20.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton20.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton20.Text = "Löschen"
         '
-        'BTN_Vorlagenpfad
+        'ToolStripButton27
         '
-        Me.BTN_Vorlagenpfad.Image = Global.Adress_DB.My.Resources.Resources.DocumentsFolder_16x
-        Me.BTN_Vorlagenpfad.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_Vorlagenpfad.Location = New System.Drawing.Point(576, 10)
-        Me.BTN_Vorlagenpfad.Name = "BTN_Vorlagenpfad"
-        Me.BTN_Vorlagenpfad.Size = New System.Drawing.Size(138, 23)
-        Me.BTN_Vorlagenpfad.TabIndex = 2
-        Me.BTN_Vorlagenpfad.Text = "Vorlagenpfad ändern"
-        Me.BTN_Vorlagenpfad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BTN_Vorlagenpfad.UseVisualStyleBackColor = True
+        Me.ToolStripButton27.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton27.Image = CType(resources.GetObject("ToolStripButton27.Image"), System.Drawing.Image)
+        Me.ToolStripButton27.Name = "ToolStripButton27"
+        Me.ToolStripButton27.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton27.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton27.Text = "Erste verschieben"
+        '
+        'ToolStripButton34
+        '
+        Me.ToolStripButton34.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton34.Image = CType(resources.GetObject("ToolStripButton34.Image"), System.Drawing.Image)
+        Me.ToolStripButton34.Name = "ToolStripButton34"
+        Me.ToolStripButton34.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton34.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton34.Text = "Vorherige verschieben"
+        '
+        'ToolStripSeparator16
+        '
+        Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
+        Me.ToolStripSeparator16.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripTextBox6
+        '
+        Me.ToolStripTextBox6.AccessibleName = "Position"
+        Me.ToolStripTextBox6.AutoSize = False
+        Me.ToolStripTextBox6.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.ToolStripTextBox6.Name = "ToolStripTextBox6"
+        Me.ToolStripTextBox6.Size = New System.Drawing.Size(50, 25)
+        Me.ToolStripTextBox6.Text = "0"
+        Me.ToolStripTextBox6.ToolTipText = "Aktuelle Position"
+        '
+        'ToolStripSeparator17
+        '
+        Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton35
+        '
+        Me.ToolStripButton35.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton35.Image = CType(resources.GetObject("ToolStripButton35.Image"), System.Drawing.Image)
+        Me.ToolStripButton35.Name = "ToolStripButton35"
+        Me.ToolStripButton35.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton35.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton35.Text = "Nächste verschieben"
+        '
+        'ToolStripButton36
+        '
+        Me.ToolStripButton36.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton36.Image = CType(resources.GetObject("ToolStripButton36.Image"), System.Drawing.Image)
+        Me.ToolStripButton36.Name = "ToolStripButton36"
+        Me.ToolStripButton36.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton36.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton36.Text = "Letzte verschieben"
+        '
+        'ToolStripSeparator18
+        '
+        Me.ToolStripSeparator18.Name = "ToolStripSeparator18"
+        Me.ToolStripSeparator18.Size = New System.Drawing.Size(6, 25)
+        '
+        'BNAV_Properties_Save
+        '
+        Me.BNAV_Properties_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BNAV_Properties_Save.Image = CType(resources.GetObject("BNAV_Properties_Save.Image"), System.Drawing.Image)
+        Me.BNAV_Properties_Save.Name = "BNAV_Properties_Save"
+        Me.BNAV_Properties_Save.Size = New System.Drawing.Size(23, 22)
+        Me.BNAV_Properties_Save.Text = "Daten speichern"
+        '
+        'PropertiesDataGridView
+        '
+        Me.PropertiesDataGridView.AutoGenerateColumns = False
+        Me.PropertiesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.PropertiesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23})
+        Me.PropertiesDataGridView.DataSource = Me.PropertiesBindingSource
+        Me.PropertiesDataGridView.Location = New System.Drawing.Point(3, 6)
+        Me.PropertiesDataGridView.Name = "PropertiesDataGridView"
+        Me.PropertiesDataGridView.Size = New System.Drawing.Size(1161, 292)
+        Me.PropertiesDataGridView.TabIndex = 25
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.Width = 50
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "Bezeichner"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "Bezeichner"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "Wert"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Wert"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.Width = 300
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "Beschreibung"
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Beschreibung"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        '
+        'PropertiesBindingSource
+        '
+        Me.PropertiesBindingSource.DataMember = "properties"
+        Me.PropertiesBindingSource.DataSource = Me._WSL_AdressenDataSet
         '
         'TabPage2
         '
@@ -1935,11 +1825,6 @@ Partial Class Administration
         Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton1.Text = "Neu hinzufügen"
         '
-        'KontakteBindingSource
-        '
-        Me.KontakteBindingSource.DataMember = "Kontakte"
-        Me.KontakteBindingSource.DataSource = Me._WSL_AdressenDataSet
-        '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
@@ -2480,6 +2365,10 @@ Partial Class Administration
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1185, 522)
         Me.TableLayoutPanel1.TabIndex = 31
         '
+        'PropertiesTableAdapter
+        '
+        Me.PropertiesTableAdapter.ClearBeforeFill = True
+        '
         'Administration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2489,7 +2378,6 @@ Partial Class Administration
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Administration"
         Me.Text = "Administration"
-        CType(Me.KonfigurationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._WSL_AdressenDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -2498,6 +2386,12 @@ Partial Class Administration
         Me.TC_Administration.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.BNAV_Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BNAV_Properties.ResumeLayout(False)
+        Me.BNAV_Properties.PerformLayout()
+        CType(Me.KontakteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PropertiesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PropertiesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.FirmenNameBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2524,7 +2418,6 @@ Partial Class Administration
         CType(Me.SachbearbeiterBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SachbearbeiterBindingNavigator.ResumeLayout(False)
         Me.SachbearbeiterBindingNavigator.PerformLayout()
-        CType(Me.KontakteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Belege.ResumeLayout(False)
         Me.Belege.PerformLayout()
@@ -2538,27 +2431,15 @@ Partial Class Administration
 
     End Sub
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
-    Friend WithEvents BTN_Vorlagenpfad As Button
     Friend WithEvents BTN_Schliessen As Button
     Friend WithEvents _WSL_AdressenDataSet As _WSL_AdressenDataSet
     Friend WithEvents TableAdapterManager As _WSL_AdressenDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents KonfigurationBindingSource As BindingSource
-    Friend WithEvents KonfigurationTableAdapter As _WSL_AdressenDataSetTableAdapters.KonfigurationTableAdapter
-    Friend WithEvents VorlagenpfadTextBox As TextBox
-    Friend WithEvents IDBesuchTextBox As TextBox
-    Friend WithEvents IDKontaktTextBox As TextBox
-    Friend WithEvents IDAdresseTextBox As TextBox
-    Friend WithEvents LieferantennummerTextBox As TextBox
-    Friend WithEvents KundennummerTextBox As TextBox
-    Friend WithEvents LeadnummerTextBox As TextBox
-    Friend WithEvents IDFirmenNameTextBox As TextBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents SachbearbeiterBindingSource As BindingSource
     Friend WithEvents SachbearbeiterTableAdapter As _WSL_AdressenDataSetTableAdapters.SachbearbeiterTableAdapter
     Friend WithEvents SachbearbeiterLabel1 As Label
     Friend WithEvents AdminCheckBox As CheckBox
-    Friend WithEvents BTN_Speichern As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TC_Administration As TabControl
     Friend WithEvents TabPage1 As TabPage
@@ -2664,9 +2545,6 @@ Partial Class Administration
     Friend WithEvents BNAV_KontakteSave As ToolStripButton
     Friend WithEvents BTN_Aktuell As Button
     Friend WithEvents BTN_Alle As Button
-    Friend WithEvents BTN_DWPfad As Button
-    Friend WithEvents DWDateinameTextBox As TextBox
-    Friend WithEvents DWpfadTextBox As TextBox
     Friend WithEvents IDKontakt As DataGridViewTextBoxColumn
     Friend WithEvents IDFirmenName As DataGridViewTextBoxColumn
     Friend WithEvents Nachname As DataGridViewTextBoxColumn
@@ -2731,6 +2609,25 @@ Partial Class Administration
     Friend WithEvents Login As DataGridViewTextBoxColumn
     Friend WithEvents changed As DataGridViewTextBoxColumn
     Friend WithEvents inaktiv As DataGridViewCheckBoxColumn
-    Friend WithEvents HilfelinkTextBox As TextBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents PropertiesBindingSource As BindingSource
+    Friend WithEvents PropertiesTableAdapter As _WSL_AdressenDataSetTableAdapters.propertiesTableAdapter
+    Friend WithEvents PropertiesDataGridView As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents BNAV_Properties As BindingNavigator
+    Friend WithEvents ToolStripButton13 As ToolStripButton
+    Friend WithEvents ToolStripLabel6 As ToolStripLabel
+    Friend WithEvents ToolStripButton20 As ToolStripButton
+    Friend WithEvents ToolStripButton27 As ToolStripButton
+    Friend WithEvents ToolStripButton34 As ToolStripButton
+    Friend WithEvents ToolStripSeparator16 As ToolStripSeparator
+    Friend WithEvents ToolStripTextBox6 As ToolStripTextBox
+    Friend WithEvents ToolStripSeparator17 As ToolStripSeparator
+    Friend WithEvents ToolStripButton35 As ToolStripButton
+    Friend WithEvents ToolStripButton36 As ToolStripButton
+    Friend WithEvents ToolStripSeparator18 As ToolStripSeparator
+    Friend WithEvents BNAV_Properties_Save As ToolStripButton
 End Class

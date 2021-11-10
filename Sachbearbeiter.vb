@@ -31,6 +31,8 @@ Public Class Sachbearbeiter
             'anschließend Tabelle mit aktiven Usern füllen und den gefundenen markieren:
             Hauptform.SachbearbeiterTableAdapter.FillByAktive(Hauptform._WSL_AdressenDataSet.Sachbearbeiter)
             Hauptform.SachbearbeiterBindingSource.Position = Hauptform.SachbearbeiterBindingSource.Find("Login", Environment.UserName)
+            Hauptform.BTN_Speichern.Visible = True
+            Hauptform.BTN_DocErzeugen.Visible = True
 
         Else
             MsgBox("Ihr Login wurde nicht erkannt. Bitte Ihre Benutzerdaten prüfen/korrigieren oder ergänzen.", vbExclamation)
