@@ -1,4 +1,6 @@
 # Adress-DB
+(Adress-DB_CSharp.NET ist die Weiterentwicklung von Adress-DB_VB.NET. VB wird nicht weiter entwickelt)
+
 Adress-Datenbank für Unternehmen
 Die Adress-DB wurde aus verschiedenen Gründen entwickelt und bietet folgende Funktionen:
 - es wird eine Datei für DocuWare erzeugt mit den Namen der Geschäftspartner sowie deren Kunden-/Lieferanten-/Leadnummern. 
